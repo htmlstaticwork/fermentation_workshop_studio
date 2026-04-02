@@ -5,9 +5,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Icons (Lucide)
-    if (window.lucide) {
-        lucide.createIcons();
-    }
+    const initIcons = () => {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    };
+    initIcons();
+    // Re-run after a short delay just in case
+    setTimeout(initIcons, 500);
 
     // 2. Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');

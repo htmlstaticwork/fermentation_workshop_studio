@@ -150,15 +150,26 @@ img {
 }
 
 .btn-icon {
-    padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
     border-radius: var(--radius-sm);
     background: var(--bg-alt);
     border: 1px solid var(--border);
     color: var(--text-main);
+    transition: var(--transition);
+}
+
+.btn-icon i, .btn-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2px;
 }
 
 .btn-icon:hover {
     background: var(--border);
+    color: var(--primary);
 }
 
 /* Header & Navigation */
