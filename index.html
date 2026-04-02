@@ -44,19 +44,18 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero section" style="padding-top: 10rem;">
-        <div class="container grid" style="grid-template-columns: 1fr 1fr; align-items: center;">
+    <section class="hero section" style="padding: 12rem 0 8rem; position: relative; background-image: url('img/hero-bg.png'); background-size: cover; background-position: center;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%); z-index: 1;"></div>
+        <div class="container grid" style="grid-template-columns: 1fr 1fr; align-items: center; position: relative; z-index: 2;">
             <div class="hero-content reveal">
-                <h1 style="font-size: 3.5rem; color: var(--text-main);">Discover the<br><span style="color: var(--primary);">Art of Fermentation</span></h1>
-                <p style="font-size: 1.25rem; color: var(--text-alt); margin-bottom: 2rem;">Master Kimchi, Kombucha, and more. Transform simple ingredients into probiotic powerhouses for your gut health.</p>
+                <h1 style="font-size: 3.5rem; color: #ffffff;">Discover the<br><span style="color: var(--primary);">Art of Fermentation</span></h1>
+                <p style="font-size: 1.25rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Master Kimchi, Kombucha, and more. Transform simple ingredients into probiotic powerhouses for your gut health.</p>
                 <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
                     <a href="services.html" class="btn btn-primary">Join Workshop <i data-lucide="arrow-right"></i></a>
-                    <a href="contact.html" class="btn btn-secondary">Book Session</a>
+                    <a href="contact.html" class="btn btn-secondary" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px);">Book Session</a>
                 </div>
             </div>
-            <div class="hero-image reveal" style="animation-delay: 0.2s;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.01 AM (1).jpeg" alt="Fermentation Jars" style="border-radius: var(--radius-lg); box-shadow: var(--shadow);">
-            </div>
+            <div></div> <!-- Empty div to keep the right side clear for the beautiful background image -->
         </div>
     </section>
 
@@ -83,36 +82,36 @@
             </div>
             
             <div class="grid grid-3">
-                <div class="card reveal" style="padding: 0; overflow: hidden;">
-                    <div style="height: 250px; overflow: hidden;">
+                <div class="card reveal" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
+                    <div style="height: 250px; overflow: hidden; flex-shrink: 0;">
                         <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM.jpeg" alt="Kimchi" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="padding: 2rem;">
+                    <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1;">
                         <h3>Kimchi Workshop</h3>
                         <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Master the balance of spice, salt, and crunch in this traditional Korean workshop.</p>
-                        <a href="services.html" class="btn btn-secondary" style="width: 100%;">View Details</a>
+                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">View Details</a>
                     </div>
                 </div>
 
-                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.1s;">
-                    <div style="height: 250px; overflow: hidden;">
+                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
+                    <div style="height: 250px; overflow: hidden; flex-shrink: 0;">
                         <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Kombucha" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="padding: 2rem;">
+                    <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1;">
                         <h3>Kombucha Brewing</h3>
                         <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Learn the science of SCOBY and craft your own fizzy, probiotic-rich elixirs.</p>
-                        <a href="services.html" class="btn btn-secondary" style="width: 100%;">View Details</a>
+                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">View Details</a>
                     </div>
                 </div>
 
-                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.2s;">
-                    <div style="height: 250px; overflow: hidden;">
+                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
+                    <div style="height: 250px; overflow: hidden; flex-shrink: 0;">
                         <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Starter Kits" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="padding: 2rem;">
+                    <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1;">
                         <h3>Starter Kits</h3>
                         <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Everything you need to start your fermentation journey at home.</p>
-                        <a href="services.html" class="btn btn-secondary" style="width: 100%;">Shop Now</a>
+                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">Shop Now</a>
                     </div>
                 </div>
             </div>
