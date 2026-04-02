@@ -1,0 +1,128 @@
+/**
+ * Fermentation Studio - Main JS
+ * Handles Theme, RTL, Mobile Menu, and Animations
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize Icons (Lucide)
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+    // 2. Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcon('dark');
+    }
+
+    themeBtn?.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeIcon(theme);
+    });
+
+    function updateThemeIcon(theme) {
+        const icon = themeBtn.querySelector('i');
+        if (icon) {
+            icon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+    }
+
+    // 3. RTL Toggle
+    const rtlBtn = document.getElementById('rtl-toggle');
+    const isRtl = localStorage.getItem('rtl') === 'true';
+
+    if (isRtl) {
+        document.body.classList.add('rtl');
+    }
+
+    rtlBtn?.addEventListener('click', () => {
+        const active = document.body.classList.toggle('rtl');
+        localStorage.setItem('rtl', active);
+    });
+
+    // 4. Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-toggle');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('close-menu');
+
+    const toggleMenu = () => {
+        drawer?.classList.toggle('open');
+        overlay?.classList.toggle('open');
+        document.body.style.overflow = drawer?.classList.contains('open') ? 'hidden' : '';
+    };
+
+    menuBtn?.addEventListener('click', toggleMenu);
+    closeBtn?.addEventListener('click', toggleMenu);
+    overlay?.addEventListener('click', toggleMenu);
+
+    // 5. Sticky Header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+    });
+
+    // 6. Reveal Scroll Animations
+    const observerOptions = {
+        threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 7. Password Visibility Toggle
+    document.querySelectorAll('.password-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.previousElementSibling;
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+            const icon = btn.querySelector('i');
+            icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
+            lucide.createIcons();
+        });
+    });
+
+    // 8. Dashboard Sidebar Collapse (Mobile)
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    sidebarToggle?.addEventListener('click', () => {
+        sidebar?.classList.toggle('active');
+    });
+
+    // 9. 3D Tilt Effect
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+});

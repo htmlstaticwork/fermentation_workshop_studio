@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container flex-between">
+            <div class="logo">
+                <a href="index.html" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="care-plans.html" class="nav-link">Care Plans</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+
+            <div class="flex-center" style="gap: 1rem;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <button id="theme-toggle" class="btn-icon">
+                    <i data-lucide="moon"></i>
+                </button>
+                <button id="rtl-toggle" class="btn-icon">
+                    <i data-lucide="languages"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <section class="section" style="padding-top: 10rem; background: var(--bg-alt); border-bottom: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; margin-bottom: 1.5rem;">Crating Culture, <br>One Jar at a Time.</h1>
+                <p style="font-size: 1.25rem; color: var(--text-alt); max-width: 800px; margin: 0 auto;">Our mission is to bring the health and creativity of fermentation back to every home kitchen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section">
+        <div class="container grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem;">
+            <div class="reveal">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">The Story of Our Studio</h2>
+                <p style="color: var(--text-alt); margin-bottom: 1.5rem;">FermentStudio was born out of a passion for slow food, sustainable living, and the incredible science behind naturally fermented products. What started as a small personal kitchen experiment in 2012 has now grown into a thriving community of thousands.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1.5rem;">We realized that while fermentation is an ancient tradition, many people were intimidated by the process. We set out to demystify the art, making it approachable, safe, and incredibly delicious for everyone.</p>
+                <div style="display: flex; gap: 3rem; margin-top: 3rem;">
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2.5rem;">14+</h3>
+                        <p style="font-weight: 500;">Years of Experience</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2.5rem;">5k+</h3>
+                        <p style="font-weight: 500;">Happy Students</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2.5rem;">20+</h3>
+                        <p style="font-weight: 500;">Unique Cultures</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM (1).jpeg" alt="Our History" style="border-radius: var(--radius-lg); box-shadow: var(--shadow);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container grid" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 5rem;">
+            <div class="reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Founder" style="border-radius: var(--radius-lg); filter: saturate(0.8);">
+            </div>
+            <div class="reveal">
+                <span style="color: var(--primary); font-weight: 700; text-transform: uppercase;">Founder & Head Fermenter</span>
+                <h2 style="font-size: 3rem; margin-top: 1rem;">Karthick Ramanathan</h2>
+                <p style="color: var(--text-alt); margin: 2rem 0; font-size: 1.1rem; line-height: 1.8;">"Fermentation is a conversation with time and biology. It's about letting go of control and trusting the natural world to create something far more complex and nutritious than anything we could make ourselves. My goal is to give you the tools and confidence to start that conversation in your own kitchen."</p>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section">
+        <div class="container grid grid-3">
+            <div class="card reveal" style="text-align: center;">
+                <div style="background: var(--primary-light); color: var(--primary); padding: 1.5rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1.5rem;" class="flex-center">
+                    <i data-lucide="target" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p style="color: var(--text-alt);">To make the ancient art of fermentation accessible, safe, and inspiring for the modern home cook.</p>
+            </div>
+            <div class="card reveal" style="text-align: center; animation-delay: 0.1s;">
+                <div style="background: var(--primary-light); color: var(--primary); padding: 1.5rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1.5rem;" class="flex-center">
+                    <i data-lucide="eye" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p style="color: var(--text-alt);">A world where every kitchen has a bubbling jar of health, and communities are reconnected with their food sources.</p>
+            </div>
+            <div class="card reveal" style="text-align: center; animation-delay: 0.2s;">
+                <div style="background: var(--primary-light); color: var(--primary); padding: 1.5rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1.5rem;" class="flex-center">
+                    <i data-lucide="heart" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h3>Our Values</h3>
+                <p style="color: var(--text-alt);">Patience, sustainability, transparency, and a deep respect for the microbes that keep us healthy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 5rem;" class="reveal">
+                <h2 style="font-size: 3rem;">The Workshop Experience</h2>
+                <p style="color: var(--text-alt);">What it's like to spend a day in our lab</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="reveal">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (1).jpeg" alt="Lab" style="border-radius: var(--radius-lg); margin-bottom: 1.5rem; height: 300px; width: 100%; object-fit: cover;">
+                    <h4>Hands-on Learning</h4>
+                    <p style="color: var(--text-alt);">You won't just watch—you'll chop, salt, bruise, and bottle your own ferments from scratch.</p>
+                </div>
+                <div class="reveal" style="animation-delay: 0.1s;">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM (3).jpeg" alt="Tasting" style="border-radius: var(--radius-lg); margin-bottom: 1.5rem; height: 300px; width: 100%; object-fit: cover;">
+                    <h4>Guided Tastings</h4>
+                    <p style="color: var(--text-alt);">Taste our library of aged ferments to understand how flavors evolve over weeks, months, and years.</p>
+                </div>
+                <div class="reveal" style="animation-delay: 0.2s;">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM (1).jpeg" alt="Library" style="border-radius: var(--radius-lg); margin-bottom: 1.5rem; height: 300px; width: 100%; object-fit: cover;">
+                    <h4>Take Home Jars</h4>
+                    <p style="color: var(--text-alt);">Every student leaves with their own jar(s) of prepared ferment to care for at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+        <div class="container grid grid-3" style="gap: 4rem;">
+            <div>
+                <a href="index.html" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="services.html" class="text-alt">Workshops</a></li>
+                    <li><a href="care-plans.html" class="text-alt">Care Plans</a></li>
+                    <li><a href="about.html" class="text-alt">Our Story</a></li>
+                    <li><a href="contact.html" class="text-alt">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                    <a href="#" class="btn-icon"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="twitter"></i></a>
+                </div>
+                <p style="color: var(--text-alt);">Email: hello@fermentstudio.com</p>
+                <p style="color: var(--text-alt);">Phone: +1 234 567 890</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

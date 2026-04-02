@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Fermentation Experience | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+    <style>
+        .premium-hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        
+        .floating-text {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .tilt-card {
+            transition: transform 0.1s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .process-step {
+            position: relative;
+            padding: 3rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .process-step::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            height: 350px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s all ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s all ease;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container flex-between">
+            <div class="logo">
+                <a href="index.html" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home 1</a>
+                <a href="index-2.html" class="nav-link active">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="care-plans.html" class="nav-link">Care Plans</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+
+            <div class="flex-center" style="gap: 1rem;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <button id="theme-toggle" class="btn-icon">
+                    <i data-lucide="moon"></i>
+                </button>
+                <button id="rtl-toggle" class="btn-icon">
+                    <i data-lucide="languages"></i>
+                </button>
+                <button id="menu-toggle" class="btn-icon mobile-menu-btn" style="display: none;">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Premium Hero -->
+    <section class="premium-hero">
+        <div class="container floating-text">
+            <h1 style="font-size: 5rem; margin-bottom: 1.5rem;">Elevate Your <br>Culture</h1>
+            <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem; opacity: 0.9;">Join our exclusive community of high-end fermenters. Master the science, perfected over centuries.</p>
+            <div class="flex-center" style="gap: 1.5rem;">
+                <a href="services.html" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Join Workshop</a>
+                <a href="care-plans.html" class="btn btn-secondary" style="border-color: white; color: white; padding: 1rem 2.5rem; font-size: 1.1rem;">Book Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Tilt Cards -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 5rem;" class="reveal">
+                <h2 style="font-size: 3rem;">Premium Workshops</h2>
+                <p style="color: var(--text-alt);">Experience the next level of fermentation</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card tilt-card reveal" style="padding: 0; overflow: hidden; background: var(--bg-alt);">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM (1).jpeg" alt="Kimchi" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="padding: 2.5rem;">
+                        <h3 style="font-size: 1.75rem;">Aged Kimchi Vault</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 2rem;">Discover the secrets of 2-year aged Kimchi and the depth of flavor only time can provide.</p>
+                        <a href="services.html" class="btn btn-primary" style="width: 100%;">Explore Vault</a>
+                    </div>
+                </div>
+
+                <div class="card tilt-card reveal" style="padding: 0; overflow: hidden; background: var(--bg-alt); animation-delay: 0.1s;">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM (1).jpeg" alt="Kombucha" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="padding: 2.5rem;">
+                        <h3 style="font-size: 1.75rem;">Wild Yeast Brewing</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 2rem;">Capture the spirit of the season with wild-captured yeast and seasonal botanicals.</p>
+                        <a href="services.html" class="btn btn-primary" style="width: 100%;">Start Brewing</a>
+                    </div>
+                </div>
+
+                <div class="card tilt-card reveal" style="padding: 0; overflow: hidden; background: var(--bg-alt); animation-delay: 0.2s;">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM (1).jpeg" alt="Kits" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="padding: 2.5rem;">
+                        <h3 style="font-size: 1.75rem;">Premium Starter Pro</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 2rem;">Professional-grade glassware and heritage SCOBYs for the serious home fermenter.</p>
+                        <a href="services.html" class="btn btn-primary" style="width: 100%;">Order Kit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 5rem;" class="reveal">
+                <h2 style="font-size: 3rem;">The Path to Mastery</h2>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="process-step reveal" data-step="1">
+                    <i data-lucide="book-open" style="width: 48px; height: 48px; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Learn</h3>
+                    <p style="color: var(--text-alt);">Master the theories and ancient techniques in our hands-on workshops.</p>
+                </div>
+                <div class="process-step reveal" data-step="2" style="animation-delay: 0.1s;">
+                    <i data-lucide="flask-conical" style="width: 48px; height: 48px; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Ferment</h3>
+                    <p style="color: var(--text-alt);">Apply your knowledge. Let time and biology do the incredible work.</p>
+                </div>
+                <div class="process-step reveal" data-step="3" style="animation-delay: 0.2s;">
+                    <i data-lucide="smile" style="width: 48px; height: 48px; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Enjoy</h3>
+                    <p style="color: var(--text-alt);">Harvest your creations and share the health with your local community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Benefits -->
+    <section class="section">
+        <div class="container grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem;">
+            <div class="reveal">
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Why We Are <br><span style="color: var(--primary);">Different</span></h2>
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div style="display: flex; gap: 1.5rem;">
+                        <div style="background: var(--primary-light); color: var(--primary); padding: 1rem; border-radius: var(--radius-md); height: fit-content;">
+                            <i data-lucide="microscope"></i>
+                        </div>
+                        <div>
+                            <h4>Lab-Grade Cultures</h4>
+                            <p style="color: var(--text-alt);">We test every SCOBY and starter to ensure peak probiotic density and safety.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem;">
+                        <div style="background: var(--primary-light); color: var(--primary); padding: 1rem; border-radius: var(--radius-md); height: fit-content;">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div>
+                            <h4>Master Fermenters</h4>
+                            <p style="color: var(--text-alt);">Learn from instructors with over 15 years of professional fermentation experience.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem;">
+                        <div style="background: var(--primary-light); color: var(--primary); padding: 1rem; border-radius: var(--radius-md); height: fit-content;">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div>
+                            <h4>Global Alumni Network</h4>
+                            <p style="color: var(--text-alt);">Join a worldwide community for recipe swapping and troubleshooting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal" style="animation-delay: 0.3s;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM (1).jpeg" alt="Benefits" style="border-radius: var(--radius-lg); box-shadow: var(--shadow);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Gallery -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <h2 style="font-size: 3rem;">Studio Gallery</h2>
+                <p style="color: var(--text-alt);">Sneak peak into our fermentation lab</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal"><img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM (2).jpeg" alt="Gallery"><div class="gallery-overlay">Kimchi Prep</div></div>
+                <div class="gallery-item reveal"><img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM (3).jpeg" alt="Gallery"><div class="gallery-overlay">SCOBY Aging</div></div>
+                <div class="gallery-item reveal"><img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Gallery"><div class="gallery-overlay">Bottle Conditioning</div></div>
+                <div class="gallery-item reveal"><img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (2).jpeg" alt="Gallery"><div class="gallery-overlay">Starter Lab</div></div>
+                <div class="gallery-item reveal"><img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (3).jpeg" alt="Gallery"><div class="gallery-overlay">Herbal Infusions</div></div>
+                <div class="gallery-item reveal"><img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (1).jpeg" alt="Gallery"><div class="gallery-overlay">Workshop Floor</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section" style="padding: 8rem 0;">
+        <div class="container">
+            <div class="card reveal" style="text-align: center; background: url('img/WhatsApp Image 2026-04-02 at 11.52.03 AM (2).jpeg'); background-size: cover; background-position: center; border: none; padding: 6rem;">
+                <div style="background: var(--glass); backdrop-filter: blur(15px); padding: 4rem; border-radius: var(--radius-lg); max-width: 700px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.2);">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Get fermentation tips weekly</h2>
+                    <p style="color: var(--text-alt); margin-bottom: 2.5rem;">Join the Ferment Letter for exclusive recipes, discount codes, and science deep-dives.</p>
+                    <form style="display: flex; gap: 1rem;">
+                        <input type="email" placeholder="Enter your email" class="form-input" style="flex: 1;">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+        <div class="container grid grid-3" style="gap: 4rem;">
+            <div>
+                <a href="index.html" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="services.html" class="text-alt">Workshops</a></li>
+                    <li><a href="care-plans.html" class="text-alt">Care Plans</a></li>
+                    <li><a href="about.html" class="text-alt">Our Story</a></li>
+                    <li><a href="contact.html" class="text-alt">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                    <a href="#" class="btn-icon"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="twitter"></i></a>
+                </div>
+                <p style="color: var(--text-alt);">Email: hello@fermentstudio.com</p>
+                <p style="color: var(--text-alt);">Phone: +1 234 567 890</p>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="flex-between" style="margin-bottom: 2rem;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
+            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="index.html" class="nav-link">Home 1</a>
+            <a href="index-2.html" class="nav-link active">Home 2</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="care-plans.html" class="nav-link">Care Plans</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="btn btn-primary" style="margin-top: 1rem;">Dashboard</a>
+        </nav>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
+</body>
+</html>

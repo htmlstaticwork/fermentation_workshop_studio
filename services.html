@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops & Services | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container flex-between">
+            <div class="logo">
+                <a href="index.html" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="care-plans.html" class="nav-link">Care Plans</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+
+            <div class="flex-center" style="gap: 1rem;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <button id="theme-toggle" class="btn-icon">
+                    <i data-lucide="moon"></i>
+                </button>
+                <button id="rtl-toggle" class="btn-icon">
+                    <i data-lucide="languages"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="section" style="background: var(--bg-alt); padding-top: 10rem;">
+        <div class="container" style="text-align: center;">
+            <h1 style="font-size: 4rem; margin-bottom: 1rem;" class="reveal">Our Workshops</h1>
+            <p style="font-size: 1.25rem; color: var(--text-alt); max-width: 700px; margin: 0 auto;" class="reveal">From absolute beginners to advanced fermenters, we have a session for everyone.</p>
+        </div>
+    </section>
+
+    <!-- Workshop Grid -->
+    <section class="section">
+        <div class="container grid grid-3">
+            <div class="card reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (3).jpeg" alt="Kimchi" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <h3>Kimchi Foundations</h3>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">The perfect starting point for any fermenter. Learn the traditional Napa cabbage recipe.</p>
+                <div class="flex-between" style="margin-top: 1.5rem;">
+                    <span style="font-weight: 700;">$89</span>
+                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                </div>
+            </div>
+            <div class="card reveal" style="animation-delay: 0.1s;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Kombucha" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <h3>Kombucha Masterclass</h3>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Master the art of primary fermentation and second ferment flavoring.</p>
+                <div class="flex-between" style="margin-top: 1.5rem;">
+                    <span style="font-weight: 700;">$95</span>
+                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                </div>
+            </div>
+            <div class="card reveal" style="animation-delay: 0.2s;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Sourdough" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <h3>Wild Sourdough</h3>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Tame the wild yeast and bake the perfect crusty loaf of sourdough bread.</p>
+                <div class="flex-between" style="margin-top: 1.5rem;">
+                    <span style="font-weight: 700;">$110</span>
+                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                </div>
+            </div>
+            <div class="card reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Miso" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <h3>Miso and Koji</h3>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Enter the world of Koji mold and learn how to make your own Miso paste.</p>
+                <div class="flex-between" style="margin-top: 1.5rem;">
+                    <span style="font-weight: 700;">$145</span>
+                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                </div>
+            </div>
+            <div class="card reveal" style="animation-delay: 0.1s;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg" alt="Cider" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <h3>Hard Cider Brewing</h3>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Learn to brew crisp, refreshing hard cider from local apples.</p>
+                <div class="flex-between" style="margin-top: 1.5rem;">
+                    <span style="font-weight: 700;">$120</span>
+                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                </div>
+            </div>
+            <div class="card reveal" style="animation-delay: 0.2s;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM.jpeg" alt="Vegan" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <h3>Fermented Vegan Cheese</h3>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Create aged nut cheeses with traditional fermentation techniques.</p>
+                <div class="flex-between" style="margin-top: 1.5rem;">
+                    <span style="font-weight: 700;">$130</span>
+                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <h2 style="font-size: 3rem;">Workshop Packages</h2>
+                <p style="color: var(--text-alt);">Save by booking multiple sessions</p>
+            </div>
+            <div class="reveal" style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;">
+                    <thead>
+                        <tr style="background: var(--primary); color: white; text-align: left;">
+                            <th style="padding: 1.5rem;">Feature</th>
+                            <th style="padding: 1.5rem;">Single Workshop</th>
+                            <th style="padding: 1.5rem;">Classic Duo</th>
+                            <th style="padding: 1.5rem;">Master Series</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem;">Number of Classes</td>
+                            <td style="padding: 1.5rem;">1 Session</td>
+                            <td style="padding: 1.5rem;">2 Sessions</td>
+                            <td style="padding: 1.5rem;">5 Sessions</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem;">Starter Kit Included</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem;">Digital Recipes</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem;">Private Coaching</td>
+                            <td style="padding: 1.5rem;">-</td>
+                            <td style="padding: 1.5rem;">-</td>
+                            <td style="padding: 1.5rem;">1 Session</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem; font-weight: 700;">Price</td>
+                            <td style="padding: 1.5rem; font-weight: 700;">$89</td>
+                            <td style="padding: 1.5rem; font-weight: 700;">$159</td>
+                            <td style="padding: 1.5rem; font-weight: 700;">$349</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container" style="max-width: 800px;">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <h2 style="font-size: 2.5rem;">Frequently Asked Questions</h2>
+            </div>
+            <div class="reveal">
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h4>Do I need to bring anything?</h4>
+                    <p style="color: var(--text-alt); margin-top: 1rem;">No! We provide all jars, ingredients, aprons, and tools. Just bring your curiosity.</p>
+                </div>
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h4>Can children join?</h4>
+                    <p style="color: var(--text-alt); margin-top: 1rem;">Yes, children 12+ are welcome with an adult. It's a great science lesson!</p>
+                </div>
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h4>Is everything organic?</h4>
+                    <p style="color: var(--text-alt); margin-top: 1rem;">We prioritize locally sourced organic produce whenever possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+        <div class="container grid grid-3" style="gap: 4rem;">
+            <div>
+                <a href="index.html" style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="services.html" class="text-alt">Workshops</a></li>
+                    <li><a href="care-plans.html" class="text-alt">Care Plans</a></li>
+                    <li><a href="about.html" class="text-alt">Our Story</a></li>
+                    <li><a href="contact.html" class="text-alt">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                    <a href="#" class="btn-icon"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="btn-icon"><i data-lucide="twitter"></i></a>
+                </div>
+                <p style="color: var(--text-alt);">Email: hello@fermentstudio.com</p>
+                <p style="color: var(--text-alt);">Phone: +1 234 567 890</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

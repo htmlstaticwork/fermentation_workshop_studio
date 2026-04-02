@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+</head>
+<body style="background: var(--bg-alt); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1.5rem;">
+
+    <div class="card reveal" style="max-width: 500px; width: 100%; padding: 3rem; text-align: center;">
+        <a href="index.html" style="font-size: 1.75rem; font-weight: 800; color: var(--primary); display: inline-block; margin-bottom: 2rem;">FERMENT<span style="color: var(--text-main);">STUDIO</span></a>
+        
+        <h2 style="margin-bottom: 0.5rem;">Create Account</h2>
+        <p style="color: var(--text-alt); margin-bottom: 2.5rem;">Start your fermentation journey today</p>
+
+        <form style="text-align: left;">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" placeholder="Your name">
+            </div>
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="+1 (234) 567...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div style="position: relative;">
+                    <input type="password" class="form-input" placeholder="••••••••">
+                    <button type="button" class="password-toggle" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-alt); cursor: pointer;">
+                        <i data-lucide="eye" style="width: 20px; height: 20px;"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <div style="position: relative;">
+                    <input type="password" class="form-input" placeholder="••••••••">
+                    <button type="button" class="password-toggle" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-alt); cursor: pointer;">
+                        <i data-lucide="eye" style="width: 20px; height: 20px;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <label style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--text-alt); margin: 2rem 0;">
+                <input type="checkbox" style="margin-top: 0.25rem;">
+                <span>By signing up, you agree to our <a href="#" style="color: var(--primary); font-weight: 600;">Terms of Service</a> and <a href="#" style="color: var(--primary); font-weight: 600;">Privacy Policy</a>.</span>
+            </label>
+
+            <button class="btn btn-primary" style="width: 100%; padding: 1rem; margin-bottom: 2rem;">Sign Up</button>
+            
+            <p style="text-align: center; color: var(--text-alt); font-size: 0.9rem;">Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 600;">Login Now</a></p>
+        </form>
+    </div>
+
+</body>
+</html>
