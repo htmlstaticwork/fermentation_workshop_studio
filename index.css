@@ -164,6 +164,9 @@ img {
 .btn-icon i, .btn-icon svg {
     width: 20px;
     height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    display: block;
     stroke-width: 2px;
 }
 
