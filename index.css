@@ -169,8 +169,13 @@ img {
 
 .btn-icon:hover {
     background: var(--border);
-    color: var(--primary);
 }
+
+.btn-icon[data-brand="instagram"]:hover { color: #E4405F; border-color: #E4405F; }
+.btn-icon[data-brand="facebook"]:hover { color: #1877F2; border-color: #1877F2; }
+.btn-icon[data-brand="twitter"]:hover { color: #1DA1F2; border-color: #1DA1F2; }
+.btn-icon[data-brand="youtube"]:hover { color: #FF0000; border-color: #FF0000; }
+.btn-icon[data-brand="linkedin"]:hover { color: #0A66C2; border-color: #0A66C2; }
 
 /* Header & Navigation */
 header {
