@@ -13,7 +13,7 @@
 
     <!-- Header -->
     <header>
-        <div class="container flex-between">
+        <div class="container flex-between" style="padding: 0 1rem;">
             <div class="logo">
                 <a href="index.html" class="flex-center" style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
                     <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
@@ -31,13 +31,16 @@
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
             </nav>
 
-            <div class="flex-center" style="gap: 1rem;">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <button id="theme-toggle" class="btn-icon">
+            <div class="flex-center" style="gap: 0.5rem;">
+                <a href="login.html" class="btn btn-secondary" style="padding: 0.6rem 1rem;">Login</a>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
                     <i data-lucide="moon"></i>
-                </button>
-                <button id="rtl-toggle" class="btn-icon">
+                </div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0">
                     <i data-lucide="languages"></i>
+                </div>
+                <button id="menu-toggle" class="btn-icon mobile-menu-btn" title="Toggle Menu">
+                    <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
@@ -73,7 +76,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Workshop Type</label>
-                            <select class="form-input" style="appearance: none;">
+                            <select class="form-input">
                                 <option>Kimchi Workshop</option>
                                 <option>Kombucha Brewing</option>
                                 <option>Starter Kits</option>
@@ -127,21 +130,13 @@
                         </ul>
                     </div>
 
-                    <div style="text-align: center;">
+                    <div style="text-align: left;">
                         <h3 style="margin-bottom: 1.5rem;">Follow Our Process</h3>
-                        <div class="flex-center" style="gap: 1.25rem;">
-                            <a href="#" class="btn-icon" data-brand="instagram">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                            </a>
-                            <a href="#" class="btn-icon" data-brand="facebook">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                            </a>
-                            <a href="#" class="btn-icon" data-brand="twitter">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-1 2.17-2.41 3.33c.01.17.01.33.01.5 0 5-3.75 10.83-11 10.83-2.17 0-4.17-.67-5.83-1.67.33.01.67.01 1 .01 1.83 0 3.5-.67 4.83-1.67-1.67-.01-3.17-1.17-3.67-2.67.17.01.33.01.5.01.33 0 .67-.01 1-.17-1.83-.33-3.17-2-3.17-3.83v-.01c.5.33 1.17.5 1.83.5-1.17-.83-1.83-2-1.83-3.33 0-.67.17-1.33.5-1.83 1.83 2.5 4.83 4.17 8.33 4.33-.17-.33-.17-.67-.17-1 0-2 1.67-3.67 3.67-3.67 1 0 2 .33 2.67 1 .83-.17 1.67-.5 2.5-.83-.33.83-1 1.5-1.67 2 .83-.17 1.67-.33 2.33-.67-.5.67-1.17 1.33-1.83 1.83z"></path></svg>
-                            </a>
-                            <a href="#" class="btn-icon" data-brand="youtube">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
-                            </a>
+                        <div class="flex-center" style="justify-content: flex-start; gap: 1.25rem;">
+                            <a href="#" class="btn-icon" title="Instagram"><i data-lucide="instagram"></i></a>
+                            <a href="#" class="btn-icon" title="Facebook"><i data-lucide="facebook"></i></a>
+                            <a href="#" class="btn-icon" title="Twitter"><i data-lucide="twitter"></i></a>
+                            <a href="#" class="btn-icon" title="YouTube"><i data-lucide="youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -149,15 +144,16 @@
         </div>
     </section>
 
-    <!-- Studio Map Placeholder -->
+    <!-- Studio Map -->
     <section class="section" style="padding-top: 0;">
         <div class="container">
-            <div class="reveal" style="height: 400px; background: var(--bg-alt); border-radius: var(--radius-lg); overflow: hidden; position: relative;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (1).jpeg" alt="Studio Map Location" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5) contrast(1.2);">
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-main); padding: 1.5rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center;">
-                    <i data-lucide="map-pin" style="color: var(--primary); width: 32px; height: 32px; margin-bottom: 0.5rem;"></i>
-                    <h4 style="margin: 0;">Our Studio Lab</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-alt);">Visit us at 123 Artisan Lane</p>
+            <div class="reveal" style="height: 500px; background: var(--bg-alt); border-radius: var(--radius-lg); overflow: hidden; position: relative; border: 1px solid var(--border);">
+                <img src="img/studio-map.png" alt="Ferment Studio Location Map" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -100%); background: var(--bg-main); padding: 1.25rem 1.75rem; border-radius: var(--radius-md); box-shadow: var(--shadow); border: 1px solid var(--primary); text-align: center; z-index: 10;">
+                    <div style="width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid var(--primary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);"></div>
+                    <i data-lucide="map-pin" style="color: var(--primary); width: 24px; height: 24px; margin-bottom: 0.25rem;"></i>
+                    <h4 style="margin: 0; font-size: 1.1rem;">Ferment Studio Lab</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-alt); margin-top: 0.25rem;">123 Artisan Lane, Culture Square</p>
                 </div>
             </div>
         </div>
@@ -165,7 +161,7 @@
 
     <!-- Footer -->
     <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
-        <div class="container grid grid-3" style="gap: 4rem;">
+        <div class="container grid grid-4" style="gap: 4rem;">
             <div>
                 <a href="index.html" class="flex-center" style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
                     <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
@@ -176,30 +172,69 @@
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
                 <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <li><a href="services.html" class="text-alt">Workshops</a></li>
-                    <li><a href="care-plans.html" class="text-alt">Care Plans</a></li>
-                    <li><a href="about.html" class="text-alt">Our Story</a></li>
-                    <li><a href="contact.html" class="text-alt">Contact Us</a></li>
+                    <li><a href="services.html" class="footer-link">Workshops</a></li>
+                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
+                    <li><a href="about.html" class="footer-link">Our Story</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="flex-center" style="justify-content: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
-                    <a href="#" class="btn-icon" data-brand="instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="facebook">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="twitter">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-1 2.17-2.41 3.33c.01.17.01.33.01.5 0 5-3.75 10.83-11 10.83-2.17 0-4.17-.67-5.83-1.67.33.01.67.01 1 .01 1.83 0 3.5-.67 4.83-1.67-1.67-.01-3.17-1.17-3.67-2.67.17.01.33.01.5.01.33 0 .67-.01 1-.17-1.83-.33-3.17-2-3.17-3.83v-.01c.5.33 1.17.5 1.83.5-1.17-.83-1.83-2-1.83-3.33 0-.67.17-1.33.5-1.83 1.83 2.5 4.83 4.17 8.33 4.33-.17-.33-.17-.67-.17-1 0-2 1.67-3.67 3.67-3.67 1 0 2 .33 2.67 1 .83-.17 1.67-.5 2.5-.83-.33.83-1 1.5-1.67 2 .83-.17 1.67-.33 2.33-.67-.5.67-1.17 1.33-1.83 1.83z"></path></svg>
-                    </a>
+                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
                 </div>
-                <p style="color: var(--text-alt);">Email: hello@fermentstudio.com</p>
-                <p style="color: var(--text-alt);">Phone: +1 234 567 890</p>
+                <div class="footer-contact-item">
+                    <i data-lucide="phone"></i>
+                    <span>+1 (234) 567 8901</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="clock"></i>
+                    <span>Mon - Sat: 10AM - 6PM</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="footer-contact-item" style="margin-bottom: 1.5rem;">
+                    <i data-lucide="mail"></i>
+                    <span>hello@fermentstudio.com</span>
+                </div>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon" title="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon" title="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="btn-icon" title="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="#" class="btn-icon" title="YouTube"><i data-lucide="youtube"></i></a>
+                </div>
             </div>
         </div>
+        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
+        </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="flex-between" style="margin-bottom: 2rem;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
+            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="index.html" class="nav-link">Home 1</a>
+            <a href="index-2.html" class="nav-link">Home 2</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="care-plans.html" class="nav-link">Care Plans</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
+        </nav>
+    </div>
+    <div id="overlay" class="overlay"></div>
 
 </body>
 </html>

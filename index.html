@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fermentation Workshop Studio | Discover the Art of Fermentation</title>
-    <meta name="description" content="Join our hands-on workshops for Kimchi, Kombucha, and and more. Learn the ancient art of fermentation for better gut health.">
+    <meta name="description"
+        content="Join our hands-on workshops for Kimchi, Kombucha, and and more. Learn the ancient art of fermentation for better gut health.">
     <link rel="stylesheet" href="index.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="main.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="img/logo.svg">
 </head>
+
 <body>
 
     <!-- Header -->
     <header>
-        <div class="container flex-between">
+        <div class="container flex-between" style="padding: 0 1rem;">
             <div class="logo">
-                <a href="index.html" class="flex-center" style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
+                <a href="index.html" class="flex-center"
+                    style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
                     <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
                     FERMENT
                 </a>
             </div>
-            
+
             <nav class="nav-links">
                 <a href="index.html" class="nav-link active">Home 1</a>
                 <a href="index-2.html" class="nav-link">Home 2</a>
@@ -32,15 +36,15 @@
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
             </nav>
 
-            <div class="flex-center" style="gap: 1rem;">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <button id="theme-toggle" class="btn-icon">
+            <div class="flex-center" style="gap: 0.5rem;">
+                <a href="login.html" class="btn btn-secondary" style="padding: 0.6rem 1rem;">Login</a>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
                     <i data-lucide="moon"></i>
-                </button>
-                <button id="rtl-toggle" class="btn-icon">
+                </div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0">
                     <i data-lucide="languages"></i>
-                </button>
-                <button id="menu-toggle" class="btn-icon mobile-menu-btn" style="display: none;">
+                </div>
+                <button id="menu-toggle" class="btn-icon mobile-menu-btn" title="Toggle Menu">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
@@ -48,15 +52,23 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero section" style="padding: 12rem 0 8rem; position: relative; background-image: url('img/hero-bg.png'); background-size: cover; background-position: center;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%); z-index: 1;"></div>
-        <div class="container" style="position: relative; z-index: 2; max-width: 900px; margin: 0 auto; text-align: center;">
+    <section class="hero section"
+        style="padding: 12rem 0 8rem; position: relative; background-image: url('img/hero-bg-v2.png'); background-size: cover; background-position: center;">
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%); z-index: 1;">
+        </div>
+        <div class="container"
+            style="position: relative; z-index: 2; max-width: 900px; margin: 0 auto; text-align: center;">
             <div class="hero-content reveal" style="margin: 0 auto;">
-                <h1 style="font-size: 3.5rem; color: #ffffff; text-align: center;">Discover the<br><span style="color: var(--primary);">Art of Fermentation</span></h1>
-                <p style="font-size: 1.25rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center;">Master Kimchi, Kombucha, and more. Transform simple ingredients into probiotic powerhouses for your gut health.</p>
+                <h1 style="font-size: 3.5rem; color: #ffffff; text-align: center;">Discover the<br><span
+                        style="color: var(--primary);">Art of Fermentation</span></h1>
+                <p
+                    style="font-size: 1.25rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center;">
+                    Master Kimchi, Kombucha, and more. Transform simple ingredients into probiotic powerhouses for your
+                    gut health.</p>
                 <div class="flex-center" style="gap: 1.5rem; justify-content: center;">
                     <a href="services.html" class="btn btn-primary">Join Workshop <i data-lucide="arrow-right"></i></a>
-                    <a href="contact.html" class="btn btn-secondary" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px);">Book Session</a>
+                    <a href="contact.html" class="btn btn-glass">Book Session</a>
                 </div>
             </div>
         </div>
@@ -66,11 +78,14 @@
     <section class="section" style="background: var(--bg-alt);">
         <div class="container grid" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem;">
             <div class="reveal">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM.jpeg" alt="Our Studio" style="border-radius: var(--radius-lg);">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM.jpeg" alt="Our Studio"
+                    style="border-radius: var(--radius-lg);">
             </div>
             <div class="reveal">
                 <h2 style="font-size: 2.5rem;">Cultivating Tradition <br>& Health</h2>
-                <p style="color: var(--text-alt); margin-bottom: 2rem;">Our studio is more than just a workshop—it's a community dedicated to the ancient craft of fermentation. We believe in slow living, sustainable practices, and the incredible science behind natural probiotics.</p>
+                <p style="color: var(--text-alt); margin-bottom: 2rem;">Our studio is more than just a workshop—it's a
+                    community dedicated to the ancient craft of fermentation. We believe in slow living, sustainable
+                    practices, and the incredible science behind natural probiotics.</p>
                 <a href="about.html" class="btn btn-primary">Learn More</a>
             </div>
         </div>
@@ -83,38 +98,50 @@
                 <h2 style="font-size: 2.5rem;">Popular Workshops</h2>
                 <p style="color: var(--text-alt);">Start your journey with our most-loved sessions</p>
             </div>
-            
+
             <div class="grid grid-3">
-                <div class="card reveal" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
+                <div class="card reveal"
+                    style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
                     <div style="height: 250px; overflow: hidden; flex-shrink: 0;">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM.jpeg" alt="Kimchi" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM.jpeg" alt="Kimchi"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1;">
                         <h3>Kimchi Workshop</h3>
-                        <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Master the balance of spice, salt, and crunch in this traditional Korean workshop.</p>
-                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">View Details</a>
+                        <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Master the balance of spice, salt, and
+                            crunch in this traditional Korean workshop.</p>
+                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">View
+                            Details</a>
                     </div>
                 </div>
 
-                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
+                <div class="card reveal"
+                    style="padding: 0; overflow: hidden; animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
                     <div style="height: 250px; overflow: hidden; flex-shrink: 0;">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Kombucha" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Kombucha"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1;">
                         <h3>Kombucha Brewing</h3>
-                        <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Learn the science of SCOBY and craft your own fizzy, probiotic-rich elixirs.</p>
-                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">View Details</a>
+                        <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Learn the science of SCOBY and craft
+                            your own fizzy, probiotic-rich elixirs.</p>
+                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">View
+                            Details</a>
                     </div>
                 </div>
 
-                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
+                <div class="card reveal"
+                    style="padding: 0; overflow: hidden; animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
                     <div style="height: 250px; overflow: hidden; flex-shrink: 0;">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Starter Kits" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Starter Kits"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1;">
                         <h3>Starter Kits</h3>
-                        <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Everything you need to start your fermentation journey at home.</p>
-                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">Shop Now</a>
+                        <p style="color: var(--text-alt); margin-bottom: 1.5rem;">Everything you need to start your
+                            fermentation journey at home.</p>
+                        <a href="services.html" class="btn btn-secondary" style="width: 100%; margin-top: auto;">Shop
+                            Now</a>
                     </div>
                 </div>
             </div>
@@ -147,16 +174,21 @@
         <div class="container">
             <div class="card reveal" style="display: flex; align-items: center; gap: 3rem; background: var(--bg-alt);">
                 <div style="flex: 1;">
-                    <span style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">FEATURED</span>
+                    <span
+                        style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">FEATURED</span>
                     <h2 style="font-size: 2.5rem; margin-top: 1rem;">Advanced Fermentation Masterclass</h2>
-                    <p style="color: var(--text-alt); margin-bottom: 2rem;">Go beyond the basics. Learn wild fermentation, long-term aging techniques, and seasonal recipes from our head fermenters.</p>
+                    <p style="color: var(--text-alt); margin-bottom: 2rem;">Go beyond the basics. Learn wild
+                        fermentation, long-term aging techniques, and seasonal recipes from our head fermenters.</p>
                     <div class="flex-between" style="justify-content: flex-start; gap: 2rem;">
-                        <h4 style="font-size: 1.5rem;">$199 <span style="font-size: 1rem; font-weight: 400; color: var(--text-alt);">/ Full Day</span></h4>
+                        <h4 style="font-size: 1.5rem;">$199 <span
+                                style="font-size: 1rem; font-weight: 400; color: var(--text-alt);">/ Full Day</span>
+                        </h4>
                         <a href="services.html" class="btn btn-primary">Book Now</a>
                     </div>
                 </div>
                 <div style="flex: 1;">
-                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Advanced Class" style="border-radius: var(--radius-lg);">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Advanced Class"
+                        style="border-radius: var(--radius-lg);">
                 </div>
             </div>
         </div>
@@ -170,31 +202,37 @@
             </div>
             <div class="grid grid-3">
                 <div class="card reveal">
-                    <p style="font-style: italic; margin-bottom: 1rem;">"The Kombucha workshop changed my life! I've been brewing my own for 6 months now and my energy is through the roof."</p>
+                    <p style="font-style: italic; margin-bottom: 1rem;">"The Kombucha workshop changed my life! I've
+                        been brewing my own for 6 months now and my energy is through the roof."</p>
                     <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%;"></div>
-                        <div>
-                            <h4 style="margin: 0;">Sarah J.</h4>
+                        <img src="img/student-1.png" alt="Sarah J."
+                            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <h4 style="margin: 0; font-size: 1rem; line-height: 1.2;">Sarah J.</h4>
                             <span style="font-size: 0.8rem; color: var(--text-alt);">Food Blogger</span>
                         </div>
                     </div>
                 </div>
                 <div class="card reveal" style="animation-delay: 0.1s;">
-                    <p style="font-style: italic; margin-bottom: 1rem;">"Finally learned the right way to make Kimchi. No more exploding jars! The instructions were so clear and practical."</p>
+                    <p style="font-style: italic; margin-bottom: 1rem;">"Finally learned the right way to make Kimchi.
+                        No more exploding jars! The instructions were so clear and practical."</p>
                     <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%;"></div>
-                        <div>
-                            <h4 style="margin: 0;">Mark T.</h4>
+                        <img src="img/student-2.png" alt="Mark T."
+                            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <h4 style="margin: 0; font-size: 1rem; line-height: 1.2;">Mark T.</h4>
                             <span style="font-size: 0.8rem; color: var(--text-alt);">Home Cook</span>
                         </div>
                     </div>
                 </div>
                 <div class="card reveal" style="animation-delay: 0.2s;">
-                    <p style="font-style: italic; margin-bottom: 1rem;">"Beautiful studio and amazing hosts. I love how they focus on the science and safety of fermentation too."</p>
+                    <p style="font-style: italic; margin-bottom: 1rem;">"Beautiful studio and amazing hosts. I love how
+                        they focus on the science and safety of fermentation too."</p>
                     <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%;"></div>
-                        <div>
-                            <h4 style="margin: 0;">Elena R.</h4>
+                        <img src="img/student-3.png" alt="Elena R."
+                            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <h4 style="margin: 0; font-size: 1rem; line-height: 1.2;">Elena R.</h4>
                             <span style="font-size: 0.8rem; color: var(--text-alt);">Health Consultant</span>
                         </div>
                     </div>
@@ -206,54 +244,77 @@
     <!-- CTA Banner -->
     <section class="section">
         <div class="container">
-            <div class="reveal" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: var(--radius-lg); padding: 4rem; text-align: center; color: white;">
+            <div class="reveal"
+                style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: var(--radius-lg); padding: 4rem; text-align: center; color: white;">
                 <h2 style="font-size: 3rem; margin-bottom: 1rem;">Start Your Fermentation Journey Today</h2>
-                <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem;">Join a community of 5,000+ fermenters from around the world.</p>
-                <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--primary);">Book Your First Session</a>
+                <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem;">Join a community of 5,000+ fermenters
+                    from around the world.</p>
+                <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--primary);">Book
+                    Your First Session</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
-        <div class="container grid grid-3" style="gap: 4rem;">
+        <div class="container grid grid-4" style="gap: 4rem;">
             <div>
-                <a href="index.html" class="flex-center" style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
+                <a href="index.html" class="flex-center"
+                    style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
                     <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
                     FERMENT
                 </a>
-                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in
+                    our mission to bring fermentation back to every kitchen.</p>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
                 <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <li><a href="services.html" class="text-alt">Workshops</a></li>
-                    <li><a href="care-plans.html" class="text-alt">Care Plans</a></li>
-                    <li><a href="about.html" class="text-alt">Our Story</a></li>
-                    <li><a href="contact.html" class="text-alt">Contact Us</a></li>
+                    <li><a href="services.html" class="footer-link">Workshops</a></li>
+                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
+                    <li><a href="about.html" class="footer-link">Our Story</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="flex-center" style="justify-content: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
-                    <a href="#" class="btn-icon" data-brand="instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="facebook">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="twitter">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-1 2.17-2.41 3.33c.01.17.01.33.01.5 0 5-3.75 10.83-11 10.83-2.17 0-4.17-.67-5.83-1.67.33.01.67.01 1 .01 1.83 0 3.5-.67 4.83-1.67-1.67-.01-3.17-1.17-3.67-2.67.17.01.33.01.5.01.33 0 .67-.01 1-.17-1.83-.33-3.17-2-3.17-3.83v-.01c.5.33 1.17.5 1.83.5-1.17-.83-1.83-2-1.83-3.33 0-.67.17-1.33.5-1.83 1.83 2.5 4.83 4.17 8.33 4.33-.17-.33-.17-.67-.17-1 0-2 1.67-3.67 3.67-3.67 1 0 2 .33 2.67 1 .83-.17 1.67-.5 2.5-.83-.33.83-1 1.5-1.67 2 .83-.17 1.67-.33 2.33-.67-.5.67-1.17 1.33-1.83 1.83z"></path></svg>
-                    </a>
+                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
                 </div>
-                <p style="color: var(--text-alt);">Email: hello@fermentstudio.com</p>
-                <p style="color: var(--text-alt);">Phone: +1 234 567 890</p>
+                <div class="footer-contact-item">
+                    <i data-lucide="phone"></i>
+                    <span>+1 (234) 567 8901</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="clock"></i>
+                    <span>Mon - Sat: 10AM - 6PM</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="footer-contact-item" style="margin-bottom: 1.5rem;">
+                    <i data-lucide="mail"></i>
+                    <span>hello@fermentstudio.com</span>
+                </div>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon" title="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon" title="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="btn-icon" title="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="#" class="btn-icon" title="YouTube"><i data-lucide="youtube"></i></a>
+                </div>
             </div>
         </div>
-        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+        <div class="container"
+            style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
             <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
+    </button>
 
     <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="mobile-drawer">
@@ -275,4 +336,5 @@
     <div id="overlay" class="overlay"></div>
 
 </body>
+
 </html>

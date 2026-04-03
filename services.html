@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,20 @@
     <script src="main.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="img/logo.svg">
 </head>
+
 <body>
 
     <!-- Header -->
     <header>
-        <div class="container flex-between">
+        <div class="container flex-between" style="padding: 0 1rem;">
             <div class="logo">
-                <a href="index.html" class="flex-center" style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
+                <a href="index.html" class="flex-center"
+                    style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
                     <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
                     FERMENT
                 </a>
             </div>
-            
+
             <nav class="nav-links">
                 <a href="index.html" class="nav-link">Home 1</a>
                 <a href="index-2.html" class="nav-link">Home 2</a>
@@ -31,24 +34,31 @@
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
             </nav>
 
-            <div class="flex-center" style="gap: 1rem;">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <button id="theme-toggle" class="btn-icon">
+            <div class="flex-center" style="gap: 0.5rem;">
+                <a href="login.html" class="btn btn-secondary" style="padding: 0.6rem 1rem;">Login</a>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
                     <i data-lucide="moon"></i>
-                </button>
-                <button id="rtl-toggle" class="btn-icon">
+                </div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0">
                     <i data-lucide="languages"></i>
+                </div>
+                <button id="menu-toggle" class="btn-icon mobile-menu-btn" title="Toggle Menu">
+                    <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Services Hero -->
-    <section class="section" style="padding: 12rem 0 8rem; position: relative; background-image: url('img/services-bg.png'); background-size: cover; background-position: center;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4)); z-index: 1;"></div>
+    <section class="section"
+        style="padding: 12rem 0 8rem; position: relative; background-image: url('img/services-bg.png'); background-size: cover; background-position: center;">
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4)); z-index: 1;">
+        </div>
         <div class="container" style="text-align: center; position: relative; z-index: 2;">
             <h1 style="font-size: 4rem; margin-bottom: 1rem; color: #ffffff;" class="reveal">Our Workshops</h1>
-            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto;" class="reveal">From absolute beginners to advanced fermenters, we have a session for everyone.</p>
+            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto;"
+                class="reveal">From absolute beginners to advanced fermenters, we have a session for everyone.</p>
         </div>
     </section>
 
@@ -56,54 +66,70 @@
     <section class="section">
         <div class="container grid grid-3">
             <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (3).jpeg" alt="Kimchi" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (3).jpeg" alt="Kimchi"
+                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
                 <h3>Kimchi Foundations</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">The perfect starting point for any fermenter. Learn the traditional.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">The perfect starting point for any fermenter.
+                    Learn the traditional.</p>
                 <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
                     <span style="font-weight: 700;">$89</span>
                     <a href="#" class="btn btn-primary">Join Workshop</a>
                 </div>
             </div>
-            <div class="card reveal" style="animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Kombucha" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+            <div class="card reveal"
+                style="animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Kombucha"
+                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
                 <h3>Kombucha Masterclass</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Master the art of primary fermentation and second ferment flavoring.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Master the art of primary fermentation and
+                    second ferment flavoring.</p>
                 <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
                     <span style="font-weight: 700;">$95</span>
                     <a href="#" class="btn btn-primary">Join Workshop</a>
                 </div>
             </div>
-            <div class="card reveal" style="animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Sourdough" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+            <div class="card reveal"
+                style="animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Sourdough"
+                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
                 <h3>Wild Sourdough</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Tame the wild yeast and bake the perfect crusty loaf of sourdough bread.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Tame the wild yeast and bake the perfect crusty
+                    loaf of sourdough bread.</p>
                 <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
                     <span style="font-weight: 700;">$110</span>
                     <a href="#" class="btn btn-primary">Join Workshop</a>
                 </div>
             </div>
             <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Miso" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Miso"
+                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
                 <h3>Miso and Koji</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Enter the world of Koji mold and learn how to make your own Miso paste.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Enter the world of Koji mold and learn how to
+                    make your own Miso paste.</p>
                 <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
                     <span style="font-weight: 700;">$145</span>
                     <a href="#" class="btn btn-primary">Join Workshop</a>
                 </div>
             </div>
-            <div class="card reveal" style="animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg" alt="Cider" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+            <div class="card reveal"
+                style="animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg" alt="Cider"
+                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
                 <h3>Hard Cider Brewing</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Learn to brew crisp, refreshing hard cider from local apples.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Learn to brew crisp, refreshing hard cider from
+                    local apples.</p>
                 <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
                     <span style="font-weight: 700;">$120</span>
                     <a href="#" class="btn btn-primary">Join Workshop</a>
                 </div>
             </div>
-            <div class="card reveal" style="animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM.jpeg" alt="Vegan" style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
+            <div class="card reveal"
+                style="animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM.jpeg" alt="Vegan"
+                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
                 <h3>Fermented Vegan Cheese</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Create aged nut cheeses with traditional fermentation techniques.</p>
+                <p style="color: var(--text-alt); margin-bottom: 1rem;">Create aged nut cheeses with traditional
+                    fermentation techniques.</p>
                 <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
                     <span style="font-weight: 700;">$130</span>
                     <a href="#" class="btn btn-primary">Join Workshop</a>
@@ -120,7 +146,8 @@
                 <p style="color: var(--text-alt);">Save by booking multiple sessions</p>
             </div>
             <div class="reveal" style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;">
+                <table
+                    style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;">
                     <thead>
                         <tr style="background: var(--primary); color: white; text-align: left;">
                             <th style="padding: 1.5rem;">Feature</th>
@@ -168,14 +195,37 @@
 
     <!-- FAQ Section -->
     <style>
-        .faq-card details > summary { list-style: none; outline: none; }
-        .faq-card details > summary::-webkit-details-marker { display: none; }
-        .faq-card details[open] .faq-icon { transform: rotate(180deg); }
-        .faq-card details p { margin: 0; }
-        .faq-card details[open] .faq-content { animation: faqSlideDown 0.3s ease-out forwards; }
+        .faq-card details>summary {
+            list-style: none;
+            outline: none;
+        }
+
+        .faq-card details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-card details[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-card details p {
+            margin: 0;
+        }
+
+        .faq-card details[open] .faq-content {
+            animation: faqSlideDown 0.3s ease-out forwards;
+        }
+
         @keyframes faqSlideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
     <section class="section faq-card">
@@ -189,8 +239,10 @@
                         <span>Do I need to bring anything?</span>
                         <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s;"></i>
                     </summary>
-                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                        <p style="color: var(--text-alt);">No! We provide all jars, ingredients, aprons, and tools. Just bring your curiosity.</p>
+                    <div class="faq-content"
+                        style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt);">No! We provide all jars, ingredients, aprons, and tools. Just
+                            bring your curiosity.</p>
                     </div>
                 </details>
                 <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
@@ -198,8 +250,10 @@
                         <span>Can children join?</span>
                         <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s;"></i>
                     </summary>
-                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                        <p style="color: var(--text-alt);">Yes, children 12+ are welcome with an adult. It's a great science lesson!</p>
+                    <div class="faq-content"
+                        style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt);">Yes, children 12+ are welcome with an adult. It's a great
+                            science lesson!</p>
                     </div>
                 </details>
                 <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
@@ -207,8 +261,10 @@
                         <span>Is everything organic?</span>
                         <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s;"></i>
                     </summary>
-                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                        <p style="color: var(--text-alt);">We prioritize locally sourced organic produce whenever possible.</p>
+                    <div class="faq-content"
+                        style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt);">We prioritize locally sourced organic produce whenever
+                            possible.</p>
                     </div>
                 </details>
             </div>
@@ -217,41 +273,84 @@
 
     <!-- Footer -->
     <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
-        <div class="container grid grid-3" style="gap: 4rem;">
+        <div class="container grid grid-4" style="gap: 4rem;">
             <div>
-                <a href="index.html" class="flex-center" style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
+                <a href="index.html" class="flex-center"
+                    style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
                     <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
                     FERMENT
                 </a>
-                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in
+                    our mission to bring fermentation back to every kitchen.</p>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
                 <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <li><a href="services.html" class="text-alt">Workshops</a></li>
-                    <li><a href="care-plans.html" class="text-alt">Care Plans</a></li>
-                    <li><a href="about.html" class="text-alt">Our Story</a></li>
-                    <li><a href="contact.html" class="text-alt">Contact Us</a></li>
+                    <li><a href="services.html" class="footer-link">Workshops</a></li>
+                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
+                    <li><a href="about.html" class="footer-link">Our Story</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="flex-center" style="justify-content: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
-                    <a href="#" class="btn-icon" data-brand="instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="facebook">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="twitter">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-1 2.17-2.41 3.33c.01.17.01.33.01.5 0 5-3.75 10.83-11 10.83-2.17 0-4.17-.67-5.83-1.67.33.01.67.01 1 .01 1.83 0 3.5-.67 4.83-1.67-1.67-.01-3.17-1.17-3.67-2.67.17.01.33.01.5.01.33 0 .67-.01 1-.17-1.83-.33-3.17-2-3.17-3.83v-.01c.5.33 1.17.5 1.83.5-1.17-.83-1.83-2-1.83-3.33 0-.67.17-1.33.5-1.83 1.83 2.5 4.83 4.17 8.33 4.33-.17-.33-.17-.67-.17-1 0-2 1.67-3.67 3.67-3.67 1 0 2 .33 2.67 1 .83-.17 1.67-.5 2.5-.83-.33.83-1 1.5-1.67 2 .83-.17 1.67-.33 2.33-.67-.5.67-1.17 1.33-1.83 1.83z"></path></svg>
-                    </a>
+                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
                 </div>
-                <p style="color: var(--text-alt);">Email: hello@fermentstudio.com</p>
-                <p style="color: var(--text-alt);">Phone: +1 234 567 890</p>
+                <div class="footer-contact-item">
+                    <i data-lucide="phone"></i>
+                    <span>+1 (234) 567 8901</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="clock"></i>
+                    <span>Mon - Sat: 10AM - 6PM</span>
+                </div>
             </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="footer-contact-item" style="margin-bottom: 1.5rem;">
+                    <i data-lucide="mail"></i>
+                    <span>hello@fermentstudio.com</span>
+                </div>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon" title="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="btn-icon" title="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="btn-icon" title="Twitter"><i data-lucide="twitter"></i></a>
+                    <a href="#" class="btn-icon" title="YouTube"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container"
+            style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="flex-between" style="margin-bottom: 2rem;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
+            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="index.html" class="nav-link">Home 1</a>
+            <a href="index-2.html" class="nav-link">Home 2</a>
+            <a href="services.html" class="nav-link active">Services</a>
+            <a href="care-plans.html" class="nav-link">Care Plans</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
+        </nav>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
 </body>
+
 </html>

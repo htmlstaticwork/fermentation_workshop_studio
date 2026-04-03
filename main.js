@@ -21,17 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         updateThemeIcon('dark');
+        themeBtn?.classList.add('active'); // Highlight icon in dark mode
     }
 
-    themeBtn?.addEventListener('click', () => {
+    const handleThemeToggle = () => {
         const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         updateThemeIcon(theme);
+        themeBtn?.classList.toggle('active', theme === 'dark');
+    };
+
+    themeBtn?.addEventListener('click', handleThemeToggle);
+    themeBtn?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleThemeToggle();
+        }
     });
 
     function updateThemeIcon(theme) {
-        const icon = themeBtn.querySelector('i');
+        const icon = themeBtn?.querySelector('i');
         if (icon) {
             icon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
             lucide.createIcons();
@@ -44,11 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isRtl) {
         document.body.classList.add('rtl');
+        rtlBtn?.classList.add('active'); // Highlight icon in RTL mode
     }
 
-    rtlBtn?.addEventListener('click', () => {
+    const handleRtlToggle = () => {
         const active = document.body.classList.toggle('rtl');
         localStorage.setItem('rtl', active);
+        rtlBtn?.classList.toggle('active', active);
+    };
+
+    rtlBtn?.addEventListener('click', handleRtlToggle);
+    rtlBtn?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleRtlToggle();
+        }
     });
 
     // 4. Mobile Menu Toggle
@@ -128,6 +148,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+
+    // 10. Back to Top Functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTopBtn?.classList.add('visible');
+        } else {
+            backToTopBtn?.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 });

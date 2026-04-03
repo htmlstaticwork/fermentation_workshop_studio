@@ -109,21 +109,28 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Header / Welcome -->
-        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; background: transparent; position: relative; border: none; padding: 0;">
+        <header class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: -3rem; z-index: 100; border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; margin: -3rem -3rem 3rem;">
             <div>
-                <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Welcome back, Karthick 👋</h1>
-                <p style="color: var(--text-alt);">You have 2 workshops upcoming this week.</p>
+                <h1 style="font-size: 1.75rem; margin-bottom: 0.25rem;">Welcome back, Karthick 👋</h1>
+                <p style="color: var(--text-alt); font-size: 0.9rem;">You have 2 workshops upcoming this week.</p>
             </div>
-            <div class="flex-center" style="gap: 1.5rem;">
-                <button id="theme-toggle" class="btn-icon"><i data-lucide="moon"></i></button>
+            <div class="flex-center" style="gap: 1rem;">
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Theme"><i data-lucide="moon"></i></div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Language (RTL)"><i data-lucide="languages"></i></div>
+                <div style="height: 24px; width: 1px; background: var(--border); margin: 0 0.5rem;"></div>
                 <div style="display: flex; align-items: center; gap: 1rem;">
                     <div style="text-align: right;">
-                        <p style="font-weight: 600;">Karthick R.</p>
-                        <p style="font-size: 0.8rem; color: var(--text-alt);">Pro Cultivator</p>
+                        <p style="font-weight: 600; font-size: 0.95rem;">Karthick R.</p>
+                        <p style="font-size: 0.75rem; color: var(--text-alt);">Pro Cultivator</p>
                     </div>
-                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Profile" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;">
+                    <div style="position: relative;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Profile" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #22c55e; border: 2px solid var(--bg-card); border-radius: 50%;"></div>
+                    </div>
                 </div>
-                <button id="sidebar-toggle" class="btn-icon mobile-menu-btn" style="display: none;"><i data-lucide="menu"></i></button>
+                <button id="sidebar-toggle" class="btn-icon mobile-menu-btn" title="Toggle Sidebar">
+                    <i data-lucide="menu"></i>
+                </button>
             </div>
         </header>
 
@@ -181,7 +188,7 @@
                         <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Details</a>
                     </div>
                     <div style="padding: 1.5rem; text-align: center; background: var(--bg-alt);">
-                        <a href="services.html" style="font-size: 0.9rem; font-weight: 600; color: var(--primary);">Browse More Workshops <i data-lucide="chevron-right" style="width: 16px; vertical-align: middle;"></i></a>
+                        <a href="services.html" class="link-arrow">Browse More Workshops <i data-lucide="chevron-right" style="width: 16px;"></i></a>
                     </div>
                 </div>
 
@@ -227,11 +234,16 @@
                     <i data-lucide="gift" style="width: 48px; height: 48px; margin-bottom: 1rem;"></i>
                     <h3>Invite a Friend</h3>
                     <p style="opacity: 0.9; font-size: 0.9rem; margin-bottom: 1.5rem;">Share the gut health. Bring a friend to your next class and you both get 20% off.</p>
-                    <button class="btn" style="background: white; color: var(--primary); width: 100%;">Get Referral Link</button>
+                    <button class="btn btn-white" style="width: 100%;">Get Referral Link</button>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
+    </button>
 
 </body>
 </html>
