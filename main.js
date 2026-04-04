@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateThemeIcon(theme) {
         const icon = themeBtn?.querySelector('i');
-        if (icon) {
+        if (icon && window.lucide) {
             icon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
             lucide.createIcons();
         }
@@ -119,8 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
             input.setAttribute('type', type);
             const icon = btn.querySelector('i');
-            icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
-            lucide.createIcons();
+            if (icon && window.lucide) {
+                icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
+                lucide.createIcons();
+            }
         });
     });
 
