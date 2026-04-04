@@ -198,8 +198,12 @@ img {
     height: 20px;
     min-width: 20px;
     min-height: 20px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
     stroke-width: 2px;
+    fill: currentColor;
 }
 
 .btn-icon:hover {
@@ -218,28 +222,37 @@ img {
 }
 
 .btn-icon[data-brand="instagram"]:hover {
-    color: #E4405F;
-    border-color: #E4405F;
+    background: #E4405F !important;
+    color: white !important;
+    border-color: #E4405F !important;
+    box-shadow: 0 4px 15px rgba(228, 64, 95, 0.4);
 }
 
 .btn-icon[data-brand="facebook"]:hover {
-    color: #1877F2;
-    border-color: #1877F2;
+    background: #1877F2 !important;
+    color: white !important;
+    border-color: #1877F2 !important;
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
 }
 
 .btn-icon[data-brand="twitter"]:hover {
-    color: #1DA1F2;
-    border-color: #1DA1F2;
+    background: #000000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .btn-icon[data-brand="youtube"]:hover {
-    color: #FF0000;
-    border-color: #FF0000;
+    background: #FF0000 !important;
+    color: white !important;
+    border-color: #FF0000 !important;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
 .btn-icon[data-brand="linkedin"]:hover {
-    color: #0A66C2;
-    border-color: #0A66C2;
+    background: #0A66C2 !important;
+    color: white !important;
+    border-color: #0A66C2 !important;
+    box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4);
 }
 
 /* Header & Navigation */
@@ -320,6 +333,112 @@ body.rtl .sidebar {
 .sidebar-link:hover {
     background: var(--primary-light);
     color: var(--primary-dark);
+}
+
+/* Dashboard Tab System */
+.dashboard-pane {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.dashboard-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Data Tables */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+    padding: 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+    font-weight: 600;
+    color: var(--text-alt);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status Badges */
+.status-pill {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-pill.success { background: #dcfce7; color: #15803d; }
+.status-pill.warning { background: #fef3c7; color: #b45309; }
+.status-pill.info { background: #e0f2fe; color: #0369a1; }
+
+[data-theme="dark"] .status-pill.success { background: #064e3b; color: #4ade80; }
+[data-theme="dark"] .status-pill.warning { background: #451a03; color: #fbbf24; }
+[data-theme="dark"] .status-pill.info { background: #082f49; color: #38bdf8; }
+
+/* Progress Bars */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: var(--radius-full);
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    transition: width 1s ease-in-out;
+}
+
+/* Skill Badges */
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.badge-item {
+    text-align: center;
+}
+
+.badge-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 0.75rem;
+    background: var(--bg-alt);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-alt);
+    transition: var(--transition);
+}
+
+.badge-item.earned .badge-icon {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
 }
 
 /* Form Styles */
