@@ -425,6 +425,69 @@ select.form-input {
     .dashboard-header {
         padding: 1.5rem !important;
         margin: -2rem -1.5rem 2rem !important;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+    
+    .dashboard-header .flex-center {
+        width: 100%;
+        justify-content: space-between !important;
+        flex-wrap: wrap;
+    }
+    
+    .metric-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Responsive (768px and below) */
+@media (max-width: 768px) {
+    .dashboard-header {
+        padding: 1rem !important;
+        margin: -1rem -1rem 1rem !important;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .dashboard-header p {
+        font-size: 0.85rem !important;
+    }
+    
+    .metric-card {
+        padding: 1rem !important;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem !important;
+    }
+    
+    .metric-icon {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .dashboard-header .flex-center > div:first-child {
+        order: 1;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .dashboard-header .flex-center > div:nth-child(2) {
+        order: 2;
+        justify-content: center;
+    }
+    
+    .dashboard-header .flex-center > div:last-child {
+        order: 3;
+        width: 100%;
+        justify-content: center;
     }
 }
 
