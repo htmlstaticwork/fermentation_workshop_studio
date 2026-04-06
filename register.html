@@ -25,15 +25,13 @@
                 <label class="form-label">Full Name</label>
                 <input type="text" class="form-input" placeholder="Your name">
             </div>
-            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Phone Number</label>
-                    <input type="tel" class="form-input" placeholder="+1 (234) 567...">
-                </div>
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" placeholder="+1 (234) 567...">
             </div>
             <div class="form-group">
                 <label class="form-label">Password</label>
@@ -56,14 +54,58 @@
 
             <label style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--text-alt); margin: 2rem 0;">
                 <input type="checkbox" style="margin-top: 0.25rem;">
-                <span>By signing up, you agree to our <a href="#" style="color: var(--primary); font-weight: 600;">Terms of Service</a> and <a href="#" style="color: var(--primary); font-weight: 600;">Privacy Policy</a>.</span>
+                <span>By signing up, you agree to our <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>.</span>
             </label>
 
-            <button class="btn btn-primary" style="width: 100%; padding: 1rem; margin-bottom: 2rem;">Sign Up</button>
+            <button class="btn btn-primary" style="width: 100%; padding: 1rem; margin-bottom: 1.5rem;">Sign Up</button>
+
+            <!-- Divider -->
+            <div style="text-align: center; position: relative; margin-bottom: 1.5rem;">
+                <span style="background: var(--bg-card); padding: 0 1rem; position: relative; z-index: 1; color: var(--text-alt); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Or connect with</span>
+                <hr style="position: absolute; top: 50%; left: 0; width: 100%; border: none; border-top: 1px solid var(--border);">
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                <button type="button" class="btn-icon flex-center" style="padding: 0.75rem; gap: 0.75rem;">
+                    <i data-lucide="chrome" style="width: 18px;"></i> Google
+                </button>
+                <button type="button" class="btn-icon flex-center" style="padding: 0.75rem; gap: 0.75rem;">
+                    <i data-lucide="apple" style="width: 18px;"></i> Apple
+                </button>
+            </div>
             
-            <p style="text-align: center; color: var(--text-alt); font-size: 0.9rem;">Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 600;">Login Now</a></p>
+            <p style="text-align: center; color: var(--text-alt); font-size: 0.9rem;">Already have an account? <a href="login.html" class="auth-link">Login Now</a></p>
         </form>
     </div>
+
+    <style>
+        .auth-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.25s ease, filter 0.25s ease;
+        }
+        .auth-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .auth-link:hover {
+            filter: brightness(1.25);
+        }
+        .auth-link:hover::after {
+            width: 100%;
+        }
+    </style>
 
 </body>
 </html>
