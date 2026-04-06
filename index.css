@@ -145,6 +145,7 @@ img {
     transition: var(--transition);
     border: none;
     gap: 0.5rem;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -632,14 +633,78 @@ select.form-input {
     }
 
     footer .grid.grid-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 2rem !important;
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        text-align: center !important;
+    }
+
+    footer .logo a,
+    footer .flex-center,
+    footer .footer-contact-item {
+        justify-content: center !important;
+    }
+
+    footer ul {
+        align-items: center !important;
     }
 
     /* Hero: don't crop the image on tablet */
     .hero {
         background-size: cover !important;
         background-position: center center !important;
+    }
+
+    .premium-hero {
+        height: auto !important;
+        min-height: 80vh !important;
+        padding: 8rem 0 4rem !important;
+        background-attachment: scroll !important; /* Fixed background causes issues on mobile */
+    }
+
+    .premium-hero h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.1 !important;
+    }
+
+    .premium-hero p {
+        font-size: 1.1rem !important;
+    }
+
+    .premium-hero .flex-center {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    .premium-hero .btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        white-space: nowrap !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Center text in sections that stack on tablet/mobile */
+    .section .reveal {
+        text-align: center !important;
+    }
+
+    /* Center buttons in those sections */
+    .section .reveal .btn {
+        margin: 0 auto !important;
+        display: flex !important;
+    }
+
+    /* Center the featured workshop badge */
+    .section .reveal span[style*="border-radius: var(--radius-full)"] {
+        margin: 0 auto 1.5rem !important;
+        display: table !important;
+    }
+
+    /* Center 'Why We Are Different' items when stacked */
+    .section .reveal div[style*="display: flex; gap: 1.5rem"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
     }
 }
 
@@ -711,6 +776,66 @@ select.form-input {
         max-width: 100% !important;
         box-sizing: border-box !important;
         overflow: hidden;
+    }
+
+    /* Override large inline font sizes */
+    h1[style*="font-size: 5rem"] {
+        font-size: 2.5rem !important;
+    }
+
+    h2[style*="font-size: 3rem"] {
+        font-size: 1.75rem !important;
+    }
+
+    h2[style*="font-size: 2.5rem"] {
+        font-size: 1.5rem !important;
+    }
+
+    /* Newsletter section fix */
+    .card[style*="padding: 6rem"] {
+        padding: 2rem !important;
+        background-position: center center !important;
+    }
+
+    .card[style*="padding: 6rem"] > div {
+        padding: 2rem 1.5rem !important;
+        width: 100% !important;
+    }
+
+    .card[style*="padding: 6rem"] form {
+        flex-direction: column !important;
+    }
+
+    .card[style*="padding: 6rem"] form button {
+        width: 100% !important;
+    }
+
+    /* Why we are different section fixes */
+    [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    [style*="height: 500px"] {
+        height: 300px !important;
+    }
+
+    /* Reveal safety fallback */
+    .reveal {
+        transition: 1s all ease !important;
+    }
+
+    .reveal.active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    /* Mobile drawer mobile fixes */
+    .mobile-drawer .nav-link {
+        font-size: 1.25rem !important;
+        padding: 0.5rem 0 !important;
+        display: block !important;
+        color: var(--text-main) !important;
     }
 
     /* Auth/generic cards that don't have zero padding: ensure inner spacing is not too large */
