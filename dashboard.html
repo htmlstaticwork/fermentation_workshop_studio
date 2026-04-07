@@ -85,6 +85,75 @@
             body.rtl .main-content {
                 margin-right: 0;
             }
+
+            /* Dashboard header: Robust 3-part layout (kicks in at tablet size) */
+            .dashboard-header {
+                padding: 1rem !important;
+                margin: -1rem -1rem 2rem -1rem !important;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                overflow: visible !important;
+                gap: 0.5rem !important;
+                min-height: 80px;
+            }
+
+            .dashboard-header .welcome-text {
+                position: static !important;
+                transform: none !important;
+                text-align: center !important;
+                flex: 1 !important;
+                min-width: 0 !important;
+                order: 2 !important;
+                padding: 0 1rem !important;
+            }
+
+            .dashboard-header .welcome-text h1 {
+                font-size: 1.1rem !important; /* Slightly larger for tablets */
+                margin: 0 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .dashboard-header .welcome-text p {
+                display: none !important; /* Hide subtext on tablet/mobile */
+            }
+
+            /* Hamburger stays left (order 1) */
+            #sidebar-toggle {
+                order: 1 !important;
+                margin-bottom: 0 !important;
+                flex-shrink: 0 !important;
+                display: flex !important; /* Ensure visibility */
+            }
+
+            /* Controls group stays far right (order 3) */
+            .header-controls-group {
+                order: 3 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                margin-left: 0 !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* Hide vertical divider on tablet/mobile */
+            .header-divider {
+                display: none !important;
+            }
+
+            /* User info stays compact */
+            .user-info-wrapper {
+                gap: 0.5rem !important;
+            }
+
+            .user-info-wrapper div:first-child {
+                display: none; /* Hide name text to keep it clean */
+            }
         }
 
         @media (max-width: 768px) {
@@ -139,29 +208,24 @@
                 font-size: 0.72rem !important;
             }
 
-            /* Dashboard header: Symmetric 3-part layout */
             .dashboard-header {
-                padding: 1rem !important;
-                margin: -1rem -1rem 2rem -1rem !important;
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                overflow: visible !important;
+                gap: 0.25rem !important;
             }
 
             .dashboard-header .welcome-text {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                text-align: center;
-                width: auto;
-                white-space: nowrap;
+                padding: 0 0.25rem !important;
             }
 
             .dashboard-header .welcome-text h1 {
-                font-size: 1.1rem !important;
+                font-size: 0.8rem !important; /* Even smaller for extreme narrow screens */
                 margin: 0 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .dashboard-header .welcome-text .emoji-hide {
+                display: none !important; /* Save space on mobile */
             }
 
             .dashboard-header .welcome-text p {
@@ -169,28 +233,18 @@
             }
 
             .dashboard-header > .flex-center {
-                width: 100% !important;
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                gap: 0 !important;
+                display: none !important; /* Cleanup: flex-center div was removed earlier */
             }
 
             /* Hamburger stays left (order 1) */
             #sidebar-toggle {
-                order: 1;
-                margin-bottom: 0 !important;
+                order: 1 !important;
             }
 
-            /* Controls group stays far right (order 2) */
+            /* Controls group stays far right (order 3) */
             .header-controls-group {
-                order: 2;
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                gap: 0.5rem !important;
-                margin-left: auto !important; /* Force push to the right */
+                order: 3 !important;
+                gap: 0.25rem !important; /* Tighter gap for phones */
             }
 
             /* Hide vertical divider on mobile */
@@ -200,7 +254,7 @@
 
             /* User info stays compact within the group */
             .user-info-wrapper {
-                gap: 0.5rem !important;
+                gap: 0.35rem !important;
             }
 
             .user-info-wrapper div:first-child {
@@ -264,10 +318,6 @@
                 font-size: 0.65rem !important;
             }
 
-            .dashboard-header h1 {
-                font-size: 1.25rem !important;
-            }
-
             .dashboard-header p {
                 font-size: 0.78rem !important;
             }
@@ -316,28 +366,26 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <header class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: -3rem; z-index: 100; border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; margin: -3rem -3rem 3rem -3rem; width: auto;">
-            <div class="flex-center" style="gap: 1rem; width: 100%; justify-content: space-between; position: relative;">
-                <div id="sidebar-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" title="Toggle Sidebar" style="display: none; z-index: 10;"><i data-lucide="menu"></i></div>
-                
-                <div class="welcome-text">
-                    <h1 style="font-size: 1.75rem; margin-bottom: 0.25rem;">Welcome back! 👋</h1>
-                    <p style="color: var(--text-alt); font-size: 0.9rem;">You have 2 workshops upcoming this week.</p>
-                </div>
+        <header class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: -3rem; z-index: 100; border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; margin: -3rem -3rem 3rem -3rem; min-height: 80px;">
+            <div id="sidebar-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" title="Toggle Sidebar" style="display: none; z-index: 10;"><i data-lucide="menu"></i></div>
+            
+            <div class="welcome-text">
+                <h1 style="font-size: 1.75rem; margin-bottom: 0.25rem;">Welcome back! <span class="emoji-hide">👋</span></h1>
+                <p style="color: var(--text-alt); font-size: 0.9rem;">You have 2 workshops upcoming this week.</p>
+            </div>
 
-                <div class="header-controls-group" style="z-index: 10;">
-                    <div id="theme-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Theme"><i data-lucide="moon"></i></div>
-                    <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Language (RTL)"><i data-lucide="languages"></i></div>
-                    <div class="header-divider" style="height: 24px; width: 1px; background: var(--border); margin: 0 0.5rem;"></div>
-                    <div class="user-info-wrapper" style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="text-align: right;">
-                            <p style="font-weight: 600; font-size: 0.95rem;">Guest User</p>
-                            <p style="font-size: 0.75rem; color: var(--text-alt);">Member</p>
-                        </div>
-                        <div style="position: relative;">
-                            <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Profile" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
-                            <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #22c55e; border: 2px solid var(--bg-card); border-radius: 50%;"></div>
-                        </div>
+            <div class="header-controls-group" style="display: flex; align-items: center; gap: 0.5rem; z-index: 10;">
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Theme"><i data-lucide="moon"></i></div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Language (RTL)"><i data-lucide="languages"></i></div>
+                <div class="header-divider" style="height: 24px; width: 1px; background: var(--border); margin: 0 0.5rem;"></div>
+                <div class="user-info-wrapper" style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="text-align: right;">
+                        <p style="font-weight: 600; font-size: 0.95rem;">Guest User</p>
+                        <p style="font-size: 0.75rem; color: var(--text-alt);">Member</p>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Profile" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #22c55e; border: 2px solid var(--bg-card); border-radius: 50%;"></div>
                     </div>
                 </div>
             </div>
