@@ -1,313 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Care Plans &amp; Subscriptions | FermentStudio</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="main.js" defer></script>
-    <link rel="icon" type="image/png" href="img/brand-logo.png">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Plans — NotaryPro</title>
+  <meta name="description" content="NotaryPro Care Plans for businesses, law firms, and real estate professionals. Monthly notary subscriptions with priority access." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 4-1.34 4-4V3h8v.006A6.42 6.42 0 0 1 18.5 7H21'/></svg>" type="image/svg+xml">
+  <style>
+    .included-features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+    .inc-feature { display:flex; align-items:flex-start; gap:13px; padding:20px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); transition:var(--transition); }
+    .inc-feature:hover { transform:translateX(5px); border-color:rgba(var(--primary-rgb),0.25); }
+    [dir="rtl"] .inc-feature:hover { transform:translateX(-5px); }
+    .inc-feature-icon { width:40px; height:40px; background:rgba(var(--primary-rgb),0.08); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0; }
+    [data-theme="dark"] .inc-feature-icon { background:rgba(var(--accent-rgb),0.1); color:var(--accent-light); }
+    .inc-feature-icon svg { width:18px; height:18px; }
+    .inc-feature h4 { font-size:0.88rem; font-weight:700; margin-bottom:3px; }
+    .inc-feature p { font-size:0.8rem; color:var(--text-secondary); line-height:1.6; }
+    .companies-row { display:flex; align-items:center; justify-content:center; gap:40px; flex-wrap:wrap; padding:20px 0; }
+    .company-tag { display:flex; align-items:center; gap:8px; color:var(--text-muted); font-size:0.87rem; font-weight:600; opacity:0.7; }
+    .company-tag svg { width:20px; height:20px; }
+    
+    /* Responsive for testimonials grid */
+    @media (max-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .testimonial-card:nth-child(3) {
+        grid-column: span 2;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .testimonial-card {
+        text-align: center;
+      }
+      .testimonial-stars, .testimonial-author {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .testimonial-card:nth-child(3) {
+        grid-column: auto;
+        max-width: none;
+        margin: 0;
+      }
+    }
+    
+    /* Responsive for plans grid */
+    @media (max-width: 1024px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .plan-card {
+        text-align: center;
+      }
+      .plan-feature {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
+<!-- HEADER -->
+<header class="site-header"><nav class="nav-container">
+  <div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home 1</a></li><li><a href="home2.html">Home 2</a></li>
+    <li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li>
+    <li><a href="care-plans.html" class="active">Care Plans</a></li><li><a href="contact.html">Contact</a></li><li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-ctas"><a href="login.html" class="btn btn-secondary btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Sign Up</a></div>
+    <div class="nav-toggles"><button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button><button class="toggle-btn" id="rtl-toggle"><i data-lucide="languages"></i></button></div>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-drawer" id="mobile-drawer">
+  <div class="drawer-header"><div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div><button class="drawer-close" id="drawer-close">✕</button></div>
+  <ul class="drawer-links">
+    <li><a href="index.html"><i data-lucide="home"></i> Home 1</a></li><li><a href="home2.html"><i data-lucide="sparkles"></i> Home 2</a></li>
+    <li><a href="services.html"><i data-lucide="briefcase"></i> Services</a></li><li><a href="about.html"><i data-lucide="user"></i> About</a></li>
+    <li><a href="care-plans.html"><i data-lucide="shield-check"></i> Care Plans</a></li><li><a href="contact.html"><i data-lucide="phone"></i> Contact</a></li><li><a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+  </ul>
+  <div class="drawer-toggles"><button class="toggle-btn" id="theme-toggle-m"><i data-lucide="moon"></i></button><button class="toggle-btn" id="rtl-toggle-m"><i data-lucide="languages"></i></button></div>
+  <div class="drawer-cta"><a href="register.html" class="btn btn-primary btn-full">Sign Up</a><a href="login.html" class="btn btn-secondary btn-full">Login</a></div>
+</div>
+<div class="drawer-overlay" id="drawer-overlay"></div>
+</header>
 
-    <!-- Header -->
-    <header>
-        <div class="container container-header flex-between" style="padding: 0 1rem;">
-            <div class="logo">
-                <a href="index.html" class="brand-logo-link">
-                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
-                    FERMENT
-                </a>
-            </div>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">Home 1</a>
-                <a href="index-2.html" class="nav-link">Home 2</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="care-plans.html" class="nav-link active">Care Plans</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="dashboard.html" class="nav-link">Dashboard</a>
-            </nav>
-            <div class="flex-center" style="gap: 0.5rem;">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0"><i data-lucide="moon"></i></div>
-                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
-                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
-                </div>
-                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;"><i data-lucide="menu"></i></div>
-            </div>
-        </div>
-    </header>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner container">
+    <div class="breadcrumb"><a href="index.html">Home</a><i data-lucide="chevron-right"></i><span>Care Plans</span></div>
+    <h1>Business Care <span>Plans</span></h1>
+    <p>Subscription-based notary services for law firms, real estate agencies, title companies, and high-frequency clients.</p>
+  </div>
+</div>
 
-    <!-- Hero -->
-    <section class="page-hero" style="background-image: url('img/WhatsApp Image 2026-04-02 at 11.52.01 AM (1).jpeg');">
-        <div class="page-hero-overlay"></div>
-        <div class="container page-hero-content">
-            <div class="reveal">
-                <div class="page-hero-tag">
-                    <i data-lucide="package" style="width: 13px; height: 13px;"></i>
-                    Monthly Subscriptions
-                </div>
-                <h1 style="font-size: 3.75rem; color: #fff; margin-bottom: 1rem; line-height: 1.1;">Fermentation Care Plans</h1>
-                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.85); max-width: 680px; margin: 0 auto 2rem; line-height: 1.8;">The easiest way to maintain a healthy gut. We deliver seasonal kits, heritage SCOBYs, and expert guidance straight to your door.</p>
-                <a href="#plans" class="btn btn-primary" style="padding: 1rem 2.5rem;">Explore Plans <i data-lucide="arrow-down" style="width: 16px;"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trust bar -->
-    <div class="trust-bar">
-        <div class="trust-ticker">
-            <span class="trust-item"><i data-lucide="package" style="width:16px;height:16px;"></i> Monthly Delivery to Your Door</span>
-            <span class="trust-item"><i data-lucide="leaf" style="width:16px;height:16px;"></i> Certified Organic Ingredients</span>
-            <span class="trust-item"><i data-lucide="flask-conical" style="width:16px;height:16px;"></i> Heritage Lab-Tested Cultures</span>
-            <span class="trust-item"><i data-lucide="x-circle" style="width:16px;height:16px;"></i> Cancel Anytime, No Lock-In</span>
-            <span class="trust-item"><i data-lucide="book-open" style="width:16px;height:16px;"></i> Step-by-Step Recipe Cards Included</span>
-            <!-- duplicate -->
-            <span class="trust-item"><i data-lucide="package" style="width:16px;height:16px;"></i> Monthly Delivery to Your Door</span>
-            <span class="trust-item"><i data-lucide="leaf" style="width:16px;height:16px;"></i> Certified Organic Ingredients</span>
-            <span class="trust-item"><i data-lucide="flask-conical" style="width:16px;height:16px;"></i> Heritage Lab-Tested Cultures</span>
-            <span class="trust-item"><i data-lucide="x-circle" style="width:16px;height:16px;"></i> Cancel Anytime, No Lock-In</span>
-            <span class="trust-item"><i data-lucide="book-open" style="width:16px;height:16px;"></i> Step-by-Step Recipe Cards Included</span>
-        </div>
+<!-- WHO IT'S FOR -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge"><i data-lucide="building"></i> Who It's For</div>
+      <h2>Built for <span>Professional Teams</span></h2>
+      <p>If your business regularly needs notarization, a Care Plan saves you time, money, and hassle.</p>
     </div>
-
-    <!-- Plans -->
-    <section id="plans" class="section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
-                <div class="section-label" style="margin: 0 auto 1rem;">
-                    <i data-lucide="tag" style="width: 13px; height: 13px;"></i>
-                    Choose Your Plan
-                </div>
-                <h2 style="font-size: 2.75rem;">Pick What Fits Your Kitchen</h2>
-                <p style="color: var(--text-alt); max-width: 500px; margin: 0.75rem auto 0;">Flexible subscriptions for every lifestyle. Upgrade or cancel anytime.</p>
-            </div>
-            <div class="grid grid-3" style="align-items: start;">
-                <!-- Seedling -->
-                <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
-                    <div style="margin-bottom: 2rem;">
-                        <div class="section-label" style="background: rgba(34,197,94,0.08); margin-bottom: 0.75rem;">Starter</div>
-                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Seedling</h3>
-                        <p style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 1.5rem;">Perfect for curious beginners.</p>
-                        <div>
-                            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">$29</span>
-                            <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
-                        </div>
-                    </div>
-                    <ul class="plan-feature-list" style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1 Monthly Seasonal Kit</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Basic Recipe Guides</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Community Forum Access</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt); opacity: 0.5;"><i data-lucide="circle" style="width: 18px; flex-shrink: 0;"></i> Heritage SCOBY Access</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt); opacity: 0.5;"><i data-lucide="circle" style="width: 18px; flex-shrink: 0;"></i> Live Q&amp;A Sessions</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width: 100%; padding: 1rem;">Start Plan</button>
-                </div>
-
-                <!-- Cultivator — Popular -->
-                <div class="card reveal pricing-card-popular" style="display: flex; flex-direction: column; height: 100%; transform: scale(1.03); z-index: 10; animation-delay: 0.1s;">
-                    <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.3rem 1.5rem; border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); font-size: 0.78rem; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 16px rgba(34,197,94,0.3); letter-spacing: 0.06em;">★ MOST POPULAR</div>
-                    <div style="margin-bottom: 2rem; padding-top: 0.75rem;">
-                        <div class="section-label" style="margin-bottom: 0.75rem;">Best Value</div>
-                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Cultivator</h3>
-                        <p style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 1.5rem;">For the serious home fermenter.</p>
-                        <div>
-                            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">$59</span>
-                            <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
-                        </div>
-                    </div>
-                    <ul class="plan-feature-list" style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 2 Monthly Seasonal Kits</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Advanced Recipe Guides</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Heritage SCOBY Exchange</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1 Monthly Live Q&amp;A</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt); opacity: 0.5;"><i data-lucide="circle" style="width: 18px; flex-shrink: 0;"></i> 1-on-1 Coaching</li>
-                    </ul>
-                    <button class="btn btn-primary" style="width: 100%; padding: 1rem;">Start Plan</button>
-                </div>
-
-                <!-- Master -->
-                <div class="card reveal" style="display: flex; flex-direction: column; height: 100%; animation-delay: 0.2s;">
-                    <div style="margin-bottom: 2rem;">
-                        <div class="section-label" style="background: rgba(139,92,246,0.1); color: #8b5cf6; margin-bottom: 0.75rem;">Premium</div>
-                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Master</h3>
-                        <p style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 1.5rem;">The total fermentation experience.</p>
-                        <div>
-                            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">$99</span>
-                            <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
-                        </div>
-                    </div>
-                    <ul class="plan-feature-list" style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Unlimited Seasonal Kits</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1-on-1 Coaching (Monthly)</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> VIP Workshop Seating</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Early Product &amp; Culture Drops</li>
-                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Private Community Access</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width: 100%; padding: 1rem;">Start Plan</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What's in the box -->
-    <section class="section" style="background: var(--bg-alt);">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
-                <div class="section-label" style="margin: 0 auto 1rem;">
-                    <i data-lucide="gift" style="width: 13px; height: 13px;"></i>
-                    Inside the Box
-                </div>
-                <h2 style="font-size: 2.75rem;">Everything You Need to Ferment</h2>
-                <p style="color: var(--text-alt);">Curated by our master fermenters, delivered to your kitchen</p>
-            </div>
-            <div class="grid grid-3" style="gap: 2.5rem;">
-                <div class="reveal" style="text-align: center;">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; height: 260px; margin-bottom: 1.75rem; box-shadow: var(--shadow); position: relative;">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.01 AM.jpeg" alt="Organic Produce" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);"></div>
-                        <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; color: white; font-weight: 700; font-size: 1.1rem;">Organic Produce</div>
-                    </div>
-                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">Pre-washed and measured ingredients from our certified organic partner farms, delivered at peak freshness.</p>
-                </div>
-                <div class="reveal" style="text-align: center; animation-delay: 0.1s;">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; height: 260px; margin-bottom: 1.75rem; box-shadow: var(--shadow); position: relative;">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM.jpeg" alt="Heritage Cultures" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);"></div>
-                        <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; color: white; font-weight: 700; font-size: 1.1rem;">Heritage Cultures</div>
-                    </div>
-                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">High-vitality SCOBYs, sourdough starters, and mother cultures tested in our own lab for consistent results.</p>
-                </div>
-                <div class="reveal" style="text-align: center; animation-delay: 0.2s;">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; height: 260px; margin-bottom: 1.75rem; box-shadow: var(--shadow); position: relative;">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM (2).jpeg" alt="Artisan Spices" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);"></div>
-                        <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; color: white; font-weight: 700; font-size: 1.1rem;">Artisan Spices</div>
-                    </div>
-                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">Small-batch spices, sea salts, and specialty ingredients specifically chosen for optimal fermentation outcomes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits -->
-    <section class="section" style="background: linear-gradient(135deg, #14532d 0%, #166534 100%);">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal">
-                <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1rem;">
-                    <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
-                    Why Subscribe?
-                </div>
-                <h2 style="font-size: 2.5rem; color: white;">Why Choose a Care Plan?</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="benefit-glass-card reveal">
-                    <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                        <i data-lucide="zap" style="width: 28px; height: 28px; color: white;"></i>
-                    </div>
-                    <h4 style="color: white; margin-bottom: 0.75rem; font-size: 1.15rem;">No More Guesswork</h4>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">We provide exact ratios and ingredients with step-by-step guides. You just follow the simple steps.</p>
-                </div>
-                <div class="benefit-glass-card reveal" style="animation-delay: 0.1s;">
-                    <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                        <i data-lucide="clock" style="width: 28px; height: 28px; color: white;"></i>
-                    </div>
-                    <h4 style="color: white; margin-bottom: 0.75rem; font-size: 1.15rem;">Save Time</h4>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">No hunting for specialized jars or rare cultures — everything arrives curated at your door every month.</p>
-                </div>
-                <div class="benefit-glass-card reveal" style="animation-delay: 0.2s;">
-                    <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                        <i data-lucide="heart" style="width: 28px; height: 28px; color: white;"></i>
-                    </div>
-                    <h4 style="color: white; margin-bottom: 0.75rem; font-size: 1.15rem;">Consistent Gut Health</h4>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">Always have a fresh batch of probiotics ready. Regular fermentation is the key to lasting gut wellness.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section">
-        <div class="container">
-            <div class="cta-section reveal">
-                <div class="cta-section-content">
-                    <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1.5rem;">
-                        <i data-lucide="package" style="width: 13px; height: 13px;"></i>
-                        Start Your Subscription
-                    </div>
-                    <h2 style="font-size: 2.75rem; color: white; margin-bottom: 1rem;">Your Monthly Ferment Kit Awaits</h2>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">Join thousands of home fermenters who get their monthly culture fix. Cancel anytime, no commitment.</p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="#plans" class="btn btn-white" style="padding: 1rem 2rem; font-weight: 700;">View All Plans</a>
-                        <a href="contact.html" class="btn btn-glass" style="padding: 1rem 2rem;">Ask a Question</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
-        <div class="container grid grid-4" style="gap: 4rem;">
-            <div>
-                <a href="index.html" class="brand-logo-link" style="justify-content: flex-start;">
-                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
-                    FERMENT
-                </a>
-                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
-                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <li><a href="services.html" class="footer-link">Workshops</a></li>
-                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
-                    <li><a href="about.html" class="footer-link">Our Story</a></li>
-                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
-                <div class="footer-contact-item"><i data-lucide="map-pin"></i><span>123 Artisan Lane, Culture Square, NY 10001</span></div>
-                <div class="footer-contact-item"><i data-lucide="phone"></i><span>+1 (234) 567 8901</span></div>
-                <div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 10AM - 6PM</span></div>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="footer-contact-item"><i data-lucide="mail"></i><span>hello@fermentstudio.com</span></div>
-                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
-                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg></a>
-                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
-                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                </div>
-            </div>
-        </div>
-        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
-            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <button id="back-to-top" class="back-to-top" title="Back to Top"><i data-lucide="chevron-up"></i></button>
-
-    <div id="mobile-drawer" class="mobile-drawer">
-        <div class="flex-between" style="margin-bottom: 2rem;">
-            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
-            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
-        </div>
-        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <a href="index.html" class="nav-link">Home 1</a>
-            <a href="index-2.html" class="nav-link">Home 2</a>
-            <a href="about.html" class="nav-link">About</a>
-            <a href="services.html" class="nav-link">Services</a>
-            <a href="care-plans.html" class="nav-link active">Care Plans</a>
-            <a href="contact.html" class="nav-link">Contact</a>
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
-        </nav>
+    <div class="companies-row reveal">
+      <div class="company-tag"><i data-lucide="scale"></i> Law Firms</div>
+      <div class="company-tag"><i data-lucide="home"></i> Real Estate Agencies</div>
+      <div class="company-tag"><i data-lucide="building-2"></i> Title Companies</div>
+      <div class="company-tag"><i data-lucide="bank"></i> Financial Institutions</div>
+      <div class="company-tag"><i data-lucide="heart-pulse"></i> Healthcare Providers</div>
+      <div class="company-tag"><i data-lucide="briefcase"></i> Corporate Legal Depts</div>
     </div>
-    <div id="overlay" class="overlay"></div>
+  </div>
+</section>
 
+<!-- PLANS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge"><i data-lucide="package"></i> Care Plans</div>
+      <h2>Choose Your <span>Plan</span></h2>
+      <p>Flexible monthly plans with priority access, dedicated service, and significant savings.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- Basic -->
+      <div class="plan-card reveal delay-1">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price-row"><span class="plan-price">$199</span><span class="plan-period">/month</span></div>
+        <p class="plan-desc">Ideal for small offices and solo practitioners with occasional notary needs.</p>
+        <div class="plan-features">
+          <div class="plan-feature"><i data-lucide="check-circle"></i> 5 notarizations/month</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Mobile service included</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Standard scheduling</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Email support</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Monthly invoice</div>
+          <div class="plan-feature disabled"><i data-lucide="x-circle"></i> Priority scheduling</div>
+          <div class="plan-feature disabled"><i data-lucide="x-circle"></i> Dedicated agent</div>
+          <div class="plan-feature disabled"><i data-lucide="x-circle"></i> After-hours access</div>
+        </div>
+        <a href="contact.html" class="btn btn-secondary btn-full">Get Started</a>
+      </div>
+      <!-- Business (Featured) -->
+      <div class="plan-card featured reveal delay-2">
+        <div class="plan-popular">Most Popular</div>
+        <div class="plan-name">Business</div>
+        <div class="plan-price-row"><span class="plan-price">$499</span><span class="plan-period">/month</span></div>
+        <p class="plan-desc">Perfect for active real estate agencies and law firms with regular signing needs.</p>
+        <div class="plan-features">
+          <div class="plan-feature"><i data-lucide="check-circle"></i> 20 notarizations/month</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Mobile service included</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Priority scheduling</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Phone & email support</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Monthly invoice</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Dedicated agent</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> After-hours access</div>
+          <div class="plan-feature disabled"><i data-lucide="x-circle"></i> Unlimited signings</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary btn-full">Get Started</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="plan-card reveal delay-3">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price-row"><span class="plan-price">$999</span><span class="plan-period">/month</span></div>
+        <p class="plan-desc">Unlimited service for title companies, large firms, and high-volume institutions.</p>
+        <div class="plan-features">
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Unlimited notarizations</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Mobile service included</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> VIP priority scheduling</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> 24/7 dedicated support</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Monthly invoice + reports</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Dedicated agent team</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> After-hours & emergency</div>
+          <div class="plan-feature"><i data-lucide="check-circle"></i> Custom SLA agreement</div>
+        </div>
+        <a href="contact.html" class="btn btn-secondary btn-full">Contact Sales</a>
+      </div>
+    </div>
+    <div class="text-center mt-4 reveal"><p style="color:var(--text-muted);font-size:0.85rem;">All plans include a 30-day money-back guarantee. No long-term contracts required.</p></div>
+  </div>
+</section>
+
+<!-- FEATURES INCLUDED -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge"><i data-lucide="star"></i> What's Included</div>
+      <h2>Every Plan <span>Includes</span></h2>
+      <p>Core features included in all Care Plan subscriptions, regardless of tier.</p>
+    </div>
+    <div class="included-features">
+      <div class="inc-feature reveal delay-1"><div class="inc-feature-icon"><i data-lucide="shield-check"></i></div><div><h4>Certified Professional</h4><p>NNA-certified, background-checked, and E&O insured notary for every signing.</p></div></div>
+      <div class="inc-feature reveal delay-2"><div class="inc-feature-icon"><i data-lucide="car"></i></div><div><h4>Mobile Service</h4><p>We come to your office or client location — no travel hassle for your team.</p></div></div>
+      <div class="inc-feature reveal delay-3"><div class="inc-feature-icon"><i data-lucide="file-text"></i></div><div><h4>Digital Records</h4><p>Secure digital logs and receipts for every notarization in your account.</p></div></div>
+      <div class="inc-feature reveal delay-4"><div class="inc-feature-icon"><i data-lucide="receipt"></i></div><div><h4>Monthly Invoicing</h4><p>Clean, itemized monthly invoices for easy accounting and expense tracking.</p></div></div>
+      <div class="inc-feature reveal delay-1"><div class="inc-feature-icon"><i data-lucide="headphones"></i></div><div><h4>Dedicated Support</h4><p>A support contact who knows your business and responds within hours.</p></div></div>
+      <div class="inc-feature reveal delay-2"><div class="inc-feature-icon"><i data-lucide="zap"></i></div><div><h4>Priority Booking</h4><p>Skip the queue — plan subscribers get priority access to appointments.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge"><i data-lucide="message-square"></i> Testimonials</div>
+      <h2>What Business <span>Clients Say</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal delay-1">
+        <div class="testimonial-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">Our law firm switched to the Business Care Plan 8 months ago. The priority scheduling and dedicated agent have transformed how we handle client signings. Absolutely worth every dollar.</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Mark L." class="testimonial-avatar" loading="lazy" />
+          <div><strong>Mark Lawson</strong><span>Managing Partner, Lawson & Carr LLP</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal delay-2">
+        <div class="testimonial-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">As a title company with 30+ closings per month, the Enterprise plan is a game-changer. Unlimited signings, always on time, and the reporting features help us track everything perfectly.</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Maria C." class="testimonial-avatar" loading="lazy" />
+          <div><strong>Maria Chen</strong><span>Operations Manager, Pacific Title Co.</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal delay-3">
+        <div class="testimonial-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">The Basic plan is perfect for our small office. Affordable, reliable, and professional. NotaryPro shows up exactly when needed — our clients always comment on the great service.</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="James T." class="testimonial-avatar" loading="lazy" />
+          <div><strong>James Torres</strong><span>Real Estate Agent, Remax Elite</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Ready to <span style="color:var(--accent-light)">Subscribe?</span></h2>
+  <p>Join dozens of businesses that trust NotaryPro for their ongoing notary needs.</p>
+  <div class="cta-buttons">
+    <a href="contact.html" class="btn btn-accent btn-lg"><i data-lucide="calendar-check"></i> Book Notary</a>
+    <a href="contact.html" class="btn btn-ghost btn-lg"><i data-lucide="phone"></i> Discuss with Us</a>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon"><i data-lucide="scale"></i></div>
+          <span class="logo-text">NotaryPro</span>
+        </div>
+        <p>Professional mobile notary and loan signing agent services. We come to you — 24/7, always on time, always certified.</p>
+        <div class="social-links">
+          <a href="#" class="facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.326V1.326C24 .597 23.403 0 22.675 0z"/></svg></a>
+          <a href="#" class="twitter" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg></a>
+          <a href="#" class="linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+          <a href="#" class="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home 1</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="care-plans.html">Care Plans</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Client Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Loan Signing</a></li>
+          <li><a href="services.html">Mobile Notary</a></li>
+          <li><a href="services.html">Real Estate Docs</a></li>
+          <li><a href="services.html">Legal Affidavits</a></li>
+          <li><a href="services.html">Power of Attorney</a></li>
+          <li><a href="care-plans.html">Business Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <div class="footer-contact-item"><i data-lucide="phone"></i> +1 (555) 123-4567</div>
+        <div class="footer-contact-item"><i data-lucide="mail"></i> info@notarypro.com</div>
+        <div class="footer-contact-item"><i data-lucide="map-pin"></i> 123 Legal Ave, Suite 100<br>Los Angeles, CA 90001</div>
+        <div class="footer-contact-item"><i data-lucide="clock"></i> 24/7 — Always Available</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 NotaryPro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </div>
+</footer>
+<button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
 </body>
 </html>

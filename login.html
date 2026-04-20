@@ -1,130 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | FermentStudio</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="main.js" defer></script>
-    <link rel="icon" type="image/png" href="img/brand-logo.png">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — NotaryPro</title>
+  <meta name="description" content="Log in to your NotaryPro client account to manage appointments and documents." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 4-1.34 4-4V3h8v.006A6.42 6.42 0 0 1 18.5 7H21'/></svg>" type="image/svg+xml">
+  <link rel="stylesheet" href="auth.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
-<body style="background: var(--bg-alt); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1.5rem;">
+<body class="auth-body">
 
-    <!-- Theme & RTL Toggles -->
-    <div class="auth-toggles" style="position: fixed; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 1100;">
-        <div id="theme-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Theme"><i data-lucide="moon"></i></div>
-        <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL"><i data-lucide="languages"></i></div>
+<!-- Toggles top-right -->
+<div class="auth-toggles">
+  <button class="toggle-btn" id="theme-toggle-auth" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+  <button class="toggle-btn" id="rtl-toggle-auth" aria-label="Toggle RTL"><i data-lucide="languages"></i></button>
+</div>
+
+<div class="auth-card">
+  <!-- Logo -->
+  <a href="index.html" class="auth-logo" style="text-decoration:none;transition:var(--transition-fast);">
+    <div class="logo-icon"><i data-lucide="scale"></i></div>
+    <span class="logo-text">NotaryPro</span>
+  </a>
+
+  <div class="auth-title">
+    <h1>Welcome Back</h1>
+    <p>Sign in to your client account</p>
+  </div>
+
+  <form id="login-form" novalidate>
+    <!-- Email -->
+    <div class="form-group">
+      <label class="form-label" for="login-email">Email Address</label>
+      <div class="input-with-icon">
+        <span class="input-prefix-icon"><i data-lucide="mail"></i></span>
+        <input class="form-input" id="login-email" type="email" placeholder="you@email.com" required autocomplete="email" />
+      </div>
     </div>
 
-    <div class="card reveal auth-card" style="max-width: 450px; width: 100%; padding: 3rem; text-align: center; position: relative;">
-
-        <a href="index.html" class="brand-logo-link" style="margin-bottom: 2rem; justify-content: center;">
-            <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
-            FERMENT
-        </a>
-        
-        <h2 style="margin-bottom: 0.5rem;">Welcome Back</h2>
-        <p style="color: var(--text-alt); margin-bottom: 2.5rem;">Login to your workshop dashboard</p>
-
-        <form style="text-align: left;">
-            <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="your@email.com">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Password</label>
-                <div style="position: relative;">
-                    <input type="password" class="form-input" placeholder="••••••••">
-                    <button type="button" class="password-toggle" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-alt); cursor: pointer;">
-                        <i data-lucide="eye" style="width: 20px; height: 20px;"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="flex-between auth-meta" style="margin-bottom: 2.5rem;">
-                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-alt);">
-                    <input type="checkbox"> Remember Me
-                </label>
-                <a href="#" class="auth-link">Forgot Password?</a>
-            </div>
-
-            <button class="btn btn-primary" style="width: 100%; padding: 1rem; margin-bottom: 1.5rem;">Login</button>
-            
-            <div style="text-align: center; position: relative; margin-bottom: 1.5rem;">
-                <span style="padding: 0 1rem; position: relative; z-index: 1; color: var(--text-alt); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Or continue with</span>
-            </div>
-
-            <div style="display: flex; gap: 1rem; margin-bottom: 2.5rem; width: 100%;">
-                <button type="button" class="btn btn-secondary flex-center" style="flex: 1; padding: 0.75rem; gap: 0.75rem; display: flex; align-items: center; justify-content: center;">
-                    <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"/></svg>
-                    Google
-                </button>
-                <button type="button" class="btn btn-secondary flex-center" style="flex: 1; padding: 0.75rem; gap: 0.75rem; display: flex; align-items: center; justify-content: center;"><i data-lucide="apple" style="width: 18px; height: 18px;"></i> Apple</button>
-            </div>
-
-            <p style="text-align: center; color: var(--text-alt); font-size: 0.9rem;">Don't have an account? <a href="register.html" class="auth-link">Register Now</a></p>
-        </form>
+    <!-- Password -->
+    <div class="form-group">
+      <label class="form-label" for="login-password">Password</label>
+      <div class="input-wrapper input-with-icon">
+        <span class="input-prefix-icon"><i data-lucide="lock"></i></span>
+        <input class="form-input" id="login-password" type="password" placeholder="••••••••" required autocomplete="current-password" style="padding-left:40px;" />
+        <button type="button" class="input-icon-btn toggle-pw" aria-label="Toggle password visibility">
+          <i data-lucide="eye"></i>
+        </button>
+      </div>
     </div>
 
-    <style>
-        .auth-link {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.25s ease, filter 0.25s ease;
-        }
-        .auth-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-        .auth-link:hover {
-            filter: brightness(1.25);
-            text-decoration: underline !important;
-        }
+    <!-- Remember / Forgot -->
+    <div class="auth-row" style="margin-bottom: 24px;">
+      <label class="checkbox-label">
+        <input type="checkbox" id="remember-me" />
+        Remember me
+      </label>
+      <a href="#" class="forgot-link">Forgot Password?</a>
+    </div>
 
-        /* Mobile Adjustments for Auth Layout */
-        @media (max-width: 480px) {
-            body {
-                flex-direction: column !important;
-                justify-content: flex-start !important;
-                padding-top: 3rem !important;
-            }
+    <!-- Login Button -->
+    <button type="submit" class="btn btn-primary btn-full btn-lg" style="margin-bottom:16px;">
+      <i data-lucide="log-in"></i> Sign In
+    </button>
+  </form>
 
-            .auth-toggles {
-                position: absolute !important;
-                top: 1rem !important;
-                right: 1rem !important;
-                margin-bottom: 0 !important;
-                justify-content: flex-end !important;
-                width: auto !important;
-                gap: 0.5rem !important;
-            }
+  <!-- Divider -->
+  <div class="auth-divider"><span>or continue with</span></div>
 
-            .auth-card {
-                padding: 1.5rem !important;
-            }
+  <!-- Social Login -->
+  <div class="social-login-grid">
+    <button class="social-btn" type="button">
+      <svg class="google-icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Google
+    </button>
+    <button class="social-btn" type="button">
+      <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Apple
+    </button>
+  </div>
 
-            .auth-meta {
-                flex-wrap: nowrap !important;
-                gap: 0.5rem !important;
-                white-space: nowrap !important;
-            }
-
-            .auth-meta label, .auth-meta a {
-                font-size: 0.75rem !important;
-            }
-        }
-    </style>
+  <div class="auth-footer" style="margin-top:24px;">
+    Don't have an account? <a href="register.html">Create account</a>
+  </div>
+  
+</div>
 
 </body>
 </html>
