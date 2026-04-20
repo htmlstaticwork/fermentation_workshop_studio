@@ -1,434 +1,990 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NotaryPro — Trusted Mobile Notary Services</title>
-  <meta name="description" content="Professional mobile notary and loan signing agent services. Available 24/7 at your doorstep. Certified, fast, and reliable." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 4-1.34 4-4V3h8v.006A6.42 6.42 0 0 1 18.5 7H21'/></svg>" type="image/svg+xml">
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
-  <script src="main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fermentation Workshop Studio | Discover the Art of Fermentation</title>
+    <meta name="description"
+        content="Join our hands-on workshops for Kimchi, Kombucha, and more. Learn the ancient art of fermentation for better gut health.">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+    <link rel="icon" type="image/png" href="img/brand-logo.png">
+    <style>
+        /* =============================================
+           HOMEPAGE PREMIUM VISUAL ENHANCEMENTS
+        ============================================= */
+
+        /* Animated hero text gradient */
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(270deg, #22c55e, #10b981, #86efac, #22c55e);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        /* Scroll ticker / trust bar */
+        .trust-bar {
+            background: var(--primary);
+            padding: 0.75rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .trust-ticker {
+            display: inline-flex;
+            gap: 3rem;
+            animation: ticker 28s linear infinite;
+        }
+
+        .trust-ticker:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .trust-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+
+        .trust-item i {
+            opacity: 0.8;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-item {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            transition: background var(--transition);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-item:hover {
+            background: var(--bg-alt);
+        }
+
+        .stat-number {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-alt);
+            font-weight: 500;
+        }
+
+        /* Section decorative label */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.375rem 1rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 1rem;
+        }
+
+        /* Enhanced workshop cards */
+        .workshop-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-card);
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px -10px rgba(34, 197, 94, 0.2), 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+            border-color: var(--primary);
+        }
+
+        .workshop-card-img-wrap {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .workshop-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .workshop-card:hover .workshop-card-img-wrap img {
+            transform: scale(1.08);
+        }
+
+        .workshop-card-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            border-radius: var(--radius-full);
+        }
+
+        .workshop-card-body {
+            padding: 1.75rem;
+        }
+
+        .workshop-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            font-size: 0.8rem;
+            color: var(--text-alt);
+            margin-bottom: 0.875rem;
+        }
+
+        .workshop-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Benefits cards enhanced */
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(6px);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon-wrap {
+            width: 72px;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Process / how-it-works */
+        .process-ribbon {
+            position: relative;
+        }
+
+        .process-ribbon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: calc(16.66% + 1.5rem);
+            right: calc(16.66% + 1.5rem);
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .process-step-num {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 0 6px var(--bg-main);
+        }
+
+        /* CTA banner */
+        .cta-banner {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #064e3b 0%, #14532d 40%, #166534 100%);
+            border-radius: var(--radius-lg);
+            padding: 5rem 4rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.25) 0%, transparent 70%);
+        }
+
+        .cta-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+        }
+
+        .cta-banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About preview — image with floating badge */
+        .about-img-wrap {
+            position: relative;
+        }
+
+        .about-float-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            right: -1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            min-width: 160px;
+        }
+
+        /* Featured section strip */
+        .featured-workshop-strip {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            min-height: 400px;
+        }
+
+        .featured-workshop-strip .featured-img {
+            width: 45%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .featured-workshop-strip .featured-body {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Mobile overrides */
+        @media (max-width: 768px) {
+            .stats-strip {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .stat-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .stat-item:nth-child(3) {
+                border-right: 1px solid var(--border);
+                border-top: 1px solid var(--border);
+            }
+
+            .stat-item:nth-child(4) {
+                border-top: 1px solid var(--border);
+                border-right: none;
+            }
+
+            .about-float-badge {
+                display: none;
+            }
+
+            .featured-workshop-strip {
+                flex-direction: column !important;
+            }
+
+            .featured-workshop-strip .featured-img {
+                width: 100% !important;
+                height: 250px;
+            }
+
+            .featured-workshop-strip .featured-body {
+                padding: 2rem !important;
+            }
+
+            .cta-banner {
+                padding: 3rem 1.5rem !important;
+            }
+
+            .process-ribbon::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-strip {
+                grid-template-columns: 1fr 1fr !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- ═══════════ HEADER ═══════════ -->
-<header class="site-header" id="site-header">
-  <nav class="nav-container">
-    <div class="nav-logo">
-      <a href="index.html">
-        <div class="logo-icon"><i data-lucide="scale"></i></div>
-        <span class="logo-text">NotaryPro</span>
-      </a>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home 1</a></li>
-      <li><a href="home2.html">Home 2</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="care-plans.html">Care Plans</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
+    <!-- Header -->
+    <header>
+        <div class="container container-header flex-between" style="padding: 0 1rem;">
+            <div class="logo">
+                <a href="index.html" class="brand-logo-link">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
+                </a>
+            </div>
 
-    </ul>
-    <div class="nav-actions">
-      <div class="nav-ctas">
-        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
-        <a href="register.html" class="btn btn-primary btn-sm">Sign Up</a>
-      </div>
-      <div class="nav-toggles">
-        <button class="toggle-btn" id="theme-toggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
-        <button class="toggle-btn" id="rtl-toggle" aria-label="Toggle RTL"><i data-lucide="languages"></i></button>
-      </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="care-plans.html" class="nav-link">Care Plans</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+
+            <div class="flex-center" style="gap: 0.5rem;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
+                    <i data-lucide="moon"></i>
+                </div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
+                </div>
+                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0"
+                    style="display: none;">
+                    <i data-lucide="menu"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero section"
+        style="padding: 13rem 0 9rem; position: relative; background-image: url('img/hero-bg-v2.png'); background-size: cover; background-position: center;">
+        <div
+            style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(5,46,22,0.6) 100%); z-index: 1;">
+        </div>
+        <div class="container"
+            style="position: relative; z-index: 2; max-width: 860px; margin: 0 auto; text-align: center;">
+            <div class="hero-content reveal" style="margin: 0 auto;">
+                <!-- Pill label -->
+                <div
+                    style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #86efac; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: var(--radius-full); margin-bottom: 1.75rem; backdrop-filter: blur(4px);">
+                    <i data-lucide="flask-conical" style="width: 14px; height: 14px;"></i>
+                    Live Workshops · Kimchi · Kombucha · Sourdough
+                </div>
+
+                <h1 style="font-size: 4rem; color: #ffffff; line-height: 1.1; margin-bottom: 1.5rem;">
+                    Discover the<br>
+                    <span class="hero-gradient-text">Art of Fermentation</span>
+                </h1>
+
+                <p
+                    style="font-size: 1.2rem; color: rgba(255,255,255,0.85); margin-bottom: 2.5rem; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                    Master Kimchi, Kombucha, and more. Transform simple ingredients into probiotic powerhouses for your
+                    gut health.
+                </p>
+
+                <div class="flex-center" style="gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="services.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">
+                        Join Workshop <i data-lucide="arrow-right" style="width: 18px;"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-glass" style="padding: 1rem 2rem; font-size: 1rem;">
+                        Book a Session
+                    </a>
+                </div>
+
+                <!-- Trust indicators -->
+                <div
+                    style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;">
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+                        <i data-lucide="check-circle" style="width: 16px; color: #22c55e;"></i> No experience needed
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+                        <i data-lucide="check-circle" style="width: 16px; color: #22c55e;"></i> Take-home jars included
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+                        <i data-lucide="check-circle" style="width: 16px; color: #22c55e;"></i> Expert instructors
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TRUST TICKER ==================== -->
+    <div class="trust-bar">
+        <div class="trust-ticker">
+            <span class="trust-item"><i data-lucide="award" style="width:16px; height:16px;"></i> 5,000+ Happy
+                Students</span>
+            <span class="trust-item"><i data-lucide="star" style="width:16px; height:16px;"></i> 4.9 Star Rating</span>
+            <span class="trust-item"><i data-lucide="flask-conical" style="width:16px; height:16px;"></i> 14+ Years of
+                Expertise</span>
+            <span class="trust-item"><i data-lucide="leaf" style="width:16px; height:16px;"></i> 100% Organic
+                Ingredients</span>
+            <span class="trust-item"><i data-lucide="shield-check" style="width:16px; height:16px;"></i> Lab-Grade
+                Cultures</span>
+            <span class="trust-item"><i data-lucide="globe" style="width:16px; height:16px;"></i> Global Fermenter
+                Community</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="trust-item"><i data-lucide="award" style="width:16px; height:16px;"></i> 5,000+ Happy
+                Students</span>
+            <span class="trust-item"><i data-lucide="star" style="width:16px; height:16px;"></i> 4.9 Star Rating</span>
+            <span class="trust-item"><i data-lucide="flask-conical" style="width:16px; height:16px;"></i> 14+ Years of
+                Expertise</span>
+            <span class="trust-item"><i data-lucide="leaf" style="width:16px; height:16px;"></i> 100% Organic
+                Ingredients</span>
+            <span class="trust-item"><i data-lucide="shield-check" style="width:16px; height:16px;"></i> Lab-Grade
+                Cultures</span>
+            <span class="trust-item"><i data-lucide="globe" style="width:16px; height:16px;"></i> Global Fermenter
+                Community</span>
+        </div>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
+
+    <!-- ==================== STATS STRIP ==================== -->
+    <div class="stats-strip">
+        <div class="stat-item reveal">
+            <div class="stat-number">5k+</div>
+            <div class="stat-label">Happy Students</div>
+        </div>
+        <div class="stat-item reveal" style="animation-delay: 0.1s;">
+            <div class="stat-number">14+</div>
+            <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item reveal" style="animation-delay: 0.2s;">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Unique Cultures</div>
+        </div>
+        <div class="stat-item reveal" style="animation-delay: 0.3s;">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-label">Average Rating</div>
+        </div>
+    </div>
+
+    <!-- ==================== ABOUT PREVIEW ==================== -->
+    <section class="section" style="background: var(--bg-alt); overflow: visible;">
+        <div class="container grid" style="grid-template-columns: 1fr 1.4fr; align-items: center; gap: 5rem;">
+            <div class="reveal about-img-wrap">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM.jpeg" alt="Our Studio"
+                    style="border-radius: var(--radius-lg); display: block; width: 100%;">
+                <div class="about-float-badge">
+                    <div style="font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1;">14+</div>
+                    <div style="font-size: 0.85rem; color: var(--text-alt); font-weight: 500;">Years
+                        crafting<br>fermented culture</div>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="section-label">
+                    <i data-lucide="heart" style="width: 13px; height: 13px;"></i>
+                    Our Story
+                </div>
+                <h2 style="font-size: 2.75rem; margin-bottom: 1.5rem; line-height: 1.2;">Cultivating Tradition<br><em
+                        style="font-style: normal; color: var(--primary);">&amp; Health</em></h2>
+                <p style="color: var(--text-alt); margin-bottom: 1.25rem; line-height: 1.8;">Our studio is more than
+                    just a workshop — it's a community dedicated to the ancient craft of fermentation. We believe in
+                    slow living, sustainable practices, and the incredible science behind natural probiotics.</p>
+                <p style="color: var(--text-alt); margin-bottom: 2.5rem; line-height: 1.8;">Every jar we create connects
+                    us to a lineage of fermenters who understood that the best things in life require patience,
+                    intention, and a healthy culture.</p>
+                <div class="story-actions" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <a href="about.html" class="btn btn-primary">Our Story <i data-lucide="arrow-right"
+                            style="width: 16px;"></i></a>
+                    <a href="services.html" class="btn btn-secondary">All Workshops</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WORKSHOPS ==================== -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="book-open" style="width: 13px; height: 13px;"></i>
+                    Workshops
+                </div>
+                <h2 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Popular Workshops</h2>
+                <p style="color: var(--text-alt); max-width: 500px; margin: 0 auto;">Start your fermentation journey
+                    with our most-loved hands-on sessions</p>
+            </div>
+
+            <div class="grid grid-3">
+                <!-- Card 1 -->
+                <div class="workshop-card reveal">
+                    <div class="workshop-card-img-wrap">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM.jpeg" alt="Kimchi Workshop">
+                        <div class="workshop-card-tag">Most Popular</div>
+                    </div>
+                    <div class="workshop-card-body">
+                        <div class="workshop-card-meta">
+                            <span><i data-lucide="clock" style="width:13px; height:13px;"></i> Half Day</span>
+                            <span><i data-lucide="users" style="width:13px; height:13px;"></i> Max 10 students</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Kimchi Workshop</h3>
+                        <p
+                            style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7;">
+                            Master the balance of spice, salt, and crunch in this traditional Korean workshop. Perfect
+                            for all skill levels.</p>
+                        <div class="ws-card-footer"
+                            style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">$89</span>
+                            <a href="services.html" class="btn btn-secondary"
+                                style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="workshop-card reveal" style="animation-delay: 0.1s;">
+                    <div class="workshop-card-img-wrap">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Kombucha Brewing">
+                        <div class="workshop-card-tag" style="background: #f59e0b;">Trending</div>
+                    </div>
+                    <div class="workshop-card-body">
+                        <div class="workshop-card-meta">
+                            <span><i data-lucide="clock" style="width:13px; height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px; height:13px;"></i> Max 8 students</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Kombucha Brewing</h3>
+                        <p
+                            style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7;">
+                            Learn the science of SCOBY and craft your own fizzy, probiotic-rich elixirs from a live
+                            culture you take home.</p>
+                        <div class="ws-card-footer"
+                            style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">$119</span>
+                            <a href="services.html" class="btn btn-secondary"
+                                style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="workshop-card reveal" style="animation-delay: 0.2s;">
+                    <div class="workshop-card-img-wrap">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Starter Kits">
+                        <div class="workshop-card-tag" style="background: #8b5cf6;">New</div>
+                    </div>
+                    <div class="workshop-card-body">
+                        <div class="workshop-card-meta">
+                            <span><i data-lucide="package" style="width:13px; height:13px;"></i> Take-Home Kit</span>
+                            <span><i data-lucide="star" style="width:13px; height:13px;"></i> Beginner Friendly</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Starter Kits</h3>
+                        <p
+                            style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7;">
+                            Everything you need to start your fermentation journey at home, curated by our master
+                            fermenters.</p>
+                        <div class="ws-card-footer"
+                            style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">$55</span>
+                            <a href="services.html" class="btn btn-secondary"
+                                style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" class="reveal">
+                <a href="services.html" class="btn btn-primary">Explore All Workshops <i data-lucide="arrow-right"
+                        style="width: 16px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BENEFITS ==================== -->
+    <section class="section" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal">
+                <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac;">
+                    <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+                    Why Fermentation?
+                </div>
+                <h2 style="font-size: 2.5rem; color: white; margin-top: 0.5rem;">The Benefits That Matter</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon-wrap">
+                        <i data-lucide="shield-check" style="width: 32px; height: 32px; color: white;"></i>
+                    </div>
+                    <h3 style="color: white; margin-bottom: 0.75rem;">Gut Health</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">Boost your immune
+                        system with billions of natural probiotics that heal from within.</p>
+                </div>
+                <div class="benefit-card reveal" style="animation-delay: 0.1s;">
+                    <div class="benefit-icon-wrap">
+                        <i data-lucide="leaf" style="width: 32px; height: 32px; color: white;"></i>
+                    </div>
+                    <h3 style="color: white; margin-bottom: 0.75rem;">Natural &amp; Organic</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">No preservatives, no
+                        additives — just raw ingredients, sea salt, and time.</p>
+                </div>
+                <div class="benefit-card reveal" style="animation-delay: 0.2s;">
+                    <div class="benefit-icon-wrap">
+                        <i data-lucide="recycle" style="width: 32px; height: 32px; color: white;"></i>
+                    </div>
+                    <h3 style="color: white; margin-bottom: 0.75rem;">Sustainable Living</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">Reduce food waste,
+                        reconnect with nature, and nourish your family sustainably.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="map" style="width: 13px; height: 13px;"></i>
+                    How It Works
+                </div>
+                <h2 style="font-size: 2.75rem;">Your Path to Mastery</h2>
+            </div>
+            <div class="grid process-ribbon" style="grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                <div class="reveal" style="text-align: center;">
+                    <div class="process-step-num">1</div>
+                    <div
+                        style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem;">
+                        <i data-lucide="book-open"
+                            style="width: 36px; height: 36px; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Choose a Workshop</h4>
+                        <p style="color: var(--text-alt); font-size: 0.9rem; line-height: 1.7;">Browse our calendar and
+                            pick a session that fits your schedule and interest.</p>
+                    </div>
+                </div>
+                <div class="reveal" style="text-align: center; animation-delay: 0.1s;">
+                    <div class="process-step-num">2</div>
+                    <div
+                        style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem;">
+                        <i data-lucide="flask-conical"
+                            style="width: 36px; height: 36px; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Ferment With Us</h4>
+                        <p style="color: var(--text-alt); font-size: 0.9rem; line-height: 1.7;">Get hands-on in our
+                            studio. Chop, salt, mix, and bottle your very own ferments.</p>
+                    </div>
+                </div>
+                <div class="reveal" style="text-align: center; animation-delay: 0.2s;">
+                    <div class="process-step-num">3</div>
+                    <div
+                        style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem;">
+                        <i data-lucide="heart"
+                            style="width: 36px; height: 36px; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.75rem;">Enjoy &amp; Share</h4>
+                        <p style="color: var(--text-alt); font-size: 0.9rem; line-height: 1.7;">Take home your jar, care
+                            for it, and share the gut-healthy goodness with loved ones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURED WORKSHOP ==================== -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div class="featured-workshop-strip reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Advanced Masterclass"
+                    class="featured-img">
+                <div class="featured-body">
+                    <span
+                        style="background: var(--primary); color: white; padding: 0.3rem 0.9rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; margin-bottom: 1.5rem;">⭐
+                        Featured</span>
+                    <h2 style="font-size: 2.25rem; margin-bottom: 1.25rem; line-height: 1.2;">Advanced Fermentation
+                        Masterclass</h2>
+                    <p style="color: var(--text-alt); margin-bottom: 2rem; line-height: 1.8;">Go beyond the basics.
+                        Learn wild fermentation, long-term aging techniques, and seasonal recipes from our head
+                        fermenters. A full-day immersion into the world of artisan culture.</p>
+                    <div class="featured-actions" style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--primary);">$199</div>
+                            <div style="font-size: 0.85rem; color: var(--text-alt);">/ Full Day</div>
+                        </div>
+                        <div class="featured-stats" style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--text-alt);">
+                            <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="clock"
+                                    style="width: 14px; color: var(--primary);"></i> 8 Hours</span>
+                            <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="users"
+                                    style="width: 14px; color: var(--primary);"></i> Max 6 Students</span>
+                            <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="map-pin"
+                                    style="width: 14px; color: var(--primary);"></i> Main Studio</span>
+                        </div>
+                    </div>
+                    <a href="services.html" class="btn btn-primary">Book Now <i
+                            data-lucide="arrow-right" style="width: 16px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="message-circle" style="width: 13px; height: 13px;"></i>
+                    Testimonials
+                </div>
+                <h2 style="font-size: 2.75rem; margin-bottom: 0.5rem;">What Our Students Say</h2>
+                <p style="color: var(--text-alt);">Trusted by thousands of home fermenters worldwide</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i
+                            data-lucide="star"></i><i data-lucide="star"></i>
+                    </div>
+                    <p
+                        style="font-style: italic; color: var(--text-alt); line-height: 1.8; margin-bottom: 2rem; font-size: 0.975rem;">
+                        "The Kombucha workshop changed my life! I've been brewing my own for 6 months now and my energy."</p>
+                    <div class="testimonial-author">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Sarah J."
+                            class="testimonial-avatar">
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.95rem;">Sarah J.</div>
+                            <div style="font-size: 0.8rem; color: var(--text-alt);">Food Blogger · NYC</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" style="animation-delay: 0.1s;">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i
+                            data-lucide="star"></i><i data-lucide="star"></i>
+                    </div>
+                    <p
+                        style="font-style: italic; color: var(--text-alt); line-height: 1.8; margin-bottom: 2rem; font-size: 0.975rem;">
+                        "Finally learned the right way to make Kimchi. No more exploding jars! The instructions were so
+                        clear and practical."</p>
+                    <div class="testimonial-author">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Mark T."
+                            class="testimonial-avatar">
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.95rem;">Mark T.</div>
+                            <div style="font-size: 0.8rem; color: var(--text-alt);">Home Cook · Austin</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" style="animation-delay: 0.2s;">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i
+                            data-lucide="star"></i><i data-lucide="star"></i>
+                    </div>
+                    <p
+                        style="font-style: italic; color: var(--text-alt); line-height: 1.8; margin-bottom: 2rem; font-size: 0.975rem;">
+                        "Beautiful studio and amazing hosts. I love how they focus on the science and safety of
+                        fermentation too."</p>
+                    <div class="testimonial-author">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Elena R."
+                            class="testimonial-avatar">
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.95rem;">Elena R.</div>
+                            <div style="font-size: 0.8rem; color: var(--text-alt);">Health Consultant · LA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <div class="cta-banner-content">
+                    <div class="section-label"
+                        style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1.5rem;">
+                        <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
+                        Limited Seats Available
+                    </div>
+                    <h2 style="font-size: 3rem; color: white; margin-bottom: 1rem; line-height: 1.1;">Start Your
+                        Fermentation<br>Journey Today</h2>
+                    <p
+                        style="font-size: 1.15rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+                        Join a community of 5,000+ fermenters from around the world. Your next jar of culture-changing
+                        magic is one session away.</p>
+                    <div class="cta-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-white"
+                            style="padding: 1rem 2rem; font-weight: 700;">Book Your
+                            First Session</a>
+                        <a href="services.html" class="btn btn-glass" style="padding: 1rem 2rem;">Browse Workshops</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+        <div class="container grid grid-4" style="gap: 4rem;">
+            <div>
+                <a href="index.html" class="brand-logo-link" style="justify-content: flex-start;">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
+                </a>
+                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a
+                    time. Join us in our mission to bring fermentation back to every kitchen.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="services.html" class="footer-link">Workshops</a></li>
+                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
+                    <li><a href="about.html" class="footer-link">Our Story</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="phone"></i>
+                    <span>+1 (234) 567 8901</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="clock"></i>
+                    <span>Mon - Sat: 10AM - 6PM</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="mail"></i>
+                    <span>hello@fermentstudio.com</span>
+                </div>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container"
+            style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
     </button>
-  </nav>
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer">
-    <div class="drawer-header">
-      <div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div>
-      <button class="drawer-close" id="drawer-close">✕</button>
-    </div>
-    <ul class="drawer-links">
-      <li><a href="index.html"><i data-lucide="home"></i> Home 1</a></li>
-      <li><a href="home2.html"><i data-lucide="sparkles"></i> Home 2</a></li>
-      <li><a href="services.html"><i data-lucide="briefcase"></i> Services</a></li>
-      <li><a href="about.html"><i data-lucide="user"></i> About</a></li>
-      <li><a href="care-plans.html"><i data-lucide="shield-check"></i> Care Plans</a></li>
-      <li><a href="contact.html"><i data-lucide="phone"></i> Contact</a></li>
-      <li><a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
 
-    </ul>
-    <div class="drawer-toggles">
-      <button class="toggle-btn" id="theme-toggle-m" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
-      <button class="toggle-btn" id="rtl-toggle-m" aria-label="Toggle RTL"><i data-lucide="languages"></i></button>
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="flex-between" style="margin-bottom: 2rem;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
+            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="index.html" class="nav-link active">Home 1</a>
+            <a href="index-2.html" class="nav-link">Home 2</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="care-plans.html" class="nav-link">Care Plans</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
+        </nav>
     </div>
-    <div class="drawer-cta">
-      <a href="register.html" class="btn btn-primary btn-full">Sign Up</a>
-      <a href="login.html" class="btn btn-secondary btn-full">Login</a>
-    </div>
-  </div>
-  <div class="drawer-overlay" id="drawer-overlay"></div>
-</header>
-
-<!-- ═══════════ HERO ═══════════ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-badge animate-fadeup"><i data-lucide="shield-check"></i> Certified & Licensed Notary</div>
-        <h1 class="hero-title animate-fadeup" style="animation-delay:0.1s">
-          Certified Mobile Notary & Professional <span class="gradient-text">Loan Signing Agent</span>
-        </h1>
-        <p class="hero-subtitle animate-fadeup" style="animation-delay:0.2s">Reliable notarization at your home, office, or hospital. We handle legal documents, real estate packages, and trust signings — available 24/7 at your convenience.</p>
-        <div class="hero-tags animate-fadeup" style="animation-delay:0.25s">
-          <span class="hero-tag"><i data-lucide="home"></i> Mobile Specialist</span>
-          <span class="hero-tag"><i data-lucide="file-signature"></i> Certified LSA</span>
-          <span class="hero-tag"><i data-lucide="clock"></i> 24/7 Service</span>
-        </div>
-        <div class="hero-ctas animate-fadeup" style="animation-delay:0.3s">
-          <a href="contact.html" class="btn btn-primary btn-lg"><i data-lucide="calendar-check"></i> Schedule Loan Signing</a>
-          <a href="contact.html" class="btn btn-secondary btn-lg"><i data-lucide="file-text"></i> General Notary</a>
-        </div>
-        <div class="hero-trust animate-fadeup" style="animation-delay:0.4s">
-          <div class="trust-item">
-            <span class="number" data-counter data-target="500" data-suffix="+">0+</span>
-            <span class="label">Clients Served</span>
-          </div>
-          <div class="trust-divider"></div>
-          <div class="trust-item">
-            <span class="number" data-counter data-target="10" data-suffix="+ Yrs">0</span>
-            <span class="label">Experience</span>
-          </div>
-          <div class="trust-divider"></div>
-          <div class="trust-item">
-            <span class="number" data-counter data-target="99" data-suffix="%">0%</span>
-            <span class="label">Satisfaction</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-image animate-right" style="animation-delay:0.2s">
-        <div class="hero-image-wrapper">
-          <img src="images/notary_hero_signing.png" alt="Professional notary signing documents" loading="eager" />
-        </div>
-        <div class="hero-float-card card-bottom">
-          <div class="hero-card-icon"><i data-lucide="award"></i></div>
-          <div class="hero-card-text">
-            <span class="value">Certified LSA</span>
-            <span class="label">Loan Signing Agent</span>
-          </div>
-        </div>
-        <div class="hero-float-card card-top">
-          <div class="hero-card-icon"><i data-lucide="map-pin"></i></div>
-          <div class="hero-card-text">
-            <span class="value">Mobile First</span>
-            <span class="label">At Your Location</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ STATS BAR ═══════════ -->
-<div class="stats-bar">
-  <div class="container">
-    <div class="stats-bar-grid">
-      <div class="stat-bar-item reveal">
-        <span class="stat-number" data-counter data-target="1200" data-suffix="+">1200+</span>
-        <div class="stat-label">Documents Notarized</div>
-      </div>
-      <div class="stat-bar-item reveal delay-1">
-        <span class="stat-number" data-counter data-target="500" data-suffix="+">500+</span>
-        <div class="stat-label">Happy Clients</div>
-      </div>
-      <div class="stat-bar-item reveal delay-2">
-        <span class="stat-number" data-counter data-target="10" data-suffix="+">10+</span>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-bar-item reveal delay-3">
-        <span class="stat-number" data-counter data-target="50" data-suffix=" mi">50 mi</span>
-        <div class="stat-label">Service Radius</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════ ABOUT PREVIEW ═══════════ -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image-wrapper reveal-left">
-        <img src="images/notary_mobile_agent.png" alt="Professional notary at work" loading="lazy" />
-        <div class="about-exp-badge">
-          <span class="years">10+</span>
-          <span class="years-label">Years of Trust</span>
-        </div>
-      </div>
-      <div class="about-content reveal-right">
-        <div class="section-badge"><i data-lucide="info"></i> About Us</div>
-        <h2>Your Trusted <span>Mobile Notary</span> Partner</h2>
-        <p>We bring professional notary services directly to your location — whether it's your home, office, hospital, or anywhere convenient for you. Our mission is to make notarization simple, fast, and accessible 24/7.</p>
-        <p>As a certified Loan Signing Agent and Notary Public, we specialize in real estate transactions, legal affidavits, and all document notarization needs with the utmost professionalism.</p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon"><i data-lucide="shield-check"></i></div>
-            <div class="about-feature-text">
-              <strong>NNA Certified Notary</strong>
-              <span>Fully certified and background-checked professional</span>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"><i data-lucide="map-pin"></i></div>
-            <div class="about-feature-text">
-              <strong>We Come to You</strong>
-              <span>Mobile service within 50-mile radius, no travel hassle</span>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"><i data-lucide="clock"></i></div>
-            <div class="about-feature-text">
-              <strong>24/7 Availability</strong>
-              <span>Evening, weekend, and emergency appointments available</span>
-            </div>
-          </div>
-        </div>
-        <a href="about.html" class="btn btn-primary"><i data-lucide="arrow-right"></i> Learn More About Us</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ SERVICES OVERVIEW ═══════════ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="briefcase"></i> What We Offer</div>
-      <h2>Our <span>Notary Services</span></h2>
-      <p>Comprehensive notarization solutions tailored to your personal or business legal needs.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal delay-1">
-        <div class="service-icon"><i data-lucide="file-signature"></i></div>
-        <h3>Loan Signing Services</h3>
-        <p>Expert loan document signing agent for real estate closings, refinances, and mortgage transactions with precision and accuracy.</p>
-        <a href="services.html" class="service-link">Learn More <i data-lucide="arrow-right"></i></a>
-      </div>
-      <div class="service-card reveal delay-2">
-        <div class="service-icon"><i data-lucide="car"></i></div>
-        <h3>Mobile Notary</h3>
-        <p>We travel to your home, office, hospital, or any convenient location to notarize your documents quickly and professionally.</p>
-        <a href="services.html" class="service-link">Learn More <i data-lucide="arrow-right"></i></a>
-      </div>
-      <div class="service-card reveal delay-3">
-        <div class="service-icon"><i data-lucide="home"></i></div>
-        <h3>Real Estate Documents</h3>
-        <p>Title transfers, deeds, purchase agreements, and all real estate-related documents handled with expert care.</p>
-        <a href="services.html" class="service-link">Learn More <i data-lucide="arrow-right"></i></a>
-      </div>
-      <div class="service-card reveal delay-4">
-        <div class="service-icon"><i data-lucide="scroll"></i></div>
-        <h3>Legal Affidavits</h3>
-        <p>Sworn statements, power of attorney, wills, trusts, and all legal affidavits notarized by a certified professional.</p>
-        <a href="services.html" class="service-link">Learn More <i data-lucide="arrow-right"></i></a>
-      </div>
-    </div>
-    <div class="text-center mt-4 reveal">
-      <a href="services.html" class="btn btn-secondary"><i data-lucide="grid-3x3"></i> View All Services</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ WHY CHOOSE US ═══════════ -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="star"></i> Why Choose Us</div>
-      <h2>The <span>NotaryPro</span> Advantage</h2>
-      <p>We stand apart with our commitment to excellence, reliability, and client-first approach.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card reveal delay-1">
-        <div class="benefit-icon"><i data-lucide="award"></i></div>
-        <h3>Certified & Experienced</h3>
-        <p>NNA certified with 10+ years of professional notary experience across diverse legal document types.</p>
-      </div>
-      <div class="benefit-card reveal delay-2">
-        <div class="benefit-icon"><i data-lucide="zap"></i></div>
-        <h3>Fast & Reliable</h3>
-        <p>Same-day and emergency appointments available. We arrive on time, every time — guaranteed.</p>
-      </div>
-      <div class="benefit-card reveal delay-3">
-        <div class="benefit-icon"><i data-lucide="calendar-clock"></i></div>
-        <h3>Flexible Scheduling</h3>
-        <p>Book morning, evening, or weekend appointments. We work around your schedule, not the other way around.</p>
-      </div>
-      <div class="benefit-card reveal delay-4">
-        <div class="benefit-icon"><i data-lucide="lock"></i></div>
-        <h3>Secure & Confidential</h3>
-        <p>Your documents and personal information are handled with the highest level of security and discretion.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ FEATURED SERVICE ═══════════ -->
-<section class="section">
-  <div class="container">
-    <div class="featured-service reveal">
-      <div class="featured-content">
-        <div class="featured-badge"><i data-lucide="star"></i> Featured Service</div>
-        <h2>Professional Loan Signing Agent</h2>
-        <p>As a certified Loan Signing Agent (LSA), we specialize in facilitating real estate closings, refinances, and home equity loans. We ensure every document is correctly signed and notarized, protecting both lenders and borrowers.</p>
-        <div class="featured-price">
-          <span class="from">Starting from</span>
-          <span class="price">$75</span>
-          <span class="period">per signing</span>
-        </div>
-        <div class="featured-service-ctas">
-          <a href="contact.html" class="btn btn-accent btn-lg"><i data-lucide="calendar-check"></i> Book Now</a>
-          <a href="services.html" class="btn btn-ghost btn-lg"><i data-lucide="info"></i> Learn More</a>
-        </div>
-      </div>
-      <div class="featured-action">
-        <div class="featured-price-card">
-          <div class="stats">
-            <div class="stat"><i data-lucide="check-circle"></i> Same-day appointments</div>
-            <div class="stat"><i data-lucide="check-circle"></i> All lender packages</div>
-            <div class="stat"><i data-lucide="check-circle"></i> E-notary capable</div>
-            <div class="stat"><i data-lucide="check-circle"></i> NNA background checked</div>
-            <div class="stat"><i data-lucide="check-circle"></i> E&O insured</div>
-          </div>
-          <a href="contact.html" class="btn btn-accent btn-full"><i data-lucide="phone"></i> Call Now</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ TESTIMONIALS ═══════════ -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="message-square"></i> Testimonials</div>
-      <h2>What Our <span>Clients Say</span></h2>
-      <p>Trusted by hundreds of individuals, law firms, and real estate professionals.</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal delay-1">
-        <div class="testimonial-stars">
-          <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-        </div>
-        <div class="testimonial-quote-mark">"</div>
-        <p class="testimonial-text">NotaryPro came to my home at 8 PM for an emergency document signing. Incredibly professional and thorough. Highly recommend for any notary needs!</p>
-        <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah M." class="testimonial-avatar" loading="lazy" />
-          <div>
-            <strong>Sarah Mitchell</strong>
-            <span>Home Buyer, Los Angeles</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal delay-2">
-        <div class="testimonial-stars">
-          <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-        </div>
-        <div class="testimonial-quote-mark">"</div>
-        <p class="testimonial-text">We use NotaryPro for all our real estate closings. Always on time, accurate, and our clients love the professional service. A true five-star experience.</p>
-        <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="David R." class="testimonial-avatar" loading="lazy" />
-          <div>
-            <strong>David Rodriguez</strong>
-            <span>Real Estate Agent, Century 21</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal delay-3">
-        <div class="testimonial-stars">
-          <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-        </div>
-        <div class="testimonial-quote-mark">"</div>
-        <p class="testimonial-text">Outstanding loan signing agent. Every document was perfectly executed. Our lender was impressed. Will definitely use NotaryPro for all future closings!</p>
-        <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Jennifer K." class="testimonial-avatar" loading="lazy" />
-          <div>
-            <strong>Jennifer Kim</strong>
-            <span>Attorney, Kim & Associates Law</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ CTA BANNER ═══════════ -->
-<div class="cta-banner">
-  <h2>Need a Notary <span style="color:var(--accent-light)">Today?</span></h2>
-  <p>Available 24/7 for emergency and same-day appointments. Call or book online now.</p>
-  <div class="cta-buttons">
-    <a href="contact.html" class="btn btn-accent btn-lg"><i data-lucide="calendar-check"></i> Book Now</a>
-    <a href="tel:+15551234567" class="btn btn-ghost btn-lg"><i data-lucide="phone"></i> Call (555) 123-4567</a>
-  </div>
-</div>
-
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <div class="logo-icon"><i data-lucide="scale"></i></div>
-          <span class="logo-text">NotaryPro</span>
-        </div>
-        <p>Professional mobile notary and loan signing agent services. We come to you — 24/7, always on time, always certified.</p>
-        <div class="social-links">
-          <a href="#" class="facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.326V1.326C24 .597 23.403 0 22.675 0z"/></svg></a>
-          <a href="#" class="twitter" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg></a>
-          <a href="#" class="linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-          <a href="#" class="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home 1</a></li>
-          <li><a href="home2.html">Home 2</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="care-plans.html">Care Plans</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Client Login</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html">Loan Signing</a></li>
-          <li><a href="services.html">Mobile Notary</a></li>
-          <li><a href="services.html">Real Estate Docs</a></li>
-          <li><a href="services.html">Legal Affidavits</a></li>
-          <li><a href="services.html">Power of Attorney</a></li>
-          <li><a href="care-plans.html">Business Plans</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Info</h4>
-        <div class="footer-contact-item"><i data-lucide="phone"></i> +1 (555) 123-4567</div>
-        <div class="footer-contact-item"><i data-lucide="mail"></i> info@notarypro.com</div>
-        <div class="footer-contact-item"><i data-lucide="map-pin"></i> 123 Legal Ave, Suite 100<br>Los Angeles, CA 90001</div>
-        <div class="footer-contact-item"><i data-lucide="clock"></i> 24/7 — Always Available</div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 NotaryPro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-  </div>
-</footer>
-
-<!-- Back to Top -->
-<button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+    <div id="overlay" class="overlay"></div>
 
 </body>
+
 </html>

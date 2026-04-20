@@ -1,255 +1,173 @@
-/* ============================================================
-   NOTARY PRO — Main JavaScript
-   ============================================================ */
+/**
+ * Fermentation Studio - Main JS
+ * Handles Theme, RTL, Mobile Menu, and Animations
+ */
 
-(() => {
-  'use strict';
-
-  /* ── 1. Theme ── */
-  const getTheme = () => localStorage.getItem('np-theme') || 'light';
-  const applyTheme = (t) => {
-    document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem('np-theme', t);
-    
-    // Update theme toggle icons
-    document.querySelectorAll('#theme-toggle, #theme-toggle-m, #theme-toggle-auth').forEach(btn => {
-      const icon = btn.querySelector('i[data-lucide], svg[data-lucide]');
-      if (icon) {
-        icon.setAttribute('data-lucide', t === 'dark' ? 'sun' : 'moon');
-      }
-    });
-
-    if (window.lucide) lucide.createIcons();
-  };
-  applyTheme(getTheme());
-
-  const toggleTheme = () => applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
-  document.addEventListener('click', e => {
-    if (e.target.closest('#theme-toggle, #theme-toggle-m, #theme-toggle-auth')) toggleTheme();
-  });
-
-  /* ── 2. RTL ── */
-  const getRTL = () => localStorage.getItem('np-rtl') === 'true';
-  const applyRTL = (v) => {
-    document.documentElement.setAttribute('dir', v ? 'rtl' : 'ltr');
-    localStorage.setItem('np-rtl', v);
-  };
-  applyRTL(getRTL());
-
-  document.addEventListener('click', e => {
-    if (e.target.closest('#rtl-toggle, #rtl-toggle-m, #rtl-toggle-auth')) applyRTL(!getRTL());
-  });
-
-  /* ── 3. Header scroll effect ── */
-  const header = document.querySelector('.site-header');
-  if (header) {
-    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-
-  /* ── 4. Active nav link ── */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a, .drawer-links a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      a.classList.add('active');
-    }
-  });
-
-  /* ── 5. Mobile Drawer ── */
-  const hamburger = document.getElementById('hamburger');
-  const drawer = document.getElementById('mobile-drawer');
-  const overlay = document.getElementById('drawer-overlay');
-  const drawerClose = document.getElementById('drawer-close');
-
-  const openDrawer = () => {
-    drawer?.classList.add('open');
-    overlay?.classList.add('open');
-    hamburger?.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-  const closeDrawer = () => {
-    drawer?.classList.remove('open');
-    overlay?.classList.remove('open');
-    hamburger?.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  hamburger?.addEventListener('click', () => drawer?.classList.contains('open') ? closeDrawer() : openDrawer());
-  drawerClose?.addEventListener('click', closeDrawer);
-  overlay?.addEventListener('click', closeDrawer);
-
-  // Close drawer on nav link click (mobile)
-  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-
-  /* ── 6. Scroll Reveal (Intersection Observer) ── */
-  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  if (revealEls.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize Icons (Lucide)
+    const initIcons = () => {
+        if (window.lucide) {
+            lucide.createIcons();
         }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    revealEls.forEach(el => observer.observe(el));
-  }
-
-  /* ── 7. Counter Animation ── */
-  const animateCounter = (el) => {
-    const target = parseFloat(el.getAttribute('data-target') || el.textContent);
-    const suffix = el.getAttribute('data-suffix') || '';
-    const prefix = el.getAttribute('data-prefix') || '';
-    const duration = 1800;
-    const start = performance.now();
-    const isFloat = target % 1 !== 0;
-
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      const value = eased * target;
-      el.textContent = prefix + (isFloat ? value.toFixed(1) : Math.floor(value)) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
-  };
+    initIcons();
+    // Re-run after a short delay just in case
+    setTimeout(initIcons, 500);
 
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
-
-  /* ── 8. FAQ Accordion ── */
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      // close all
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-
-  /* ── 9. Password Toggle ── */
-  document.querySelectorAll('.toggle-pw').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const input = btn.closest('.input-wrapper')?.querySelector('input');
-      if (!input) return;
-      const isText = input.type === 'text';
-      input.type = isText ? 'password' : 'text';
-      const icon = btn.querySelector('[data-lucide]');
-      if (icon) {
-        icon.setAttribute('data-lucide', isText ? 'eye' : 'eye-off');
-        lucide.createIcons();
-      }
-    });
-  });
-
-  /* ── 10. Back to Top ── */
-  const btt = document.querySelector('.back-to-top');
-  if (btt) {
-    window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400), { passive: true });
-    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
-
-  /* ── 11. 3D Tilt Effect (Home 2 only) ── */
-  const tiltCards = document.querySelectorAll('.tilt-card');
-  tiltCards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0)';
-    });
-  });
-
-  /* ── 12. Dashboard Sidebar Toggle ── */
-  const sidebarMenuToggle = document.getElementById('sidebar-menu-toggle');
-  const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
-  const sidebar = document.querySelector('.sidebar');
-  const sidebarOverlay = document.querySelector('.sidebar-overlay');
-
-  const toggleSidebar = () => {
-    sidebar.classList.toggle('open');
-    sidebarOverlay?.classList.toggle('open');
-  };
-
-  const openSidebar = () => {
-    sidebar.classList.add('open');
-    sidebarOverlay?.classList.add('open');
-  };
-
-  const closeSidebar = () => {
-    sidebar.classList.remove('open');
-    sidebarOverlay?.classList.remove('open');
-  };
-
-  sidebarMenuToggle?.addEventListener('click', toggleSidebar);
-  sidebarCloseBtn?.addEventListener('click', closeSidebar);
-  sidebarOverlay?.addEventListener('click', closeSidebar);
-
-  /* ── 13. Smooth Anchor Scroll ── */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  /* ── 14. Newsletter form ── */
-  const newsletterForms = document.querySelectorAll('.newsletter-form');
-  newsletterForms.forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const input = form.querySelector('input[type="email"]');
-      const btn = form.querySelector('button');
-      if (!input?.value) return;
-      btn.textContent = '✓ Subscribed!';
-      btn.style.background = '#22c55e';
-      input.value = '';
-      setTimeout(() => {
-        btn.textContent = 'Subscribe';
-        btn.style.background = '';
-      }, 3000);
-    });
-  });
-
-  /* ── 15. Contact form ── */
-  const contactForm = document.getElementById('contact-form');
-  contactForm?.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('[type="submit"]');
-    const orig = btn.textContent;
-    btn.textContent = '✓ Message Sent!';
-    btn.disabled = true;
-    setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
-  });
-
-  /* ── 16. Init Lucide Icons ── */
-  const initIcons = () => {
-    if (window.lucide) {
-      lucide.createIcons();
+    // 2. Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcon('dark');
+        themeBtn?.classList.add('active'); // Highlight icon in dark mode
     }
-  };
 
-  // Initial call
-  initIcons();
+    const handleThemeToggle = () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeIcon(theme);
+        themeBtn?.classList.toggle('active', theme === 'dark');
+    };
 
-})();
+    themeBtn?.addEventListener('click', handleThemeToggle);
+    themeBtn?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleThemeToggle();
+        }
+    });
+
+    function updateThemeIcon(theme) {
+        const icon = themeBtn?.querySelector('i');
+        if (icon && window.lucide) {
+            icon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+    }
+
+    // 3. RTL Toggle
+    const rtlBtn = document.getElementById('rtl-toggle');
+    const isRtl = localStorage.getItem('rtl') === 'true';
+
+    if (isRtl) {
+        document.body.classList.add('rtl');
+        rtlBtn?.classList.add('active'); // Highlight icon in RTL mode
+    }
+
+    const handleRtlToggle = () => {
+        const active = document.body.classList.toggle('rtl');
+        localStorage.setItem('rtl', active);
+        rtlBtn?.classList.toggle('active', active);
+    };
+
+    rtlBtn?.addEventListener('click', handleRtlToggle);
+    rtlBtn?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleRtlToggle();
+        }
+    });
+
+    // 4. Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-toggle');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('close-menu');
+
+    const toggleMenu = () => {
+        drawer?.classList.toggle('open');
+        overlay?.classList.toggle('open');
+        document.body.style.overflow = drawer?.classList.contains('open') ? 'hidden' : '';
+    };
+
+    menuBtn?.addEventListener('click', toggleMenu);
+    closeBtn?.addEventListener('click', toggleMenu);
+    overlay?.addEventListener('click', toggleMenu);
+
+    // 5. Sticky Header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+    });
+
+    // 6. Reveal Scroll Animations
+    const observerOptions = {
+        threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 7. Password Visibility Toggle
+    document.querySelectorAll('.password-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.previousElementSibling;
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+            const icon = btn.querySelector('i');
+            if (icon && window.lucide) {
+                icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
+                lucide.createIcons();
+            }
+        });
+    });
+
+    // 8. Dashboard Sidebar Collapse (Mobile)
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    sidebarToggle?.addEventListener('click', () => {
+        sidebar?.classList.toggle('active');
+    });
+
+    // 9. 3D Tilt Effect
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+
+    // 10. Back to Top Functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTopBtn?.classList.add('visible');
+        } else {
+            backToTopBtn?.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});

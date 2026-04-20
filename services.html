@@ -1,322 +1,407 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services — NotaryPro</title>
-  <meta name="description" content="Explore our full range of notary services including loan signing, mobile notary, real estate documents, legal affidavits, and more." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 4-1.34 4-4V3h8v.006A6.42 6.42 0 0 1 18.5 7H21'/></svg>" type="image/svg+xml">
-  <style>
-    .services-detail-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:28px; }
-    .service-detail-card {
-      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg);
-      overflow:hidden; transition:var(--transition);
-      display: flex; flex-direction: column; height: 100%;
-    }
-    .service-detail-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
-    .service-detail-card img { width:100%; height:200px; object-fit:cover; display:block; flex-shrink: 0; }
-    
-    /* Responsive for service detail cards */
-    @media (max-width: 1024px) {
-      .services-detail-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-    }
-    @media (max-width: 768px) {
-      .services-detail-grid {
-        grid-template-columns: 1fr;
-      }
-      .service-detail-card .btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-    @media (max-width: 480px) {
-      .services-detail-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .service-detail-card .btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-    .service-detail-content { padding:24px; display: flex; flex-direction: column; flex-grow: 1; }
-    .service-detail-content h3 { font-size:1.1rem; font-weight:800; margin-bottom:8px; }
-    .service-detail-content p { font-size:0.86rem; color:var(--text-secondary); line-height:1.75; margin-bottom:16px; }
-    .service-detail-features { display:flex; flex-direction:column; gap:7px; margin-bottom:18px; }
-    .s-feature { display:flex; align-items:center; gap:9px; font-size:0.83rem; color:var(--text-secondary); }
-    .s-feature svg { width:14px; height:14px; color:var(--primary); flex-shrink:0; }
-    [data-theme="dark"] .s-feature svg { color:var(--accent-light); }
-    .service-detail-price { display:flex; align-items:baseline; gap:6px; margin-bottom:16px; padding-top:14px; border-top:1px solid var(--border); }
-    .s-price { font-size:1.6rem; font-weight:900; color:var(--primary); }
-    [data-theme="dark"] .s-price { color:var(--accent-light); }
-    .s-from { font-size:0.78rem; color:var(--text-muted); }
-
-    /* Pricing Table */
-    .pricing-note { text-align:center; font-size:0.85rem; color:var(--text-muted); margin-top:20px; }
-    .pricing-table { width:100%; border-collapse:collapse; background:var(--bg-card); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
-    .pricing-table th { background:var(--primary); color:white; padding:14px 20px; text-align:left; font-size:0.87rem; font-weight:700; }
-    [dir="rtl"] .pricing-table th { text-align:right; }
-    .pricing-table td { padding:13px 20px; font-size:0.85rem; border-bottom:1px solid var(--border); color:var(--text-secondary); }
-    .pricing-table tr:last-child td { border-bottom:none; }
-    .pricing-table tr:hover td { background:var(--bg-secondary); }
-    .pricing-table td:first-child { font-weight:600; color:var(--text); }
-    .price-cell { font-weight:700; color:var(--primary); }
-    [data-theme="dark"] .price-cell { color:var(--accent-light); }
-  </style>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
-  <script src="main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops &amp; Services | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+    <link rel="icon" type="image/png" href="img/brand-logo.png">
+    <style>
+        .faq-card details > summary { list-style: none; outline: none; }
+        .faq-card details > summary::-webkit-details-marker { display: none; }
+        .faq-card details[open] .faq-icon { transform: rotate(180deg); }
+        .faq-card details p { margin: 0; }
+        .faq-card details[open] .faq-content { animation: faqSlideDown 0.3s ease-out forwards; }
+        @keyframes faqSlideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .pkg-table { 
+                min-width: 700px; /* Ensure 4 columns have room */
+            }
+            .pkg-table th, .pkg-table td {
+                padding: 1rem !important;
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- HEADER -->
-<header class="site-header"><nav class="nav-container">
-  <div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home 1</a></li><li><a href="home2.html">Home 2</a></li>
-    <li><a href="services.html" class="active">Services</a></li><li><a href="about.html">About</a></li>
-    <li><a href="care-plans.html">Care Plans</a></li><li><a href="contact.html">Contact</a></li><li><a href="dashboard.html">Dashboard</a></li>
-  </ul>
-  <div class="nav-actions">
-    <div class="nav-ctas"><a href="login.html" class="btn btn-secondary btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Sign Up</a></div>
-    <div class="nav-toggles"><button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button><button class="toggle-btn" id="rtl-toggle"><i data-lucide="languages"></i></button></div>
-  </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-drawer" id="mobile-drawer">
-  <div class="drawer-header"><div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div><button class="drawer-close" id="drawer-close">✕</button></div>
-  <ul class="drawer-links">
-    <li><a href="index.html"><i data-lucide="home"></i> Home 1</a></li><li><a href="home2.html"><i data-lucide="sparkles"></i> Home 2</a></li>
-    <li><a href="services.html"><i data-lucide="briefcase"></i> Services</a></li><li><a href="about.html"><i data-lucide="user"></i> About</a></li>
-    <li><a href="care-plans.html"><i data-lucide="shield-check"></i> Care Plans</a></li><li><a href="contact.html"><i data-lucide="phone"></i> Contact</a></li><li><a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
-  </ul>
-  <div class="drawer-toggles"><button class="toggle-btn" id="theme-toggle-m"><i data-lucide="moon"></i></button><button class="toggle-btn" id="rtl-toggle-m"><i data-lucide="languages"></i></button></div>
-  <div class="drawer-cta"><a href="register.html" class="btn btn-primary btn-full">Sign Up</a><a href="login.html" class="btn btn-secondary btn-full">Login</a></div>
-</div>
-<div class="drawer-overlay" id="drawer-overlay"></div>
-</header>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <div class="page-hero-inner container">
-    <div class="breadcrumb"><a href="index.html">Home</a><i data-lucide="chevron-right"></i><span>Services</span></div>
-    <h1>Our Notary <span>Services</span></h1>
-    <p>Comprehensive notarization solutions for individuals, businesses, law firms, and real estate professionals.</p>
-  </div>
-</div>
-
-<!-- ALL SERVICES OVERVIEW GRID -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="grid-3x3"></i> All Services</div>
-      <h2>What We <span>Offer</span></h2>
-      <p>Every notary service you need, delivered professionally at your location.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal delay-1"><div class="service-icon"><i data-lucide="file-signature"></i></div><h3>Loan Signing</h3><p>Certified LSA for all real estate loan document packages including purchase, refinance, and HELOC signings.</p><a href="#loan-signing" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-2"><div class="service-icon"><i data-lucide="car"></i></div><h3>Mobile Notary</h3><p>We come to your home, office, hospital, or any location within our 50-mile service area.</p><a href="#mobile-notary" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-3"><div class="service-icon"><i data-lucide="home"></i></div><h3>Real Estate Docs</h3><p>Deeds, title transfers, purchase agreements, and all real estate transaction documents.</p><a href="#real-estate" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-4"><div class="service-icon"><i data-lucide="scroll"></i></div><h3>Legal Affidavits</h3><p>Sworn statements, power of attorney, wills, trusts, and all notarized legal affidavits.</p><a href="#affidavits" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-1"><div class="service-icon"><i data-lucide="pen-tool"></i></div><h3>Power of Attorney</h3><p>General, limited, durable, and medical POA documents notarized quickly and accurately.</p><a href="#" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-2"><div class="service-icon"><i data-lucide="heart"></i></div><h3>Healthcare Directives</h3><p>Living wills, advance directives, and healthcare proxy documents notarized with care.</p><a href="#" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-3"><div class="service-icon"><i data-lucide="globe"></i></div><h3>Immigration Docs</h3><p>Certified translations and notarization of immigration-related documents and affidavits.</p><a href="#" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-      <div class="service-card reveal delay-4"><div class="service-icon"><i data-lucide="building"></i></div><h3>Corporate Documents</h3><p>Business contracts, corporate resolutions, articles of incorporation, and more.</p><a href="#" class="service-link">Details <i data-lucide="arrow-right"></i></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- DETAILED SERVICE CARDS -->
-<!-- DETAILED SERVICE IMMERSIVE SECTIONS -->
-<section class="section-immersive" id="loan-signing">
-  <div class="immersive-bg"><img src="images/notary_handshake.png" alt="Loan signing" loading="lazy"></div>
-  <div class="immersive-overlay"></div>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-badge"><i data-lucide="file-signature"></i> Certified Loan Signing</div>
-      <h2 style="font-size:clamp(2rem,5vw,3rem);margin-bottom:20px;">Expert <span>Loan Signing</span> Agent</h2>
-      <p style="max-width:600px;font-size:1.1rem;margin-bottom:30px;">As a certified Loan Signing Agent, we handle all types of mortgage and real estate loan packages. Every document is reviewed, correctly signed, and returned on time.</p>
-      <div class="service-detail-features" style="margin-bottom:40px;">
-        <div class="s-feature"><i data-lucide="check-circle"></i> Purchase loan signings & Refinance packages</div>
-        <div class="s-feature"><i data-lucide="check-circle"></i> HELOC & home equity loan documents</div>
-        <div class="s-feature"><i data-lucide="check-circle"></i> Reverse mortgages & seller packages</div>
-      </div>
-      <div class="service-detail-price" style="border:none;padding:0;margin-bottom:30px;">
-        <span class="s-from" style="color:rgba(255,255,255,0.6)">Starting at</span><span class="s-price" style="font-size:2.5rem;color:var(--accent-light)">$75</span>
-      </div>
-      <a href="contact.html" class="btn btn-accent btn-lg">Book Loan Signing</a>
-    </div>
-  </div>
-</section>
-
-<section class="section-immersive" id="mobile-notary">
-  <div class="immersive-bg"><img src="images/notary_mobile_agent.png" alt="Mobile notary" loading="lazy"></div>
-  <div class="immersive-overlay"></div>
-  <div class="container" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-    <div class="reveal" style="max-width:700px;">
-      <div class="section-badge" style="margin-left: auto;"><i data-lucide="map-pin"></i> 24/7 Mobile Service</div>
-      <h2 style="font-size:clamp(2rem,5vw,3rem);margin-bottom:20px;">We Come To <span>You</span></h2>
-      <p style="font-size:1.1rem;margin-bottom:30px;">We eliminate the inconvenience of finding a notary. We come directly to your home, office, hospital, or any location within our 50-mile service area.</p>
-      <div class="service-detail-features" style="margin-bottom:40px; align-items: flex-end;">
-        <div class="s-feature" style="flex-direction: row-reverse;"><i data-lucide="check-circle"></i> 24/7 Availability including weekends & holidays</div>
-        <div class="s-feature" style="flex-direction: row-reverse;"><i data-lucide="check-circle"></i> Hospital & detention center visits</div>
-        <div class="s-feature" style="flex-direction: row-reverse;"><i data-lucide="check-circle"></i> Emergency same-day appointments</div>
-      </div>
-      <div class="service-detail-price" style="border:none;padding:0;margin-bottom:30px;justify-content: flex-end;">
-        <span class="s-from" style="color:rgba(255,255,255,0.6)">Starting at</span><span class="s-price" style="font-size:2.5rem;color:var(--accent-light)">$50</span>
-      </div>
-      <a href="contact.html" class="btn btn-accent btn-lg">Schedule Mobile Notary</a>
-    </div>
-  </div>
-</section>
-
-<section class="section-immersive" id="real-estate">
-  <div class="immersive-bg"><img src="images/notary_documents_office.png" alt="Real estate documents" loading="lazy"></div>
-  <div class="immersive-overlay"></div>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-badge"><i data-lucide="home"></i> Real Estate Expertise</div>
-      <h2 style="font-size:clamp(2rem,5vw,3rem);margin-bottom:20px;">Real Estate <span>Document</span> Specialist</h2>
-      <p style="max-width:600px;font-size:1.1rem;margin-bottom:30px;">From deeds and title transfers to purchase agreements and closing disclosures, we handle every document with meticulous attention to detail.</p>
-      <div class="service-detail-features" style="margin-bottom:40px;">
-        <div class="s-feature"><i data-lucide="check-circle"></i> Grant, Quitclaim & Warranty Deeds</div>
-        <div class="s-feature"><i data-lucide="check-circle"></i> Title transfers & Closing disclosures</div>
-        <div class="s-feature"><i data-lucide="check-circle"></i> Property tax & occupancy affidavits</div>
-      </div>
-      <div class="service-detail-price" style="border:none;padding:0;margin-bottom:30px;">
-        <span class="s-from" style="color:rgba(255,255,255,0.6)">Starting at</span><span class="s-price" style="font-size:2.5rem;color:var(--accent-light)">$65</span>
-      </div>
-      <a href="contact.html" class="btn btn-accent btn-lg">Order Real Estate Signing</a>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING TABLE -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="dollar-sign"></i> Pricing</div>
-      <h2>Transparent <span>Service Rates</span></h2>
-      <p>No hidden fees. Clear, competitive pricing for all notary services.</p>
-    </div>
-    <div class="reveal" style="overflow-x:auto;">
-      <table class="pricing-table">
-        <thead>
-          <tr><th>Service</th><th>Base Rate</th><th>Travel Fee</th><th>Estimated Total</th><th>Availability</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Loan Signing (Standard)</td><td class="price-cell">$75</td><td>Included</td><td class="price-cell">$75</td><td>24/7</td></tr>
-          <tr><td>Loan Signing (Complex)</td><td class="price-cell">$125</td><td>Included</td><td class="price-cell">$125</td><td>24/7</td></tr>
-          <tr><td>Mobile Notary (Local)</td><td class="price-cell">$50</td><td>Included</td><td class="price-cell">$50</td><td>24/7</td></tr>
-          <tr><td>Mobile Notary (Extended)</td><td class="price-cell">$50</td><td>$0.65/mi</td><td class="price-cell">Varies</td><td>24/7</td></tr>
-          <tr><td>Real Estate Documents</td><td class="price-cell">$65</td><td>Included</td><td class="price-cell">$65</td><td>24/7</td></tr>
-          <tr><td>Power of Attorney</td><td class="price-cell">$40</td><td>Included</td><td class="price-cell">$40</td><td>24/7</td></tr>
-          <tr><td>Legal Affidavit</td><td class="price-cell">$35</td><td>Included</td><td class="price-cell">$35</td><td>24/7</td></tr>
-          <tr><td>Emergency / After-Hours</td><td class="price-cell">+$25</td><td>Included</td><td class="price-cell">Base + $25</td><td>Emergency</td></tr>
-        </tbody>
-      </table>
-      <p class="pricing-note"><i data-lucide="info"></i> State notary fees per signature may apply. Contact us for exact quotes on complex documents.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section section-alt" id="affidavits">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="help-circle"></i> FAQ</div>
-      <h2>Frequently Asked <span>Questions</span></h2>
-      <p>Everything you need to know about our notary services.</p>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button class="faq-question">What documents do I need to bring to my appointment? <span class="faq-icon"><i data-lucide="chevron-down"></i></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Please bring a valid government-issued photo ID (driver's license, passport, or state ID). For loan signings, the title company will send all documents in advance. For other services, bring the documents that need notarization and any additional forms required.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How far in advance do I need to schedule? <span class="faq-icon"><i data-lucide="chevron-down"></i></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">We accommodate same-day appointments whenever possible. For loan signings, we recommend at least 2-4 hours notice. Emergency appointments are available 24/7 for urgent needs.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Do you offer remote online notarization (RON)? <span class="faq-icon"><i data-lucide="chevron-down"></i></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes! We offer Remote Online Notarization (RON) via video conference for documents permitted by California law. This is a secure, convenient option for clients who cannot meet in person.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Are you bonded and insured? <span class="faq-icon"><i data-lucide="chevron-down"></i></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. We carry Errors & Omissions (E&O) insurance and a notary bond as required by California law. Your documents and transactions are fully protected throughout the signing process.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What forms of payment do you accept? <span class="faq-icon"><i data-lucide="chevron-down"></i></span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">We accept cash, check, Zelle, Venmo, PayPal, and all major credit and debit cards. For corporate accounts, we also offer monthly invoicing through our Care Plans.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-banner">
-  <h2>Ready to Get <span style="color:var(--accent-light)">Started?</span></h2>
-  <p>Book your notary appointment today. Fast, professional, and convenient.</p>
-  <div class="cta-buttons">
-    <a href="contact.html" class="btn btn-accent btn-lg"><i data-lucide="calendar-check"></i> Book Notary</a>
-    <a href="contact.html" class="btn btn-ghost btn-lg"><i data-lucide="clock"></i> Schedule Appointment</a>
-  </div>
-</div>
-
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <div class="logo-icon"><i data-lucide="scale"></i></div>
-          <span class="logo-text">NotaryPro</span>
+    <!-- Header -->
+    <header>
+        <div class="container container-header flex-between" style="padding: 0 1rem;">
+            <div class="logo">
+                <a href="index.html" class="brand-logo-link">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="care-plans.html" class="nav-link">Care Plans</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+            <div class="flex-center" style="gap: 0.5rem;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0"><i data-lucide="moon"></i></div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
+                </div>
+                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;"><i data-lucide="menu"></i></div>
+            </div>
         </div>
-        <p>Professional mobile notary and loan signing agent services. We come to you — 24/7, always on time, always certified.</p>
-        <div class="social-links">
-          <a href="#" class="facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.326V1.326C24 .597 23.403 0 22.675 0z"/></svg></a>
-          <a href="#" class="twitter" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg></a>
-          <a href="#" class="linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-          <a href="#" class="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    </header>
+    
+    <!-- Hero -->
+    <section class="page-hero" style="background-image: url('img/services-bg.png');">
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="reveal">
+                <div class="page-hero-tag">
+                    <i data-lucide="book-open" style="width: 13px; height: 13px;"></i>
+                    Hands-On Learning
+                </div>
+                <h1 style="font-size: 3.75rem; color: #fff; margin-bottom: 1rem; line-height: 1.1;">Our Workshops</h1>
+                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.85); max-width: 620px; margin: 0 auto; line-height: 1.8;">From absolute beginners to advanced fermenters, we have a session crafted for every skill level.</p>
+            </div>
         </div>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home 1</a></li>
-          <li><a href="home2.html">Home 2</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="care-plans.html">Care Plans</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Client Login</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html">Loan Signing</a></li>
-          <li><a href="services.html">Mobile Notary</a></li>
-          <li><a href="services.html">Real Estate Docs</a></li>
-          <li><a href="services.html">Legal Affidavits</a></li>
-          <li><a href="services.html">Power of Attorney</a></li>
-          <li><a href="care-plans.html">Business Plans</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Info</h4>
-        <div class="footer-contact-item"><i data-lucide="phone"></i> +1 (555) 123-4567</div>
-        <div class="footer-contact-item"><i data-lucide="mail"></i> info@notarypro.com</div>
-        <div class="footer-contact-item"><i data-lucide="map-pin"></i> 123 Legal Ave, Suite 100<br>Los Angeles, CA 90001</div>
-        <div class="footer-contact-item"><i data-lucide="clock"></i> 24/7 — Always Available</div>
-      </div>
+    </section>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+        <div class="stat-item reveal"><div class="stat-number">6+</div><div class="stat-label">Workshop Types</div></div>
+        <div class="stat-item reveal" style="animation-delay:.1s"><div class="stat-number">Max 10</div><div class="stat-label">Students Per Class</div></div>
+        <div class="stat-item reveal" style="animation-delay:.2s"><div class="stat-number">100%</div><div class="stat-label">Organic Ingredients</div></div>
+        <div class="stat-item reveal" style="animation-delay:.3s"><div class="stat-number">Take-Home</div><div class="stat-label">Jars Included</div></div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 NotaryPro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-  </div>
-</footer>
-<button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+
+    <!-- Workshop Grid -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="flask-conical" style="width: 13px; height: 13px;"></i>
+                    All Sessions
+                </div>
+                <h2 style="font-size: 2.75rem;">Browse All Workshops</h2>
+                <p style="color: var(--text-alt); max-width: 500px; margin: 0.75rem auto 0;">Pick your session and start fermenting with expert guidance</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="ws-card reveal">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (3).jpeg" alt="Kimchi">
+                        <div class="ws-card-tag">Most Popular</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Half Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 10</span>
+                            <span><i data-lucide="award" style="width:13px;height:13px;"></i> Beginner</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Kimchi Foundations</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">The perfect starting point. Learn the traditional balance of spice, salt, and fermentation science hands-on.</p>
+                        <div class="ws-card-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$89</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay:.1s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Kombucha">
+                        <div class="ws-card-tag" style="background: #f59e0b;">Trending</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 8</span>
+                            <span><i data-lucide="star" style="width:13px;height:13px;"></i> Intermediate</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Kombucha Masterclass</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Master primary fermentation and second-ferment flavoring. Take home your own live SCOBY culture.</p>
+                        <div class="ws-card-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$95</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay:.2s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Sourdough">
+                        <div class="ws-card-tag" style="background: #8b5cf6;">New</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 8</span>
+                            <span><i data-lucide="zap" style="width:13px;height:13px;"></i> All Levels</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Wild Sourdough</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Tame the wild yeast and bake the perfect crusty sourdough loaf from a starter culture you'll care for at home.</p>
+                        <div class="ws-card-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$110</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ws-card reveal">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Miso">
+                        <div class="ws-card-tag" style="background: #dc2626;">Advanced</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 6</span>
+                            <span><i data-lucide="flask-conical" style="width:13px;height:13px;"></i> Advanced</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Miso and Koji</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Enter the world of Koji mold and learn how to craft your own authentic aged Miso paste using ancient techniques.</p>
+                        <div class="ws-card-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$145</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay:.1s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg" alt="Cider">
+                        <div class="ws-card-tag" style="background: #ea580c;">Seasonal</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 8</span>
+                            <span><i data-lucide="star" style="width:13px;height:13px;"></i> Intermediate</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Hard Cider Brewing</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Learn to brew crisp, refreshing hard cider from locally sourced seasonal apples using traditional wild fermentation.</p>
+                        <div class="ws-card-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$120</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay:.2s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM.jpeg" alt="Vegan Cheese">
+                        <div class="ws-card-tag" style="background: #0891b2;">Vegan</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Half Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 10</span>
+                            <span><i data-lucide="leaf" style="width:13px;height:13px;"></i> Plant-Based</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Fermented Vegan Cheese</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Create luxurious aged nut cheeses with traditional fermentation. Entirely plant-based and surprisingly complex.</p>
+                        <div class="ws-card-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$130</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Packages -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="tag" style="width: 13px; height: 13px;"></i>
+                    Packages
+                </div>
+                <h2 style="font-size: 2.75rem;">Workshop Packages</h2>
+                <p style="color: var(--text-alt);">Save more by booking multiple sessions</p>
+            </div>
+            <div class="reveal" style="overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; margin-bottom: -1rem;">
+                <table class="pkg-table" style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);">
+                    <thead>
+                        <tr style="background: var(--primary); color: white; text-align: left;">
+                            <th style="padding: 1.5rem;">Feature</th>
+                            <th style="padding: 1.5rem;">Single Workshop</th>
+                            <th style="padding: 1.5rem;" class="pkg-highlight">Classic Duo ⭐</th>
+                            <th style="padding: 1.5rem;">Master Series</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem; font-weight: 500;">Number of Classes</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);">1 Session</td>
+                            <td style="padding: 1.5rem; font-weight: 600;" class="pkg-highlight">2 Sessions</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);">5 Sessions</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem; font-weight: 500;">Starter Kit Included</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;" class="pkg-highlight"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem; font-weight: 500;">Digital Recipes</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;" class="pkg-highlight"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem; font-weight: 500;">Private Coaching</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);">—</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);" class="pkg-highlight">—</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i> 1 Session</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem; font-weight: 700; font-size: 1.1rem;">Price</td>
+                            <td style="padding: 1.5rem; font-weight: 700; font-size: 1.25rem;">$89</td>
+                            <td style="padding: 1.5rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);" class="pkg-highlight">$159 <span style="font-size: 0.8rem; color: var(--text-alt); font-weight: 500;">Save 10%</span></td>
+                            <td style="padding: 1.5rem; font-weight: 700; font-size: 1.25rem;">$349</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-card">
+        <div class="container" style="max-width: 800px;">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="help-circle" style="width: 13px; height: 13px;"></i>
+                    FAQ
+                </div>
+                <h2 style="font-size: 2.75rem;">Frequently Asked Questions</h2>
+            </div>
+            <div class="reveal">
+                <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                        <span>Do I need to bring anything?</span>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
+                    </summary>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">No! We provide all jars, ingredients, aprons, and tools. Just bring your curiosity and appetite for learning.</p>
+                    </div>
+                </details>
+                <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                        <span>Can children join?</span>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
+                    </summary>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">Yes! Children aged 12+ are welcome with an adult accompanying them. It's a fantastic, hands-on science experience.</p>
+                    </div>
+                </details>
+                <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                        <span>Is everything organic?</span>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
+                    </summary>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">We prioritize locally sourced organic produce from our certified partner farms whenever possible — and for most workshops, everything is certified organic.</p>
+                    </div>
+                </details>
+                <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                        <span>What if I need to cancel?</span>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
+                    </summary>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">Cancellations made more than 48 hours before a session receive a full refund or session credit. Contact us and we'll find the best solution for you.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div class="cta-section reveal">
+                <div class="cta-section-content">
+                    <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1.5rem;">
+                        <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
+                        Seats Filling Fast
+                    </div>
+                    <h2 style="font-size: 2.75rem; color: white; margin-bottom: 1rem;">Ready to Start Fermenting?</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">Pick your workshop and join hundreds of students who've transformed their kitchen and gut health.</p>
+                    <div class="cta-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-white" style="padding: 1rem 2rem; font-weight: 700;">Book a Workshop</a>
+                        <a href="care-plans.html" class="btn btn-glass" style="padding: 1rem 2rem;">Explore Care Plans</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+        <div class="container grid grid-4" style="gap: 4rem;">
+            <div>
+                <a href="index.html" class="brand-logo-link" style="justify-content: flex-start;">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
+                </a>
+                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="services.html" class="footer-link">Workshops</a></li>
+                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
+                    <li><a href="about.html" class="footer-link">Our Story</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
+                <div class="footer-contact-item"><i data-lucide="map-pin"></i><span>123 Artisan Lane, Culture Square, NY 10001</span></div>
+                <div class="footer-contact-item"><i data-lucide="phone"></i><span>+1 (234) 567 8901</span></div>
+                <div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 10AM - 6PM</span></div>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="footer-contact-item"><i data-lucide="mail"></i><span>hello@fermentstudio.com</span></div>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Back to Top"><i data-lucide="chevron-up"></i></button>
+
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="flex-between" style="margin-bottom: 2rem;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
+            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="index.html" class="nav-link">Home 1</a>
+            <a href="index-2.html" class="nav-link">Home 2</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link active">Services</a>
+            <a href="care-plans.html" class="nav-link">Care Plans</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
+        </nav>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
 </body>
 </html>

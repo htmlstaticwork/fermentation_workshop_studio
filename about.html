@@ -1,319 +1,300 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — NotaryPro</title>
-  <meta name="description" content="Learn about NotaryPro — our story, certifications, experience, mission, and work process as a certified mobile notary and loan signing agent." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 4-1.34 4-4V3h8v.006A6.42 6.42 0 0 1 18.5 7H21'/></svg>" type="image/svg+xml">
-  <style>
-    /* Base Card Styles */
-    .cert-card { 
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); 
-      padding: 24px; text-align: center; transition: var(--transition); 
-      display: flex; flex-direction: column; height: 100%; 
-    }
-    .cert-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .cert-icon { 
-      width: 100px; height: 100px; 
-      display: flex; align-items: center; justify-content: center; 
-      margin: 0 auto 16px; flex-shrink: 0; 
-    }
-    .cert-icon img {
-      width: 100%; height: 100%; object-fit: contain;
-    }
-    .cert-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .cert-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    
-    .value-card { 
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      padding: 32px 24px; gap: 20px;
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); 
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); height: 100%; 
-      position: relative; overflow: hidden;
-    }
-    .value-card::after {
-      content: ''; position: absolute; inset: 0; 
-      background: radial-gradient(circle at center, rgba(var(--primary-rgb), 0.05) 0%, transparent 70%);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .value-card:hover { transform: translateY(-8px); border-color: rgba(var(--primary-rgb), 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-    .value-card:hover::after { opacity: 1; }
-    
-    .value-card-icon { 
-      width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; 
-      flex-shrink: 0; position: relative; z-index: 1;
-      transition: transform 0.5s ease;
-    }
-    .value-card:hover .value-card-icon { transform: scale(1.1); }
-    
-    .value-card-icon img {
-      width: 100%; height: 100%; object-fit: contain;
-    }
-    .value-card h4 { font-size: 1.15rem; font-weight: 800; margin-bottom: 2px; position: relative; z-index: 1; }
-    .value-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; position: relative; z-index: 1; }
-    .value-card div { width: 100%; }
-    
-    /* Grid Layouts */
-    .about-cert-grid, .about-values-grid { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 24px; 
-      align-items: stretch;
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 1100px) {
-      .about-cert-grid, .about-values-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 1024px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-      .about-content h2 { text-align: center; }
-      .about-content { display: flex; flex-direction: column; align-items: center; }
-      .about-content .btn { margin: 0 auto; }
-      .about-features { align-items: center; }
-      .about-feature { justify-content: center; }
-    }
-    @media (max-width: 650px) {
-      .about-cert-grid, .about-values-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .value-card { padding: 20px; }
-      .cert-card { padding: 20px; }
-    }
-    
-    /* Responsive for process section */
-    .about-process-grid { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 72px; 
-      align-items: center; 
-    }
-    
-    @media (max-width: 900px) {
-      .about-process-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        text-align: center;
-      }
-    }
-    @media (max-width: 480px) {
-      .about-process-grid {
-        gap: 32px;
-      }
-    }
-    .timeline { position:relative; padding-left:32px; }
-    [dir="rtl"] .timeline { padding-left:0; padding-right:32px; }
-    .timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--primary),var(--accent)); }
-    [dir="rtl"] .timeline::before { left:auto; right:12px; }
-    .timeline-item { position:relative; padding-bottom:28px; }
-    .timeline-item::before { content:''; position:absolute; left:-25px; top:5px; width:14px; height:14px; border-radius:50%; background:var(--primary); border:3px solid var(--bg); box-shadow:0 0 0 2px var(--primary); }
-    [dir="rtl"] .timeline-item::before { left:auto; right:-25px; }
-    .timeline-item h4 { font-size:0.93rem; font-weight:700; margin-bottom:4px; }
-    .timeline-item p { font-size:0.83rem; color:var(--text-secondary); line-height:1.65; }
-    .timeline-item .step-label { display:inline-flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:5px; }
-    [data-theme="dark"] .timeline-item .step-label { color:var(--accent-light); }
-  </style>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
-  <script src="main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+    <link rel="icon" type="image/png" href="img/brand-logo.png">
 </head>
 <body>
-<!-- HEADER -->
-<header class="site-header"><nav class="nav-container">
-  <div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home 1</a></li><li><a href="home2.html">Home 2</a></li>
-    <li><a href="services.html">Services</a></li><li><a href="about.html" class="active">About</a></li>
-    <li><a href="care-plans.html">Care Plans</a></li><li><a href="contact.html">Contact</a></li><li><a href="dashboard.html">Dashboard</a></li>
-  </ul>
-  <div class="nav-actions">
-    <div class="nav-ctas"><a href="login.html" class="btn btn-secondary btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Sign Up</a></div>
-    <div class="nav-toggles"><button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button><button class="toggle-btn" id="rtl-toggle"><i data-lucide="languages"></i></button></div>
-  </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-drawer" id="mobile-drawer">
-  <div class="drawer-header"><div class="nav-logo"><a href="index.html"><div class="logo-icon"><i data-lucide="scale"></i></div><span class="logo-text">NotaryPro</span></a></div><button class="drawer-close" id="drawer-close">✕</button></div>
-  <ul class="drawer-links">
-    <li><a href="index.html"><i data-lucide="home"></i> Home 1</a></li><li><a href="home2.html"><i data-lucide="sparkles"></i> Home 2</a></li>
-    <li><a href="services.html"><i data-lucide="briefcase"></i> Services</a></li><li><a href="about.html"><i data-lucide="user"></i> About</a></li>
-    <li><a href="care-plans.html"><i data-lucide="shield-check"></i> Care Plans</a></li><li><a href="contact.html"><i data-lucide="phone"></i> Contact</a></li><li><a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
-  </ul>
-  <div class="drawer-toggles"><button class="toggle-btn" id="theme-toggle-m"><i data-lucide="moon"></i></button><button class="toggle-btn" id="rtl-toggle-m"><i data-lucide="languages"></i></button></div>
-  <div class="drawer-cta"><a href="register.html" class="btn btn-primary btn-full">Sign Up</a><a href="login.html" class="btn btn-secondary btn-full">Login</a></div>
-</div>
-<div class="drawer-overlay" id="drawer-overlay"></div>
-</header>
 
-<!-- PAGE HERO -->
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <div class="page-hero-inner container">
-    <div class="breadcrumb"><a href="index.html">Home</a><i data-lucide="chevron-right"></i><span>About</span></div>
-    <h1>About <span>NotaryPro</span></h1>
-    <p>A decade of trusted notary service — certified, professional, and always at your doorstep.</p>
-  </div>
-</div>
+    <!-- Header -->
+    <header>
+        <div class="container container-header flex-between" style="padding: 0 1rem;">
+            <div class="logo">
+                <a href="index.html" class="brand-logo-link">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
+                </a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="care-plans.html" class="nav-link">Care Plans</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
 
-<!-- STATS BAR -->
-<div class="stats-bar"><div class="container"><div class="stats-bar-grid">
-  <div class="stat-bar-item"><span class="stat-number" data-counter data-target="1200" data-suffix="+">1200+</span><div class="stat-label">Documents Notarized</div></div>
-  <div class="stat-bar-item"><span class="stat-number" data-counter data-target="500" data-suffix="+">500+</span><div class="stat-label">Happy Clients</div></div>
-  <div class="stat-bar-item"><span class="stat-number" data-counter data-target="10" data-suffix="+">10+</span><div class="stat-label">Years Experience</div></div>
-  <div class="stat-bar-item"><span class="stat-number" data-counter data-target="99" data-suffix="%">99%</span><div class="stat-label">Client Satisfaction</div></div>
-</div></div></div>
-
-<!-- ABOUT NOTARY -->
-<section class="section">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image-wrapper reveal-left">
-        <img src="images/notary_mobile_agent.png" alt="Professional notary" loading="lazy" />
-        <div class="about-exp-badge"><span class="years">10+</span><span class="years-label">Years of Trust</span></div>
-      </div>
-      <div class="about-content reveal-right">
-        <div class="section-badge"><i data-lucide="user"></i> Our Story</div>
-        <h2>A Notary You Can <span>Trust</span></h2>
-        <p>NotaryPro was founded with a simple mission: make professional notary services accessible, convenient, and affordable for everyone. After over a decade serving the greater Los Angeles area, we've built a reputation on professionalism, accuracy, and reliability.</p>
-        <p>We understand that your time is valuable. That's why we come to you — at your home, office, hospital bedside, or any location that works best. Whether it's a loan signing at midnight or emergency power of attorney at a hospital, we're there when it matters most.</p>
-        <div class="about-features">
-          <div class="about-feature"><div class="about-feature-icon"><i data-lucide="map-pin"></i></div><div class="about-feature-text"><strong>Based in Los Angeles, CA</strong><span>Serving LA County and surrounding areas within 50 miles</span></div></div>
-          <div class="about-feature"><div class="about-feature-icon"><i data-lucide="award"></i></div><div class="about-feature-text"><strong>NNA Certified & Background Checked</strong><span>Fully verified, bonded, and insured professional</span></div></div>
-          <div class="about-feature"><div class="about-feature-icon"><i data-lucide="clock"></i></div><div class="about-feature-text"><strong>Available Any Time</strong><span>Evenings, weekends, holidays, and emergency signings</span></div></div>
+            <div class="flex-center" style="gap: 0.5rem;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
+                    <i data-lucide="moon"></i>
+                </div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
+                </div>
+                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;">
+                    <i data-lucide="menu"></i>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<!-- CERTIFICATIONS -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="award"></i> Credentials</div>
-      <h2>Certifications & <span>Experience</span></h2>
-      <p>Fully credentialed and continuously trained to serve you with the highest professional standards.</p>
-    </div>
-    <div class="about-cert-grid">
-      <div class="cert-card reveal delay-1"><div class="cert-icon"><img src="images/cert_nna.png" alt="NNA Certified" /></div><h3>NNA Certified</h3><p>National Notary Association certified professional</p></div>
-      <div class="cert-card reveal delay-2"><div class="cert-icon"><img src="images/cert_background.png" alt="Background Checked" /></div><h3>Background Checked</h3><p>Clear NNA background screening — verified identity</p></div>
-      <div class="cert-card reveal delay-3"><div class="cert-icon"><img src="images/cert_state.png" alt="State Commissioned" /></div><h3>State Commissioned</h3><p>California Secretary of State commissioned notary</p></div>
-      <div class="cert-card reveal delay-4"><div class="cert-icon"><img src="images/cert_loan.png" alt="Loan Signing Agent" /></div><h3>Loan Signing Agent</h3><p>Certified LSA trained for all lender packages</p></div>
-      <div class="cert-card reveal delay-1"><div class="cert-icon"><img src="images/cert_insured.png" alt="E&O Insured" /></div><h3>E&O Insured</h3><p>Errors & Omissions insurance coverage included</p></div>
-      <div class="cert-card reveal delay-2"><div class="cert-icon"><img src="images/cert_ron.png" alt="RON Certified" /></div><h3>RON Certified</h3><p>Remote Online Notarization — state approved</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MISSION & VALUES -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge"><i data-lucide="heart"></i> Mission & Values</div>
-      <h2>What We <span>Stand For</span></h2>
-      <p>Our core values guide every appointment, every document, and every client interaction.</p>
-    </div>
-    <div class="about-values-grid">
-      <div class="value-card reveal delay-1"><div class="value-card-icon"><img src="images/val_mission.png" alt="Mission" /></div><div><h4>Our Mission</h4><p>To make professional notary services universally accessible — fast, mobile, and available 24/7 for every person and business that needs it.</p></div></div>
-      <div class="value-card reveal delay-2"><div class="value-card-icon"><img src="images/val_vision.png" alt="Vision" /></div><div><h4>Our Vision</h4><p>To be the most trusted mobile notary service in California, known for our reliability, professionalism, and client-first approach.</p></div></div>
-      <div class="value-card reveal delay-3"><div class="value-card-icon"><img src="images/val_integrity.png" alt="Integrity" /></div><div><h4>Integrity</h4><p>We handle every document and every client with complete honesty, transparency, and confidentiality.</p></div></div>
-      <div class="value-card reveal delay-4"><div class="value-card-icon"><img src="images/val_excellence.png" alt="Excellence" /></div><div><h4>Excellence</h4><p>We hold ourselves to the highest standards in accuracy, presentation, and professional conduct.</p></div></div>
-      <div class="value-card reveal delay-1"><div class="value-card-icon"><img src="images/val_client.png" alt="Client First" /></div><div><h4>Client First</h4><p>Your convenience is our priority. We adapt to your schedule, location, and unique document needs.</p></div></div>
-      <div class="value-card reveal delay-2"><div class="value-card-icon"><img src="images/val_learning.png" alt="Learning" /></div><div><h4>Continuous Learning</h4><p>We stay current with all notary laws, regulations, and best practices to serve you better.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- WORK PROCESS -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="about-process-grid">
-      <div class="reveal-left">
-        <div class="section-badge"><i data-lucide="list-ordered"></i> Our Process</div>
-        <h2 style="font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;margin-bottom:14px;line-height:1.2;">How We <span style="color:var(--accent)">Work</span></h2>
-        <p style="color:var(--text-secondary);margin-bottom:32px;line-height:1.8;">A streamlined, professional process to ensure your documents are handled correctly from start to finish.</p>
-        <div class="timeline">
-          <div class="timeline-item"><div class="step-label"><i data-lucide="circle-dot"></i> Step 1</div><h4>Initial Contact</h4><p>Call, text, or book online. We confirm your document type, availability, and location preference.</p></div>
-          <div class="timeline-item"><div class="step-label"><i data-lucide="circle-dot"></i> Step 2</div><h4>Appointment Confirmation</h4><p>We confirm the time, location, and document requirements. You receive a confirmation message.</p></div>
-          <div class="timeline-item"><div class="step-label"><i data-lucide="circle-dot"></i> Step 3</div><h4>Document Review</h4><p>On arrival, documents are reviewed for completeness and the signers are identified per legal requirements.</p></div>
-          <div class="timeline-item"><div class="step-label"><i data-lucide="circle-dot"></i> Step 4</div><h4>Notarization</h4><p>Documents are signed, sealed, and notarized correctly. Every detail is checked for accuracy.</p></div>
-          <div class="timeline-item" style="padding-bottom:0;"><div class="step-label"><i data-lucide="circle-dot"></i> Step 5</div><h4>Completion & Delivery</h4><p>You receive your notarized documents and a receipt. For loan signings, packages are returned to title companies promptly.</p></div>
+    <!-- About Hero -->
+    <section class="page-hero" style="background-image: url('img/about-bg.png');">
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="reveal">
+                <div class="page-hero-tag">
+                    <i data-lucide="heart" style="width: 13px; height: 13px;"></i>
+                    Our Story Since 2012
+                </div>
+                <h1 style="font-size: 3.75rem; color: #ffffff; margin-bottom: 1rem; line-height: 1.1;">Crafting Culture,<br>One Jar at a Time</h1>
+                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.85); max-width: 640px; margin: 0 auto; line-height: 1.8;">Our mission is to bring the health and creativity of fermentation back to every home kitchen — one culture at a time.</p>
+            </div>
         </div>
-      </div>
-      <div class="reveal-right">
-        <img src="images/notary_documents_office.png" alt="Professional office" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" loading="lazy" />
-      </div>
+    </section>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+        <div class="stat-item reveal"><div class="stat-number">2012</div><div class="stat-label">Founded</div></div>
+        <div class="stat-item reveal" style="animation-delay:.1s"><div class="stat-number">14+</div><div class="stat-label">Years of Experience</div></div>
+        <div class="stat-item reveal" style="animation-delay:.2s"><div class="stat-number">5k+</div><div class="stat-label">Happy Students</div></div>
+        <div class="stat-item reveal" style="animation-delay:.3s"><div class="stat-number">20+</div><div class="stat-label">Unique Cultures</div></div>
     </div>
-  </div>
-</section>
 
-<!-- CTA -->
-<div class="cta-banner">
-  <h2>Let's Work <span style="color:var(--accent-light)">Together</span></h2>
-  <p>Book your appointment today. Professional, mobile, and always available.</p>
-  <div class="cta-buttons">
-    <a href="contact.html" class="btn btn-accent btn-lg"><i data-lucide="calendar-check"></i> Book Notary</a>
-    <a href="contact.html" class="btn btn-ghost btn-lg"><i data-lucide="clock"></i> Schedule Appointment</a>
-  </div>
-</div>
+    <!-- Story Section -->
+    <section class="section">
+        <div class="container grid" style="grid-template-columns: 1fr 1.2fr; align-items: center; gap: 5rem;">
+            <div class="reveal">
+                <div class="section-label" style="margin-bottom: 1rem;">
+                    <i data-lucide="book-open" style="width: 13px; height: 13px;"></i>
+                    How We Started
+                </div>
+                <h2 style="font-size: 2.75rem; margin-bottom: 1.5rem; line-height: 1.2;">The Story of Our Studio</h2>
+                <p style="color: var(--text-alt); margin-bottom: 1.25rem; line-height: 1.8;">FermentStudio was born out of a passion for slow food, sustainable living, and the incredible science behind naturally fermented products. What started as a small personal kitchen experiment in 2012 has now grown into a thriving community of thousands.</p>
+                <p style="color: var(--text-alt); margin-bottom: 2.5rem; line-height: 1.8;">We realized that while fermentation is an ancient tradition, many people were intimidated by the process. We set out to demystify the art, making it approachable, safe, and incredibly delicious for everyone.</p>
+                <a href="services.html" class="btn btn-primary">Explore Our Workshops <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+            </div>
+            <div class="reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM (1).jpeg" alt="Our History" style="border-radius: var(--radius-lg); box-shadow: var(--shadow); display: block; width: 100%;">
+            </div>
+        </div>
+    </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <div class="logo-icon"><i data-lucide="scale"></i></div>
-          <span class="logo-text">NotaryPro</span>
+    <!-- Founder Section -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container grid" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 5rem;">
+            <div class="reveal">
+                <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Founder" style="border-radius: var(--radius-lg); filter: saturate(0.85); display: block; width: 100%; box-shadow: var(--shadow);">
+            </div>
+            <div class="reveal">
+                <div class="section-label" style="margin-bottom: 1rem;">
+                    <i data-lucide="user" style="width: 13px; height: 13px;"></i>
+                    Founder &amp; Head Fermenter
+                </div>
+                <h2 style="font-size: 2.75rem; margin-bottom: 1.5rem;">Karthick Ramanathan</h2>
+                <div style="border-left: 4px solid var(--primary); padding-left: 1.5rem; margin: 0 0 2rem;">
+                    <p style="color: var(--text-alt); font-size: 1.05rem; line-height: 1.9; font-style: italic;">"Fermentation is a conversation with time and biology. It's about letting go of control and trusting the natural world to create something far more complex and nutritious than anything we could make ourselves. My goal is to give you the tools and confidence to start that conversation in your own kitchen."</p>
+                </div>
+                <div class="author-stats" style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
+                    <div><div style="font-weight: 800; font-size: 1.75rem; color: var(--primary);">14+</div><div style="color: var(--text-alt); font-size: 0.9rem;">Years fermenting</div></div>
+                    <div><div style="font-weight: 800; font-size: 1.75rem; color: var(--primary);">40+</div><div style="color: var(--text-alt); font-size: 0.9rem;">Countries reached</div></div>
+                    <div><div style="font-weight: 800; font-size: 1.75rem; color: var(--primary);">3</div><div style="color: var(--text-alt); font-size: 0.9rem;">Published books</div></div>
+                </div>
+            </div>
         </div>
-        <p>Professional mobile notary and loan signing agent services. We come to you — 24/7, always on time, always certified.</p>
-        <div class="social-links">
-          <a href="#" class="facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.326V1.326C24 .597 23.403 0 22.675 0z"/></svg></a>
-          <a href="#" class="twitter" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg></a>
-          <a href="#" class="linkedin" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-          <a href="#" class="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="compass" style="width: 13px; height: 13px;"></i>
+                    What We Stand For
+                </div>
+                <h2 style="font-size: 2.75rem;">Mission, Vision &amp; Values</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="card reveal" style="text-align: center;">
+                    <div style="background: var(--primary-light); color: var(--primary); padding: 1.25rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center;">
+                        <i data-lucide="target" style="width: 34px; height: 34px;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">Our Mission</h3>
+                    <p style="color: var(--text-alt); line-height: 1.7;">To make the ancient art of fermentation accessible, safe, and inspiring for every modern home cook.</p>
+                </div>
+                <div class="card reveal" style="text-align: center; animation-delay: 0.1s; border-color: var(--primary) !important;">
+                    <div style="background: var(--primary); color: white; padding: 1.25rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center;">
+                        <i data-lucide="eye" style="width: 34px; height: 34px;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">Our Vision</h3>
+                    <p style="color: var(--text-alt); line-height: 1.7;">A world where every kitchen has a bubbling jar of health, reconnecting communities with their food sources.</p>
+                </div>
+                <div class="card reveal" style="text-align: center; animation-delay: 0.2s;">
+                    <div style="background: var(--primary-light); color: var(--primary); padding: 1.25rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center;">
+                        <i data-lucide="heart" style="width: 34px; height: 34px;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">Our Values</h3>
+                    <p style="color: var(--text-alt); line-height: 1.7;">Patience, sustainability, transparency, and a deep respect for the microbes that keep us alive.</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home 1</a></li>
-          <li><a href="home2.html">Home 2</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="care-plans.html">Care Plans</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Client Login</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html">Loan Signing</a></li>
-          <li><a href="services.html">Mobile Notary</a></li>
-          <li><a href="services.html">Real Estate Docs</a></li>
-          <li><a href="services.html">Legal Affidavits</a></li>
-          <li><a href="services.html">Power of Attorney</a></li>
-          <li><a href="care-plans.html">Business Plans</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Info</h4>
-        <div class="footer-contact-item"><i data-lucide="phone"></i> +1 (555) 123-4567</div>
-        <div class="footer-contact-item"><i data-lucide="mail"></i> info@notarypro.com</div>
-        <div class="footer-contact-item"><i data-lucide="map-pin"></i> 123 Legal Ave, Suite 100<br>Los Angeles, CA 90001</div>
-        <div class="footer-contact-item"><i data-lucide="clock"></i> 24/7 — Always Available</div>
-      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="flask-conical" style="width: 13px; height: 13px;"></i>
+                    Inside the Studio
+                </div>
+                <h2 style="font-size: 2.75rem;">The Workshop Experience</h2>
+                <p style="color: var(--text-alt);">What it's like to spend a day in our fermentation lab</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="ws-card reveal">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (1).jpeg" alt="Hands-on Learning">
+                    </div>
+                    <div class="ws-card-body">
+                        <h4 style="margin-bottom: 0.75rem; font-size: 1.15rem;">Hands-on Learning</h4>
+                        <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">You won't just watch — you'll chop, salt, bruise, and bottle your own ferments from scratch under expert guidance.</p>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay: 0.1s;">
+                    <div class="ws-card-img">
+                        <img src="img/guided-tasting.png" alt="Guided Tasting">
+                    </div>
+                    <div class="ws-card-body">
+                        <h4 style="margin-bottom: 0.75rem; font-size: 1.15rem;">Guided Tastings</h4>
+                        <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">Taste our library of aged ferments to understand how flavors evolve over weeks, months, and years.</p>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay: 0.2s;">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM (1).jpeg" alt="Take Home Jars">
+                    </div>
+                    <div class="ws-card-body">
+                        <h4 style="margin-bottom: 0.75rem; font-size: 1.15rem;">Take Home Jars</h4>
+                        <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">Every student leaves with their own prepared ferment to care for at home — a living reminder of the day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section reveal">
+                <div class="cta-section-content">
+                    <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1.5rem;">
+                        <i data-lucide="users" style="width: 13px; height: 13px;"></i>
+                        Join Our Community
+                    </div>
+                    <h2 style="font-size: 2.75rem; color: white; margin-bottom: 1rem;">Become Part of the Story</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">Every jar fermented is a story told. Join our community of passionate fermenters and start creating your own culture.</p>
+                    <div class="cta-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="services.html" class="btn btn-white" style="padding: 1rem 2rem; font-weight: 700;">Browse Workshops</a>
+                        <a href="contact.html" class="btn btn-glass" style="padding: 1rem 2rem;">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+        <div class="container grid grid-4" style="gap: 4rem;">
+            <div>
+                <a href="index.html" class="brand-logo-link" style="justify-content: flex-start;">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
+                </a>
+                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="services.html" class="footer-link">Workshops</a></li>
+                    <li><a href="care-plans.html" class="footer-link">Care Plans</a></li>
+                    <li><a href="about.html" class="footer-link">Our Story</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="phone"></i>
+                    <span>+1 (234) 567 8901</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i data-lucide="clock"></i>
+                    <span>Mon - Sat: 10AM - 6PM</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
+                <div class="footer-contact-item">
+                    <i data-lucide="mail"></i>
+                    <span>hello@fermentstudio.com</span>
+                </div>
+                <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+            <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="flex-between" style="margin-bottom: 2rem;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
+            <button id="close-menu" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <a href="index.html" class="nav-link">Home 1</a>
+            <a href="index-2.html" class="nav-link">Home 2</a>
+            <a href="about.html" class="nav-link active">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="care-plans.html" class="nav-link">Care Plans</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
+        </nav>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 NotaryPro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-  </div>
-</footer>
+    <div id="overlay" class="overlay"></div>
 
-<button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
 </body>
 </html>

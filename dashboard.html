@@ -1,357 +1,903 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — NotaryPro</title>
-  <meta name="description" content="NotaryPro client dashboard — manage your appointments, documents, and account." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 4-1.34 4-4V3h8v.006A6.42 6.42 0 0 1 18.5 7H21'/></svg>" type="image/svg+xml">
-  <link rel="stylesheet" href="dashboard.css" />
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
-  <script src="main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | FermentStudio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js" defer></script>
+    <link rel="icon" type="image/png" href="img/brand-logo.png">
+    <style>
+        body {
+            display: flex;
+            background: var(--bg-alt);
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 0;
+            min-height: 100vh;
+            min-width: 0;
+            /* Critical: allows flex child to shrink below content size */
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.rtl .main-content {
+            margin-left: 0;
+            margin-right: 280px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .metric-icon {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+        }
+
+        .dashboard-pane {
+            padding: 3rem;
+        }
+
+        .notification-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 2000;
+                transition: var(--transition);
+            }
+
+            body.rtl .sidebar {
+                transform: translateX(100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 0 !important;
+                width: 100vw;
+                max-width: 100vw;
+            }
+
+            .dashboard-pane {
+                padding: 1.5rem;
+            }
+
+            body.rtl .main-content {
+                margin-right: 0;
+            }
+
+            /* Dashboard header: Robust 3-part layout (kicks in at tablet size) */
+            .dashboard-header {
+                padding: 1rem !important;
+                margin: 0 !important;
+                width: 100% !important;
+                top: 0 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                overflow: visible !important;
+                gap: 0.5rem !important;
+                min-height: 80px;
+            }
+
+            .dashboard-header .welcome-text {
+                position: static !important;
+                transform: none !important;
+                text-align: center !important;
+                flex: 1 !important;
+                min-width: 0 !important;
+                order: 2 !important;
+                padding: 0 1rem !important;
+            }
+
+            .dashboard-header .welcome-text h1 {
+                font-size: 1.1rem !important;
+                /* Slightly larger for tablets */
+                margin: 0 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .dashboard-header .welcome-text p {
+                display: none !important;
+                /* Hide subtext on tablet/mobile */
+            }
+
+            .care-plan-features {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Hamburger stays left (order 1) */
+            #sidebar-toggle {
+                order: 1 !important;
+                margin-bottom: 0 !important;
+                flex-shrink: 0 !important;
+                display: flex !important;
+                /* Ensure visibility */
+            }
+
+            /* Controls group stays far right (order 3) */
+            .header-controls-group {
+                order: 3 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                margin-left: 0 !important;
+                flex-shrink: 0 !important;
+            }
+
+            .welcome-text {
+                order: 2 !important;
+                margin-right: auto !important;
+                padding-left: 1rem !important;
+                text-align: left !important;
+            }
+
+            /* Hide vertical divider on tablet/mobile */
+            .header-divider {
+                display: none !important;
+            }
+
+            /* User info stays compact */
+            .user-info-wrapper {
+                gap: 0.5rem !important;
+            }
+
+            .user-info-wrapper div:first-child {
+                display: none;
+                /* Hide name text to keep it clean */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 0 !important;
+                width: 100vw;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            .dashboard-pane {
+                padding: 1rem;
+            }
+
+            /* Force all direct children of flex rows to not blow out */
+            .main-content * {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Workshop rows: constrain to card width */
+            .workshop-row {
+                width: 100%;
+                overflow: hidden;
+                flex-wrap: nowrap;
+                gap: 0.75rem;
+                padding: 0.875rem !important;
+                box-sizing: border-box;
+            }
+
+            .workshop-row img {
+                width: 50px !important;
+                height: 50px !important;
+                flex-shrink: 0;
+            }
+
+            .workshop-row>div {
+                flex: 1 1 0%;
+                min-width: 0;
+                overflow: hidden;
+            }
+
+            .workshop-title,
+            .workshop-meta {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+                max-width: 100%;
+            }
+
+            .workshop-btn {
+                flex-shrink: 0;
+                white-space: nowrap;
+                padding: 0.4rem 0.6rem !important;
+                font-size: 0.72rem !important;
+            }
+
+            .dashboard-header {
+                margin: 0 !important;
+                width: 100% !important;
+                top: 0 !important;
+                gap: 0.25rem !important;
+            }
+
+            .dashboard-header .welcome-text {
+                padding: 0 0.25rem !important;
+            }
+
+            .dashboard-header .welcome-text h1 {
+                font-size: 0.8rem !important;
+                /* Even smaller for extreme narrow screens */
+                margin: 0 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .dashboard-header .welcome-text .emoji-hide {
+                display: none !important;
+                /* Save space on mobile */
+            }
+
+            .dashboard-header .welcome-text p {
+                display: none;
+                /* Hide subtext on mobile to save space */
+            }
+
+            .dashboard-header>.flex-center {
+                display: none !important;
+                /* Cleanup: flex-center div was removed earlier */
+            }
+
+            /* Hamburger stays left (order 1) */
+            #sidebar-toggle {
+                order: 1 !important;
+            }
+
+            /* Controls group stays far right (order 3) */
+            .header-controls-group {
+                order: 3 !important;
+                gap: 0.25rem !important;
+                /* Tighter gap for phones */
+            }
+
+            /* Hide vertical divider on mobile */
+            .header-divider {
+                display: none !important;
+            }
+
+            /* User info stays compact within the group */
+            .user-info-wrapper {
+                gap: 0.35rem !important;
+            }
+
+            .user-info-wrapper div:first-child {
+                display: none;
+                /* Hide name text to keep it clean */
+            }
+
+            /* Notification Panel Header adjustment */
+            #notifications-tab .flex-between {
+                align-items: center !important;
+                gap: 0.5rem !important;
+            }
+
+            #notifications-tab .flex-between h2 {
+                font-size: 1.25rem !important;
+                margin-bottom: 0 !important;
+            }
+        }
+
+        /* Extra-small screens ≤480px */
+        @media (max-width: 480px) {
+            .workshop-row {
+                padding: 0.75rem !important;
+                gap: 0.5rem !important;
+            }
+
+            .workshop-row img {
+                width: 44px !important;
+                height: 44px !important;
+            }
+
+            .workshop-title {
+                font-size: 0.75rem !important;
+            }
+
+            .workshop-meta {
+                font-size: 0.68rem !important;
+            }
+
+            .workshop-btn {
+                padding: 0.35rem 0.5rem !important;
+                font-size: 0.68rem !important;
+                letter-spacing: -0.01em;
+            }
+        }
+
+        /* Ultra-narrow screens ≤360px */
+        @media (max-width: 360px) {
+            .main-content {
+                padding: 0.75rem !important;
+            }
+
+            .workshop-row {
+                padding: 0.6rem !important;
+                gap: 0.4rem !important;
+            }
+
+            .workshop-row img {
+                width: 38px !important;
+                height: 38px !important;
+            }
+
+            .workshop-title {
+                font-size: 0.7rem !important;
+            }
+
+            .workshop-meta {
+                font-size: 0.62rem !important;
+            }
+
+            .workshop-btn {
+                padding: 0.3rem 0.45rem !important;
+                font-size: 0.65rem !important;
+            }
+
+            .dashboard-header p {
+                font-size: 0.78rem !important;
+            }
+        }
+    </style>
 </head>
-<body class="dashboard-body">
 
-<!-- ═══════════ SIDEBAR ═══════════ -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <a href="index.html" class="sidebar-logo" style="text-decoration:none;">
-      <div class="logo-icon"><i data-lucide="scale"></i></div>
-      <span class="logo-text">NotaryPro</span>
-    </a>
-    <button class="sidebar-toggle-btn" id="sidebar-close-btn" aria-label="Toggle sidebar">
-      <i data-lucide="panel-left-close"></i>
+<body class="dashboard-page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div style="margin-bottom: 3rem;">
+            <a href="index.html" class="brand-logo-link" style="justify-content: flex-start;">
+                <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                FERMENT
+            </a>
+        </div>
+
+        <nav style="flex: 1;">
+            <a href="#" class="sidebar-link active" data-tab="dashboard"><i data-lucide="layout-dashboard"></i>
+                Dashboard</a>
+            <a href="#" class="sidebar-link" data-tab="workshops"><i data-lucide="book-open"></i> My Workshops</a>
+            <a href="#" class="sidebar-link" data-tab="care-plans"><i data-lucide="package"></i> Care Plans</a>
+            <a href="#" class="sidebar-link" data-tab="orders"><i data-lucide="shopping-bag"></i> Orders</a>
+            <a href="#" class="sidebar-link" data-tab="progress"><i data-lucide="trending-up"></i> Progress</a>
+            <a href="#" class="sidebar-link" data-tab="notifications"><i data-lucide="bell"></i> Notifications</a>
+            <a href="#" class="sidebar-link" data-tab="profile"><i data-lucide="user"></i> Profile</a>
+        </nav>
+
+        <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--border);">
+            <div style="margin-bottom: 1.5rem;">
+                <p
+                    style="font-size: 0.8rem; color: var(--text-alt); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                    Stay Connected</p>
+                <div class="flex-center" style="justify-content: flex-start; gap: 0.75rem;">
+                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram"
+                        style="width: 32px; height: 32px;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook"
+                        style="width: 32px; height: 32px;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter"
+                        style="width: 32px; height: 32px;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar-link" style="color: #ef4444;"><i data-lucide="log-out"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="dashboard-header"
+            style="display: flex; justify-content: space-between; align-items: center; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; margin: 0; min-height: 80px; width: 100%;">
+            <div id="sidebar-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" title="Toggle Sidebar"
+                style="display: none; z-index: 10;"><i data-lucide="menu"></i></div>
+
+            <div class="welcome-text">
+                <h1 style="font-size: 1.75rem; margin-bottom: 0.25rem;">Welcome back! <span class="emoji-hide">👋</span>
+                </h1>
+                <p style="color: var(--text-alt); font-size: 0.9rem;">You have 2 workshops upcoming this week.</p>
+            </div>
+
+            <div class="header-controls-group" style="display: flex; align-items: center; gap: 0.5rem; z-index: 10;">
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Theme"><i
+                        data-lucide="moon"></i></div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
+                </div>
+                <div class="header-divider"
+                    style="height: 24px; width: 1px; background: var(--border); margin: 0 0.5rem;"></div>
+                <div class="user-info-wrapper" style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="text-align: right;">
+                        <p style="font-weight: 600; font-size: 0.95rem;">Guest User</p>
+                        <p style="font-size: 0.75rem; color: var(--text-alt);">Member</p>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Profile"
+                            style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+                        <div
+                            style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #22c55e; border: 2px solid var(--bg-card); border-radius: 50%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Panes -->
+        <div id="dashboard-tab" class="dashboard-pane active">
+            <!-- Metrics -->
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-bottom: 3rem;">
+                <div class="metric-card reveal">
+                    <div class="metric-icon"><i data-lucide="book-open"></i></div>
+                    <div>
+                        <h4 style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 0.25rem;">Workshops Joined
+                        </h4>
+                        <span style="font-size: 1.75rem; font-weight: 800;">12</span>
+                    </div>
+                </div>
+                <div class="metric-card reveal" style="animation-delay: 0.1s;">
+                    <div class="metric-icon"><i data-lucide="package"></i></div>
+                    <div>
+                        <h4 style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 0.25rem;">Active Plans</h4>
+                        <span style="font-size: 1.75rem; font-weight: 800;">1</span>
+                    </div>
+                </div>
+                <div class="metric-card reveal" style="animation-delay: 0.2s;">
+                    <div class="metric-icon"><i data-lucide="check-circle"></i></div>
+                    <div>
+                        <h4 style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 0.25rem;">Completed
+                            Sessions</h4>
+                        <span style="font-size: 1.75rem; font-weight: 800;">8</span>
+                    </div>
+                </div>
+                <div class="metric-card reveal" style="animation-delay: 0.3s;">
+                    <div class="metric-icon" style="background: #fef3c7; color: #f59e0b;"><i data-lucide="star"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 0.25rem;">Reward Points
+                        </h4>
+                        <span style="font-size: 1.75rem; font-weight: 800;">1,250</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid" style="grid-template-columns: 2fr 1.2fr; gap: 3rem;">
+                <!-- Upcoming Workshops -->
+                <div class="reveal">
+                    <h3 style="margin-bottom: 1.5rem;">Upcoming Workshops</h3>
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <div class="workshop-row"
+                            style="padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1.5rem;">
+                            <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM.jpeg" alt="WS"
+                                style="width: 80px; height: 80px; border-radius: var(--radius-md); object-fit: cover;">
+                            <div style="flex: 1; min-width: 0;">
+                                <h4 class="workshop-title" style="margin-bottom: 0.25rem;">Advanced Kimchi Masterclass
+                                </h4>
+                                <p class="workshop-meta"
+                                    style="font-size: 0.9rem; color: var(--text-alt); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    April 5th, 10:00 AM • Main Studio</p>
+                            </div>
+                            <a href="#" class="btn btn-primary workshop-btn"
+                                style="padding: 0.5rem 1rem; font-size: 0.8rem; flex-shrink: 0;">View Details</a>
+                        </div>
+                        <div class="workshop-row"
+                            style="padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem;">
+                            <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="WS"
+                                style="width: 80px; height: 80px; border-radius: var(--radius-md); object-fit: cover;">
+                            <div style="flex: 1; min-width: 0;">
+                                <h4 class="workshop-title" style="margin-bottom: 0.25rem;">Wild Yeast Bread Workshop
+                                </h4>
+                                <p class="workshop-meta"
+                                    style="font-size: 0.9rem; color: var(--text-alt); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    April 12th, 02:30 PM • Lab 2</p>
+                            </div>
+                            <a href="#" class="btn btn-primary workshop-btn"
+                                style="padding: 0.5rem 1rem; font-size: 0.8rem; flex-shrink: 0;">View Details</a>
+                        </div>
+                        <div style="padding: 1.5rem; text-align: center; background: var(--bg-alt);">
+                            <a href="services.html" class="link-arrow">Browse More Workshops <i
+                                    data-lucide="chevron-right" style="width: 16px;"></i></a>
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 3rem 0 1.5rem;">Recent Activity</h3>
+                    <div class="card">
+                        <div class="notification-item">
+                            <div
+                                style="background: var(--primary-light); color: var(--primary); padding: 0.5rem; border-radius: 50%; height: fit-content;">
+                                <i data-lucide="check" style="width: 18px;"></i></div>
+                            <div>
+                                <p style="font-weight: 500;">Completed "Kombucha 101"</p>
+                                <span style="font-size: 0.8rem; color: var(--text-alt);">Yesterday at 4:30 PM</span>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div
+                                style="background: var(--primary-light); color: var(--primary); padding: 0.5rem; border-radius: 50%; height: fit-content;">
+                                <i data-lucide="shopping-cart" style="width: 18px;"></i></div>
+                            <div>
+                                <p style="font-weight: 500;">Starter Kit Shipped</p>
+                                <span style="font-size: 0.8rem; color: var(--text-alt);">March 28th, 11:15 AM</span>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div
+                                style="background: var(--primary-light); color: var(--primary); padding: 0.5rem; border-radius: 50%; height: fit-content;">
+                                <i data-lucide="award" style="width: 18px;"></i></div>
+                            <div>
+                                <p style="font-weight: 500;">Earned "Probiotic Pro" Badge</p>
+                                <span style="font-size: 0.8rem; color: var(--text-alt);">March 25th, 09:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Panels -->
+                <div class="reveal" style="animation-delay: 0.2s;">
+                    <h3 style="margin-bottom: 1.5rem;">Notifications</h3>
+                    <div class="card" style="margin-bottom: 3rem;">
+                        <div class="notification-item">
+                            <p style="font-size: 0.9rem;"><strong>New Recipe:</strong> Seasonal Radish Kimchi guide is
+                                now available in your library.</p>
+                        </div>
+                        <div class="notification-item">
+                            <p style="font-size: 0.9rem;"><strong>Schedule Swap:</strong> Lab 2 maintenance tomorrow.
+                                Check your class location.</p>
+                        </div>
+                    </div>
+
+                    <div class="card"
+                        style="background: var(--primary); color: white; border: none; text-align: center;">
+                        <i data-lucide="gift" style="width: 48px; height: 48px; margin-bottom: 1rem;"></i>
+                        <h3>Invite a Friend</h3>
+                        <p style="opacity: 0.9; font-size: 0.9rem; margin-bottom: 1.5rem;">Share the gut health. Bring a
+                            friend to your next class and you both get 20% off.</p>
+                        <button class="btn btn-white" style="width: 100%;">Get Referral Link</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Workshops Tab -->
+        <div id="workshops-tab" class="dashboard-pane">
+            <h2 style="margin-bottom: 2rem;">My Workshops</h2>
+            <div class="grid grid-3">
+                <div class="card reveal" style="padding: 0; overflow: hidden;">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM.jpeg" alt="WS" class="workshop-card-img"
+                        style="width: 100%; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <span class="status-pill warning" style="margin-bottom: 1rem; display: inline-block;">In
+                            Progress (65%)</span>
+                        <h4 style="margin-bottom: 0.5rem;">Advanced Kimchi Masterclass</h4>
+                        <div class="progress-container">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-alt); margin-top: 1rem;">Next Session: April
+                            5th, 10:00 AM</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Resume
+                            Learning</button>
+                    </div>
+                </div>
+                <div class="card reveal" style="padding: 0; overflow: hidden; animation-delay: 0.1s;">
+                    <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="WS" class="workshop-card-img"
+                        style="width: 100%; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <span class="status-pill success"
+                            style="margin-bottom: 1rem; display: inline-block;">Completed</span>
+                        <h4 style="margin-bottom: 0.5rem;">Kombucha 101: The Basics</h4>
+                        <div class="progress-container">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-alt); margin-top: 1rem;">Finished on: March 24,
+                            2026</p>
+                        <button class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem;">Get
+                            Certificate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Care Plans Tab -->
+        <div id="care-plans-tab" class="dashboard-pane">
+            <h2 style="margin-bottom: 2rem;">Subscription & Care Plans</h2>
+            <div class="card reveal care-plan-card"
+                style="border: 2px solid var(--primary); background: var(--primary-light); position: relative; overflow: hidden;">
+                <div class="care-plan-status-badge" style="position: absolute; top: 1rem; right: 1rem;"><span
+                        class="status-pill success">Active</span></div>
+                <div class="care-plan-header" style="display: flex; gap: 2rem; align-items: center;">
+                    <div
+                        style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); color: var(--primary);">
+                        <i data-lucide="shield-check" style="width: 48px; height: 48px;"></i></div>
+                    <div>
+                        <h3 class="care-plan-title" style="margin-bottom: 0.5rem; color: var(--text-main);">Probiotica
+                            Plus Plan</h3>
+                        <p style="color: var(--text-alt);">Renewal Date: May 15, 2026 • Monthly Billing</p>
+                    </div>
+                </div>
+                <div class="care-plan-features"
+                    style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                    <div class="care-plan-feature" style="display: flex; gap: 0.5rem; align-items: center;"><i
+                            data-lucide="check" style="width: 16px; color: var(--primary);"></i> Unlimited Recipe Access
+                    </div>
+                    <div class="care-plan-feature" style="display: flex; gap: 0.5rem; align-items: center;"><i
+                            data-lucide="check" style="width: 16px; color: var(--primary);"></i> Priority Workshop
+                        Booking</div>
+                    <div class="care-plan-feature" style="display: flex; gap: 0.5rem; align-items: center;"><i
+                            data-lucide="check" style="width: 16px; color: var(--primary);"></i> 15% Member Discount
+                    </div>
+                </div>
+                <div class="care-plan-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <button class="btn btn-primary">Upgrade Plan</button>
+                    <button class="btn btn-secondary">Manage Billing</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="orders-tab" class="dashboard-pane">
+            <h2 style="margin-bottom: 2rem;">Order History</h2>
+            <div class="card reveal">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#FS-9842</td>
+                            <td>Mar 28, 2026</td>
+                            <td>Organic Scoby Starter Kit</td>
+                            <td><span class="status-pill info">Shipped</span></td>
+                            <td>$45.00</td>
+                        </tr>
+                        <tr>
+                            <td>#FS-9731</td>
+                            <td>Mar 15, 2026</td>
+                            <td>Kimchi Fermentation Jar (1L)</td>
+                            <td><span class="status-pill success">Delivered</span></td>
+                            <td>$32.50</td>
+                        </tr>
+                        <tr>
+                            <td>#FS-9610</td>
+                            <td>Feb 10, 2026</td>
+                            <td>Sourdough Starter Culture</td>
+                            <td><span class="status-pill success">Delivered</span></td>
+                            <td>$24.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Progress Tab -->
+        <div id="progress-tab" class="dashboard-pane">
+            <h2 style="margin-bottom: 2rem;">My Learning Progress</h2>
+            <div class="grid grid-2 progress-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="card reveal">
+                    <h3 style="margin-bottom: 1.5rem;">Skill Mastery</h3>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div class="flex-between"><span>Vegetable Fermentation</span><span>85%</span></div>
+                        <div class="progress-container">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div class="flex-between"><span>Probiotic Drinks</span><span>60%</span></div>
+                        <div class="progress-container">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex-between"><span>Sourdough Science</span><span>20%</span></div>
+                        <div class="progress-container">
+                            <div class="progress-fill" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.1s;">
+                    <h3 style="margin-bottom: 1.5rem;">Earned Badges</h3>
+                    <div class="badge-grid">
+                        <div class="badge-item earned">
+                            <div class="badge-icon"><i data-lucide="award"></i></div>
+                            <span style="font-size: 0.75rem; font-weight: 600;">Probiotic Pro</span>
+                        </div>
+                        <div class="badge-item earned">
+                            <div class="badge-icon"><i data-lucide="zap"></i></div>
+                            <span style="font-size: 0.75rem; font-weight: 600;">Fast Learner</span>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-icon"><i data-lucide="flame"></i></div>
+                            <span style="font-size: 0.75rem; font-weight: 600;">Fermenter On Fire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div id="notifications-tab" class="dashboard-pane">
+            <div class="flex-between" style="margin-bottom: 2rem;">
+                <h2>All Notifications</h2>
+                <button class="link-hover"
+                    style="border: none; background: none; font-size: 0.9rem; color: var(--primary); cursor: pointer; transition: var(--transition); font-weight: 600;">Mark
+                    all as read</button>
+            </div>
+            <div class="card reveal">
+                <div class="notification-item">
+                    <div
+                        style="background: var(--primary-light); color: var(--primary); padding: 0.75rem; border-radius: 50%; height: fit-content;">
+                        <i data-lucide="bell" style="width: 20px;"></i></div>
+                    <div style="flex: 1;">
+                        <p style="font-weight: 500;">New Recipe Available</p>
+                        <p style="font-size: 0.9rem; color: var(--text-alt);">Seasonal Radish Kimchi guide is now
+                            available in your library.</p>
+                        <span style="font-size: 0.8rem; color: var(--text-alt); display: block; margin-top: 0.5rem;">2
+                            hours ago</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div
+                        style="background: #fff7ed; color: #f97316; padding: 0.75rem; border-radius: 50%; height: fit-content;">
+                        <i data-lucide="alert-circle" style="width: 20px;"></i></div>
+                    <div style="flex: 1;">
+                        <p style="font-weight: 500;">Schedule Update</p>
+                        <p style="font-size: 0.9rem; color: var(--text-alt);">Workshop "Wild Yeast Bread" location
+                            shifted to Main Studio.</p>
+                        <span
+                            style="font-size: 0.8rem; color: var(--text-alt); display: block; margin-top: 0.5rem;">Yesterday
+                            at 4:30 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div id="profile-tab" class="dashboard-pane">
+            <h2 style="margin-bottom: 2rem;">Account Profile</h2>
+            <div class="grid grid-2" style="grid-template-columns: 1fr 2fr; gap: 3rem;">
+                <div class="card reveal" style="text-align: center;">
+                    <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 1.5rem;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM.jpeg" alt="Profile"
+                            style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
+                        <button class="btn-icon"
+                            style="position: absolute; bottom: 0; right: 0; background: var(--primary); color: white; border: 3px solid var(--bg-card);"><i
+                                data-lucide="camera" style="width: 16px;"></i></button>
+                    </div>
+                    <h3>Your Name</h3>
+                    <p style="color: var(--text-alt); font-size: 0.9rem;">Member since...</p>
+                    <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <button class="btn btn-secondary" style="width: 100%;">View Public Profile</button>
+                        <button class="btn btn-secondary"
+                            style="width: 100%; color: #ef4444; border-color: #fca5a5;">Delete Account</button>
+                    </div>
+                </div>
+                <div class="card reveal" style="animation-delay: 0.1s;">
+                    <form onsubmit="event.preventDefault(); alert('Profile Updated (Demo)');">
+                        <div class="grid grid-2" style="grid-template-columns: 1fr 1fr;">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="Enter first name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Enter last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Bio (Short Description)</label>
+                            <textarea class="form-input" style="height: 100px; resize: none;"
+                                placeholder="Describe yourself..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sidebar / Navigation Switching Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            const dashboardPanes = document.querySelectorAll('.dashboard-pane');
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const tabId = link.getAttribute('data-tab');
+
+                    if (tabId) {
+                        e.preventDefault();
+
+                        // Update active link
+                        sidebarLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+
+                        // Update active pane
+                        dashboardPanes.forEach(pane => {
+                            pane.classList.remove('active');
+                        });
+
+                        // Close sidebar on mobile/tablet
+                        const sidebar = document.querySelector('.sidebar');
+                        if (window.innerWidth <= 1024) {
+                            sidebar?.classList.remove('active');
+                        }
+
+                        const targetPane = document.getElementById(`${tabId}-tab`);
+                        if (targetPane) {
+                            targetPane.classList.add('active');
+                            // Re-trigger reveal animation for elements in new pane
+                            const reveals = targetPane.querySelectorAll('.reveal');
+                            reveals.forEach(r => {
+                                r.classList.remove('active');
+                                void r.offsetWidth; // Force reflow
+                                r.classList.add('active');
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i data-lucide="chevron-up"></i>
     </button>
-  </div>
-
-  <nav class="sidebar-nav">
-    <div class="nav-section-label">Main</div>
-    <ul>
-      <li class="sidebar-nav-item active">
-        <a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a href="#appointments"><i data-lucide="calendar-check"></i> Appointments <span class="sidebar-badge">3</span></a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a href="#services-booked"><i data-lucide="briefcase"></i> Services Booked</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a href="#care-plans-section"><i data-lucide="shield-check"></i> Care Plans</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a href="#documents"><i data-lucide="file-text"></i> Documents</a>
-      </li>
-    </ul>
-    <div class="nav-section-label" style="margin-top:12px;">Account</div>
-    <ul>
-      <li class="sidebar-nav-item">
-        <a href="#notifications"><i data-lucide="bell"></i> Notifications <span class="sidebar-badge">5</span></a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a href="#profile"><i data-lucide="user-circle"></i> Profile</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="sidebar-footer">
-    <div class="sidebar-profile">
-      <div class="sidebar-avatar">K</div>
-      <div class="sidebar-profile-info">
-        <strong>Karthick</strong>
-        <span>Business Plan</span>
-      </div>
-    </div>
-    <div class="sidebar-logout">
-      <i data-lucide="log-out"></i>
-      <a href="login.html" style="color:inherit;">Logout</a>
-    </div>
-  </div>
-</aside>
-
-<!-- Sidebar overlay (mobile) -->
-<div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-<!-- ═══════════ MAIN CONTENT ═══════════ -->
-<main class="dashboard-main">
-
-  <!-- Dashboard Header -->
-  <header class="dashboard-header">
-    <div class="d-header-left">
-      <button class="d-icon-btn" id="sidebar-menu-toggle" aria-label="Toggle sidebar">
-        <i data-lucide="menu"></i>
-      </button>
-      <div>
-        <h2>Dashboard</h2>
-        <div class="d-breadcrumb"><a href="index.html" style="color:inherit;text-decoration:none;transition:var(--transition-fast);">Home</a> / Dashboard</div>
-      </div>
-    </div>
-    <div class="d-header-right">
-      <div class="d-search-bar">
-        <i data-lucide="search"></i>
-        <span>Search...</span>
-      </div>
-      <button class="d-icon-btn" id="theme-toggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
-      <button class="d-icon-btn" id="rtl-toggle" aria-label="Toggle RTL"><i data-lucide="languages"></i></button>
-      <div class="d-icon-btn" style="position:relative;">
-        <i data-lucide="bell"></i>
-        <span class="d-notif-dot"></span>
-      </div>
-      <div class="d-avatar" title="Karthick">K</div>
-    </div>
-  </header>
-
-  <!-- Dashboard Content -->
-  <div class="dashboard-content">
-
-    <!-- Welcome Banner -->
-    <div class="welcome-banner">
-      <div class="welcome-text">
-        <h1>Welcome back, Karthick 👋</h1>
-        <p>Here's what's happening with your notary account today.</p>
-      </div>
-      <div class="welcome-action">
-        <a href="contact.html" class="btn btn-accent"><i data-lucide="calendar-plus"></i> Book Appointment</a>
-      </div>
-    </div>
-
-    <!-- Metric Cards -->
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-icon blue"><i data-lucide="calendar-check"></i></div>
-        <div class="metric-info">
-          <div class="metric-label">Appointments Booked</div>
-          <div class="metric-value" data-counter data-target="24">24</div>
-          <div class="metric-change up"><i data-lucide="trending-up"></i> +3 this month</div>
-        </div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-icon green"><i data-lucide="check-circle"></i></div>
-        <div class="metric-info">
-          <div class="metric-label">Completed Signings</div>
-          <div class="metric-value" data-counter data-target="21">21</div>
-          <div class="metric-change up"><i data-lucide="trending-up"></i> +2 this week</div>
-        </div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-icon amber"><i data-lucide="clock"></i></div>
-        <div class="metric-info">
-          <div class="metric-label">Pending Requests</div>
-          <div class="metric-value" data-counter data-target="3">3</div>
-          <div class="metric-change down"><i data-lucide="trending-down"></i> Needs attention</div>
-        </div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-icon purple"><i data-lucide="shield-check"></i></div>
-        <div class="metric-info">
-          <div class="metric-label">Active Plans</div>
-          <div class="metric-value" data-counter data-target="1">1</div>
-          <div class="metric-change up"><i data-lucide="trending-up"></i> Business Plan</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Grid -->
-    <div class="dashboard-grid" id="appointments">
-
-      <!-- Left Column -->
-      <div style="display:flex;flex-direction:column;gap:20px;">
-
-        <!-- Upcoming Appointments -->
-        <div class="d-card">
-          <div class="d-card-header">
-            <h3><i data-lucide="calendar" style="width:16px;height:16px;display:inline;margin-right:5px;"></i> Upcoming Appointments</h3>
-            <a href="#">View All</a>
-          </div>
-
-          <div class="appointment-item">
-            <div class="appt-date"><span class="appt-day">08</span><span class="appt-month">Apr</span></div>
-            <div class="appt-info">
-              <strong>Loan Signing — Purchase</strong>
-              <span>1248 Elm Street, Pasadena, CA</span>
-              <div class="appt-meta">
-                <span class="appt-time"><i data-lucide="clock"></i> 10:00 AM</span>
-                <span class="appt-status status-confirmed">Confirmed</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="appointment-item">
-            <div class="appt-date"><span class="appt-day">10</span><span class="appt-month">Apr</span></div>
-            <div class="appt-info">
-              <strong>Power of Attorney — Home</strong>
-              <span>Client's Residence, Glendale, CA</span>
-              <div class="appt-meta">
-                <span class="appt-time"><i data-lucide="clock"></i> 2:30 PM</span>
-                <span class="appt-status status-pending">Pending</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="appointment-item">
-            <div class="appt-date"><span class="appt-day">15</span><span class="appt-month">Apr</span></div>
-            <div class="appt-info">
-              <strong>Real Estate — Deed Transfer</strong>
-              <span>Title Company Office, Burbank, CA</span>
-              <div class="appt-meta">
-                <span class="appt-time"><i data-lucide="clock"></i> 11:00 AM</span>
-                <span class="appt-status status-confirmed">Confirmed</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="d-card" id="services-booked">
-          <div class="d-card-header">
-            <h3><i data-lucide="activity" style="width:16px;height:16px;display:inline;margin-right:5px;"></i> Recent Activity</h3>
-            <a href="#">View All</a>
-          </div>
-
-          <div class="activity-item">
-            <div class="activity-dot green"><i data-lucide="check-circle"></i></div>
-            <div class="activity-info">
-              <strong>Loan signing completed</strong>
-              <span>Today at 9:45 AM — 432 Oak Ave, LA</span>
-            </div>
-          </div>
-          <div class="activity-item">
-            <div class="activity-dot blue"><i data-lucide="calendar-plus"></i></div>
-            <div class="activity-info">
-              <strong>New appointment booked</strong>
-              <span>Yesterday at 3:12 PM — Apr 10 appointment</span>
-            </div>
-          </div>
-          <div class="activity-item">
-            <div class="activity-dot green"><i data-lucide="file-check"></i></div>
-            <div class="activity-info">
-              <strong>Document uploaded</strong>
-              <span>3 days ago — POA_signed_v2.pdf</span>
-            </div>
-          </div>
-          <div class="activity-item">
-            <div class="activity-dot amber"><i data-lucide="credit-card"></i></div>
-            <div class="activity-info">
-              <strong>Payment processed</strong>
-              <span>4 days ago — $75.00 for loan signing</span>
-            </div>
-          </div>
-          <div class="activity-item">
-            <div class="activity-dot green"><i data-lucide="check-circle"></i></div>
-            <div class="activity-info">
-              <strong>Affidavit notarized</strong>
-              <span>1 week ago — 789 Pine St, Torrance</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Column -->
-      <div style="display:flex;flex-direction:column;gap:20px;">
-
-        <!-- Profile Summary -->
-        <div class="d-card" id="profile">
-          <div class="d-card-header"><h3>Profile Summary</h3><a href="#">Edit</a></div>
-          <div class="profile-summary">
-            <div class="profile-summary-header">
-              <div class="profile-large-avatar">K</div>
-              <h3>Karthick Ranganathan</h3>
-              <span>karthick@email.com</span>
-              <span class="plan-badge">Business Plan</span>
-            </div>
-            <div class="profile-stat-row">
-              <div class="profile-stat"><span class="ps-value">24</span><span class="ps-label">Bookings</span></div>
-              <div class="profile-stat"><span class="ps-value">21</span><span class="ps-label">Completed</span></div>
-              <div class="profile-stat"><span class="ps-value">3</span><span class="ps-label">Pending</span></div>
-            </div>
-            <div class="profile-info-row"><i data-lucide="phone"></i> +1 (555) 987-6543</div>
-            <div class="profile-info-row"><i data-lucide="map-pin"></i> Los Angeles, CA</div>
-            <div class="profile-info-row"><i data-lucide="calendar"></i> Member since Jan 2026</div>
-            <div style="margin-top:16px;">
-              <a href="#" class="btn btn-secondary btn-full btn-sm"><i data-lucide="edit"></i> Edit Profile</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Notifications Panel -->
-        <div class="d-card" id="notifications">
-          <div class="d-card-header">
-            <h3><i data-lucide="bell" style="width:15px;height:15px;display:inline;margin-right:5px;"></i> Notifications</h3>
-            <a href="#">Mark all read</a>
-          </div>
-          <div class="notif-item unread">
-            <div class="notif-icon"><i data-lucide="calendar-check"></i></div>
-            <div class="notif-text">
-              <strong>Appointment confirmed</strong>
-              <span>Apr 8 loan signing — 10:00 AM · Just now</span>
-            </div>
-          </div>
-          <div class="notif-item unread">
-            <div class="notif-icon"><i data-lucide="bell"></i></div>
-            <div class="notif-text">
-              <strong>Reminder: Appointment Tomorrow</strong>
-              <span>Apr 10 POA signing at 2:30 PM · 1 hr ago</span>
-            </div>
-          </div>
-          <div class="notif-item">
-            <div class="notif-icon"><i data-lucide="receipt"></i></div>
-            <div class="notif-text">
-              <strong>Payment receipt sent</strong>
-              <span>$75.00 via email · 4 days ago</span>
-            </div>
-          </div>
-          <div class="notif-item">
-            <div class="notif-icon"><i data-lucide="shield-check"></i></div>
-            <div class="notif-text">
-              <strong>Plan renewal upcoming</strong>
-              <span>Business Plan renews Apr 30 · 1 week ago</span>
-            </div>
-          </div>
-          <div class="notif-item">
-            <div class="notif-icon"><i data-lucide="star"></i></div>
-            <div class="notif-text">
-              <strong>Leave a review</strong>
-              <span>How was your last signing? · 1 week ago</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Documents Section -->
-    <div class="d-card" id="documents" style="margin-top:4px;">
-      <div class="d-card-header">
-        <h3><i data-lucide="file-text" style="width:16px;height:16px;display:inline;margin-right:5px;"></i> My Documents</h3>
-        <a href="#" class="btn btn-primary btn-sm"><i data-lucide="upload"></i> Upload</a>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;width:100%;box-sizing:border-box;">
-        <div class="doc-card">
-          <div style="width:44px;height:44px;background:rgba(239,68,68,0.1);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:#ef4444;"><i data-lucide="file-text"></i></div>
-          <p style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">loan_closing_mar24.pdf</p>
-          <p style="font-size:0.72rem;color:var(--text-muted);">Mar 15, 2024 · 2.4 MB</p>
-        </div>
-        <div class="doc-card">
-          <div style="width:44px;height:44px;background:rgba(59,130,246,0.1);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:#3b82f6;"><i data-lucide="file-text"></i></div>
-          <p style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">POA_signed_v2.pdf</p>
-          <p style="font-size:0.72rem;color:var(--text-muted);">Mar 30, 2024 · 1.1 MB</p>
-        </div>
-        <div class="doc-card">
-          <div style="width:44px;height:44px;background:rgba(34,197,94,0.1);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:#22c55e;"><i data-lucide="file-check"></i></div>
-          <p style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">affidavit_notarized.pdf</p>
-          <p style="font-size:0.72rem;color:var(--text-muted);">Feb 22, 2024 · 850 KB</p>
-        </div>
-        <div class="doc-card-upload">
-          <div style="color:var(--text-muted);margin-bottom:7px;"><i data-lucide="upload-cloud" style="width:28px;height:28px;"></i></div>
-          <p style="font-size:0.8rem;color:var(--text-muted);">Upload Document</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</main>
 
 </body>
+
 </html>
