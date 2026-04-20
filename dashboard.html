@@ -114,59 +114,36 @@
                 min-height: 80px;
             }
 
-            .dashboard-header .welcome-text {
-                position: static !important;
-                transform: none !important;
-                text-align: center !important;
-                flex: 1 !important;
-                min-width: 0 !important;
-                order: 2 !important;
-                padding: 0 1rem !important;
+            #sidebar-toggle {
+                order: 1 !important;
+                margin-bottom: 0 !important;
+                flex-shrink: 0 !important;
+                display: flex !important;
             }
 
-            .dashboard-header .welcome-text h1 {
+            .welcome-text {
+                order: 2 !important;
+                text-align: left !important;
+                flex: 1 !important;
+                min-width: 0 !important;
+                padding-left: 1rem !important;
+                margin-right: auto !important;
+            }
+
+            .welcome-text h1 {
                 font-size: 1.1rem !important;
-                /* Slightly larger for tablets */
                 margin: 0 !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
             }
 
-            .dashboard-header .welcome-text p {
+            .welcome-text p {
                 display: none !important;
-                /* Hide subtext on tablet/mobile */
             }
 
             .care-plan-features {
                 grid-template-columns: 1fr !important;
-            }
-
-            /* Hamburger stays left (order 1) */
-            #sidebar-toggle {
-                order: 1 !important;
-                margin-bottom: 0 !important;
-                flex-shrink: 0 !important;
-                display: flex !important;
-                /* Ensure visibility */
-            }
-
-            /* Controls group stays far right (order 3) */
-            .header-controls-group {
-                order: 3 !important;
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                gap: 0.5rem !important;
-                margin-left: 0 !important;
-                flex-shrink: 0 !important;
-            }
-
-            .welcome-text {
-                order: 2 !important;
-                margin-right: auto !important;
-                padding-left: 1rem !important;
-                text-align: left !important;
             }
 
             /* Hide vertical divider on tablet/mobile */
@@ -182,6 +159,13 @@
             .user-info-wrapper div:first-child {
                 display: none;
                 /* Hide name text to keep it clean */
+            }
+
+            .metric-card {
+                flex-direction: column !important;
+                text-align: center !important;
+                justify-content: center !important;
+                gap: 1rem !important;
             }
         }
 

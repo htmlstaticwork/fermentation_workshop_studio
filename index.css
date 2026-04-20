@@ -762,6 +762,7 @@ select.form-input {
     }
 
     footer .logo a,
+    footer .brand-logo-link,
     footer .flex-center,
     footer .footer-contact-item {
         justify-content: center !important;
@@ -773,8 +774,30 @@ select.form-input {
 
     /* Hero: don't crop the image on tablet */
     .hero {
+        padding: 10rem 0 6rem !important;
         background-size: cover !important;
         background-position: center center !important;
+    }
+
+    .hero-content > div:first-child {
+        margin-bottom: 1rem !important;
+    }
+
+    .hero h1 {
+        font-size: 3.25rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .hero p {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .hero-content > div:last-child {
+        margin-top: 2rem !important;
+    }
+
+    .hero-content .flex-center {
+        gap: 10px !important;
     }
 
     .premium-hero {
@@ -815,7 +838,7 @@ select.form-input {
     .story-actions,
     .ws-card-footer {
         justify-content: center !important;
-        gap: 1.5rem !important;
+        gap: 10px !important;
     }
 
     .ws-card-footer .btn {
@@ -879,12 +902,43 @@ select.form-input {
     }
 
     /* Center 'Why We Are Different' items when stacked */
-    .section .reveal div[style*="display: flex; gap: 1.5rem"] {
-        flex-direction: column !important;
-        align-items: center !important;
         text-align: center !important;
     }
-}
+
+    /* Reduced spacing for sections and CTA blocks on tablet */
+    .section {
+        padding: 4rem 0 !important;
+    }
+
+    /* Center contact info cards on tablet/1024px */
+    .info-card-row {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+        padding: 2rem !important;
+    }
+
+    .info-card-icon {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .cta-section {
+        padding: 3.5rem 2rem !important;
+    }
+
+    .cta-section h2 {
+        font-size: 2.25rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .cta-section p {
+        margin-bottom: 2.25rem !important;
+    }
+
+    .cta-actions {
+        gap: 10px !important;
+    }
+
 
 /* Responsive (768px and below) */
 @media (max-width: 768px) {
@@ -953,7 +1007,7 @@ select.form-input {
     .ws-card-footer {
         display: flex !important;
         flex-direction: row !important;
-        justify-content: space-between !important;
+        justify-content: center !important;
         align-items: center !important;
         gap: 0.75rem !important;
         width: 100% !important;
@@ -998,11 +1052,14 @@ select.form-input {
     }
 
     .card[style*="padding: 6rem"] form {
-        flex-direction: column !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        justify-content: center !important;
     }
 
     .card[style*="padding: 6rem"] form button {
-        width: 100% !important;
+        width: auto !important;
+        white-space: nowrap !important;
     }
 
     /* Why we are different section fixes */
@@ -1228,17 +1285,6 @@ body.rtl .mobile-drawer.open {
     padding-left: 5px;
 }
 
-.footer-contact-item {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    color: var(--text-alt);
-}
-
-.footer-contact-item i {
-    color: var(--primary);
-    flex-shrink: 0;
-}
 
 /* Link with Arrow */
 .link-arrow {
@@ -1649,11 +1695,18 @@ body.rtl .mobile-drawer.open {
     margin-bottom: 1.25rem;
 }
 
-.testimonial-stars i {
-    color: #facc15;
+.testimonial-stars i,
+.testimonial-stars svg,
+[data-lucide="star"] {
+    color: #facc15 !important;
+    fill: #facc15 !important;
+    stroke: #eab308 !important; /* Slightly darker stroke for definition */
+}
+
+.testimonial-stars i,
+.testimonial-stars svg {
     width: 18px;
     height: 18px;
-    fill: #facc15;
 }
 
 .testimonial-avatar {
@@ -1680,14 +1733,17 @@ body.rtl .mobile-drawer.open {
     gap: 1rem;
     margin-bottom: 1.25rem;
     color: var(--text-alt);
+    line-height: 1.5;
 }
 
-.footer-contact-item i {
-    width: 18px;
-    height: 18px;
+.footer-contact-item i,
+.footer-contact-item svg {
+    width: 20px !important;
+    height: 20px !important;
     color: var(--primary);
     flex-shrink: 0;
-    margin-top: 0.25rem;
+    margin-top: 0.15rem; /* Better vertical alignment with text line-height */
+    stroke-width: 2px !important;
 }
 
 /* --- Pricing Highlight --- */
@@ -1906,22 +1962,22 @@ body.rtl .mobile-drawer.open {
 
 @media (max-width: 768px) {
     .contact-info-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 2rem 1rem !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
     }
 
     .contact-info-item {
         border: none !important;
         padding: 0 !important;
-    }
-
-    .contact-info-item:nth-child(3) {
-        grid-column: span 2 !important;
+        justify-content: flex-start !important;
+        max-width: fit-content;
+        margin: 0 auto;
     }
 
     .info-card-row {
         flex-direction: column !important;
         text-align: center !important;
+        align-items: center !important;
         padding: 2rem !important;
     }
 
@@ -1980,5 +2036,15 @@ body.rtl .mobile-drawer.open {
     .trust-item {
         font-size: 0.8rem !important;
         gap: 0.4rem !important;
+    }
+
+    /* Stack newsletter form on very small screens */
+    .card[style*="padding: 6rem"] form {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .card[style*="padding: 6rem"] form button {
+        width: 100% !important;
     }
 }
