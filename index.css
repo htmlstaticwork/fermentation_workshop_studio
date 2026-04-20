@@ -102,6 +102,10 @@ img {
     padding: 0 1.5rem;
 }
 
+.container-header {
+    max-width: 1440px;
+}
+
 .section {
     padding: 5rem 0;
 }
@@ -206,12 +210,15 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-sm);
     background: var(--bg-alt);
     border: 1px solid var(--border);
     color: var(--text-main);
     transition: var(--transition);
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
 .btn-icon i,
@@ -1275,5 +1282,425 @@ body.rtl .mobile-drawer.open {
     .care-plan-actions button {
         font-size: 0.75rem !important;
         padding: 0.5rem 0.4rem !important;
+    }
+}
+
+/* =====================================================
+   GLOBAL PREMIUM DESIGN SYSTEM
+   Applied across all pages via index.css
+====================================================== */
+
+/* --- Section Label Pill --- */
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.375rem 1rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1rem;
+}
+
+/* --- Page Hero (inner pages) --- */
+.page-hero {
+    padding: 12rem 0 6rem;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(5,46,22,0.7) 100%);
+    z-index: 1;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(34,197,94,0.15);
+    border: 1px solid rgba(34,197,94,0.4);
+    color: #86efac;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(4px);
+}
+
+/* --- Workshop Cards (global) --- */
+.ws-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ws-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px -10px rgba(34,197,94,0.2), 0 8px 24px -4px rgba(0,0,0,0.12);
+    border-color: var(--primary);
+}
+
+.ws-card-img {
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ws-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.ws-card:hover .ws-card-img img { transform: scale(1.08); }
+
+.ws-card-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+}
+
+.ws-card-body {
+    padding: 1.75rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ws-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-alt);
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.ws-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.ws-card-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+/* --- Global Testimonial Card --- */
+.testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    position: relative;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    font-size: 6rem;
+    font-family: Georgia, serif;
+    color: var(--primary);
+    opacity: 0.12;
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    line-height: 1;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -8px rgba(34,197,94,0.15);
+    border-color: var(--primary);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.testimonial-stars i {
+    color: #f59e0b;
+    width: 16px;
+    height: 16px;
+    fill: #f59e0b;
+}
+
+.testimonial-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-light);
+    flex-shrink: 0;
+}
+
+/* --- CTA Banner (global dark green) --- */
+.cta-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #064e3b 0%, #14532d 40%, #166534 100%);
+    border-radius: var(--radius-lg);
+    padding: 5rem 4rem;
+    text-align: center;
+    color: white;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,197,94,0.25) 0%, transparent 70%);
+}
+
+.cta-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%);
+}
+
+.cta-section-content { position: relative; z-index: 1; }
+
+/* --- Trust Ticker (homepage, global) --- */
+.trust-bar {
+    background: var(--primary);
+    padding: 0.75rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.trust-ticker {
+    display: inline-flex;
+    gap: 3rem;
+    animation: ticker 28s linear infinite;
+}
+
+.trust-ticker:hover { animation-play-state: paused; }
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+}
+
+/* --- Statistics Strip --- */
+.stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.stat-item {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    transition: background var(--transition);
+}
+
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: var(--bg-alt); }
+
+.stat-number {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-alt);
+    font-weight: 500;
+}
+
+/* --- Hero gradient text animation --- */
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero-gradient-text {
+    background: linear-gradient(270deg, #22c55e, #10b981, #86efac, #22c55e);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 5s ease infinite;
+}
+
+/* --- Benefits Glassmorphism Cards --- */
+.benefit-glass-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    transition: var(--transition);
+}
+
+.benefit-glass-card:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-4px);
+}
+
+/* --- Info Card Row (contact info) --- */
+.info-card-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.info-card-row:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.info-card-icon {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 0.875rem;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Pricing card enhancements --- */
+.pricing-card-popular {
+    border-color: var(--primary) !important;
+    background: var(--bg-main);
+    position: relative;
+}
+
+/* --- Responsive overrides for global components --- */
+@media (max-width: 768px) {
+    .stats-strip {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+    .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+
+    .cta-section { padding: 3rem 1.5rem !important; }
+    .page-hero { padding: 9rem 0 4rem !important; }
+
+    .ws-card-meta { gap: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+    .stats-strip { grid-template-columns: 1fr 1fr !important; }
+
+    /* Hero & Page Hero Responsive Fixes for 360px-480px */
+    .hero {
+        padding: 9rem 0 5rem !important; /* Increased top padding to clear header */
+        background-attachment: scroll !important;
+    }
+
+    .hero h1 {
+        font-size: 2.15rem !important; /* Slightly smaller for 360px */
+        margin-bottom: 1rem !important;
+        line-height: 1.2 !important;
+        padding: 0 0.5rem !important; /* Prevents edge touching */
+    }
+
+    .hero p {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+        padding: 0 1rem !important;
+    }
+
+    .hero .hero-content > div:first-child {
+        font-size: 0.7rem !important; /* Scale down the workshop pill */
+        margin-bottom: 1.25rem !important;
+        padding: 0.3rem 0.75rem !important;
+    }
+
+    .page-hero {
+        padding: 10rem 0 5rem !important;
+        background-attachment: scroll !important;
+    }
+
+    .page-hero h1 {
+        font-size: 2.15rem !important;
+        line-height: 1.2 !important;
+        padding: 0 0.5rem !important;
+    }
+
+    .page-hero p {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        padding: 0 1rem !important;
+    }
+
+    /* Adjust trust ticker items for mobile visibility */
+    .trust-item {
+        font-size: 0.8rem !important;
+        gap: 0.4rem !important;
     }
 }

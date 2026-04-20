@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Care Plans & Subscriptions | FermentStudio</title>
+    <title>Care Plans &amp; Subscriptions | FermentStudio</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="main.js" defer></script>
-    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="icon" type="image/png" href="img/brand-logo.png">
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <div class="container flex-between" style="padding: 0 1rem;">
+        <div class="container container-header flex-between" style="padding: 0 1rem;">
             <div class="logo">
                 <a href="index.html" class="flex-center" style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
-                    <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
-                    FERMENT
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">FERMENT
                 </a>
             </div>
-            
             <nav class="nav-links">
                 <a href="index.html" class="nav-link">Home 1</a>
                 <a href="index-2.html" class="nav-link">Home 2</a>
@@ -30,155 +28,219 @@
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
             </nav>
-
             <div class="flex-center" style="gap: 0.5rem;">
                 <a href="login.html" class="btn btn-secondary" style="padding: 0.6rem 1rem;">Login</a>
-                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
-                    <i data-lucide="moon"></i>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0"><i data-lucide="moon"></i></div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
                 </div>
-                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0">
-                    <i data-lucide="languages"></i>
-                </div>
-                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;">
-                    <i data-lucide="menu"></i>
-                </div>
+                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;"><i data-lucide="menu"></i></div>
             </div>
         </div>
     </header>
 
-    <!-- Care Plans Hero -->
-    <section class="section" style="padding: 12rem 0 8rem; position: relative; background-image: url('img/WhatsApp Image 2026-04-02 at 11.52.01 AM (1).jpeg'); background-size: cover; background-position: center;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.4)); z-index: 1;"></div>
-        <div class="container" style="text-align: center; position: relative; z-index: 2;">
+    <!-- Hero -->
+    <section class="page-hero" style="background-image: url('img/WhatsApp Image 2026-04-02 at 11.52.01 AM (1).jpeg');">
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
             <div class="reveal">
-                <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Subscriptions</span>
-                <h1 style="font-size: 4rem; margin-top: 1rem; color: #ffffff;">Fermentation Care Plans</h1>
-                <p style="font-size: 1.5rem; color: rgba(255, 255, 255, 0.9); max-width: 850px; margin: 0.5rem auto 2.5rem; line-height: 1.4;">The easiest way to maintain a healthy gut. We deliver seasonal fermentation kits, heritage SCOBYs, and expert guidance directly to your door.</p>
-                <a href="#plans" class="btn btn-primary" style="padding: 1rem 2.5rem;">Explore Plans</a>
+                <div class="page-hero-tag">
+                    <i data-lucide="package" style="width: 13px; height: 13px;"></i>
+                    Monthly Subscriptions
+                </div>
+                <h1 style="font-size: 3.75rem; color: #fff; margin-bottom: 1rem; line-height: 1.1;">Fermentation Care Plans</h1>
+                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.85); max-width: 680px; margin: 0 auto 2rem; line-height: 1.8;">The easiest way to maintain a healthy gut. We deliver seasonal kits, heritage SCOBYs, and expert guidance straight to your door.</p>
+                <a href="#plans" class="btn btn-primary" style="padding: 1rem 2.5rem;">Explore Plans <i data-lucide="arrow-down" style="width: 16px;"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Plans Section -->
+    <!-- Trust bar -->
+    <div class="trust-bar">
+        <div class="trust-ticker">
+            <span class="trust-item"><i data-lucide="package" style="width:16px;height:16px;"></i> Monthly Delivery to Your Door</span>
+            <span class="trust-item"><i data-lucide="leaf" style="width:16px;height:16px;"></i> Certified Organic Ingredients</span>
+            <span class="trust-item"><i data-lucide="flask-conical" style="width:16px;height:16px;"></i> Heritage Lab-Tested Cultures</span>
+            <span class="trust-item"><i data-lucide="x-circle" style="width:16px;height:16px;"></i> Cancel Anytime, No Lock-In</span>
+            <span class="trust-item"><i data-lucide="book-open" style="width:16px;height:16px;"></i> Step-by-Step Recipe Cards Included</span>
+            <!-- duplicate -->
+            <span class="trust-item"><i data-lucide="package" style="width:16px;height:16px;"></i> Monthly Delivery to Your Door</span>
+            <span class="trust-item"><i data-lucide="leaf" style="width:16px;height:16px;"></i> Certified Organic Ingredients</span>
+            <span class="trust-item"><i data-lucide="flask-conical" style="width:16px;height:16px;"></i> Heritage Lab-Tested Cultures</span>
+            <span class="trust-item"><i data-lucide="x-circle" style="width:16px;height:16px;"></i> Cancel Anytime, No Lock-In</span>
+            <span class="trust-item"><i data-lucide="book-open" style="width:16px;height:16px;"></i> Step-by-Step Recipe Cards Included</span>
+        </div>
+    </div>
+
+    <!-- Plans -->
     <section id="plans" class="section">
-        <div class="container grid grid-3">
-            <!-- Basic Plan -->
-            <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 1.5rem;">Seedling</h3>
-                    <p style="color: var(--text-alt);">Perfect for curious beginners.</p>
-                    <div style="margin: 1.5rem 0;">
-                        <span style="font-size: 2.5rem; font-weight: 800;">$29</span>
-                        <span style="color: var(--text-alt);">/ month</span>
-                    </div>
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="tag" style="width: 13px; height: 13px;"></i>
+                    Choose Your Plan
                 </div>
-                <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> 1 Monthly Seasonal Kit</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> Basic Recipe Guides</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> Community Access</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt);"><i data-lucide="circle" style="width: 20px;"></i> Heritage SCOBY Access</li>
-                </ul>
-                <button class="btn btn-secondary" style="width: 100%; margin-top: auto;">Start Plan</button>
+                <h2 style="font-size: 2.75rem;">Pick What Fits Your Kitchen</h2>
+                <p style="color: var(--text-alt); max-width: 500px; margin: 0.75rem auto 0;">Flexible subscriptions for every lifestyle. Upgrade or cancel anytime.</p>
             </div>
-
-            <!-- Pro Plan -->
-            <div class="card reveal" style="display: flex; flex-direction: column; height: 100%; border-color: var(--primary); transform: scale(1.05); z-index: 10; background: var(--bg-main); animation-delay: 0.1s;">
-                <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.25rem 1.5rem; border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); font-size: 0.8rem; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);">POPULAR</div>
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 1.5rem;">Cultivator</h3>
-                    <p style="color: var(--text-alt);">For the serious home fermenter.</p>
-                    <div style="margin: 1.5rem 0;">
-                        <span style="font-size: 2.5rem; font-weight: 800;">$59</span>
-                        <span style="color: var(--text-alt);">/ month</span>
+            <div class="grid grid-3" style="align-items: start;">
+                <!-- Seedling -->
+                <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
+                    <div style="margin-bottom: 2rem;">
+                        <div class="section-label" style="background: rgba(34,197,94,0.08); margin-bottom: 0.75rem;">Starter</div>
+                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Seedling</h3>
+                        <p style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 1.5rem;">Perfect for curious beginners.</p>
+                        <div>
+                            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">$29</span>
+                            <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
+                        </div>
                     </div>
+                    <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1 Monthly Seasonal Kit</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Basic Recipe Guides</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Community Forum Access</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt); opacity: 0.5;"><i data-lucide="circle" style="width: 18px; flex-shrink: 0;"></i> Heritage SCOBY Access</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt); opacity: 0.5;"><i data-lucide="circle" style="width: 18px; flex-shrink: 0;"></i> Live Q&amp;A Sessions</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width: 100%; padding: 1rem;">Start Plan</button>
                 </div>
-                <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> 2 Monthly Seasonal Kits</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> Advanced Recipe Guides</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> Heritage SCOBY Exchange</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> 1 Live Q&A Session</li>
-                </ul>
-                <button class="btn btn-primary" style="width: 100%; margin-top: auto;">Start Plan</button>
-            </div>
 
-            <!-- Premium Plan -->
-            <div class="card reveal" style="display: flex; flex-direction: column; height: 100%; animation-delay: 0.2s;">
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 1.5rem;">Master</h3>
-                    <p style="color: var(--text-alt);">The total fermentation experience.</p>
-                    <div style="margin: 1.5rem 0;">
-                        <span style="font-size: 2.5rem; font-weight: 800;">$99</span>
-                        <span style="color: var(--text-alt);">/ month</span>
+                <!-- Cultivator — Popular -->
+                <div class="card reveal pricing-card-popular" style="display: flex; flex-direction: column; height: 100%; transform: scale(1.03); z-index: 10; animation-delay: 0.1s;">
+                    <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.3rem 1.5rem; border-bottom-left-radius: var(--radius-md); border-bottom-right-radius: var(--radius-md); font-size: 0.78rem; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 16px rgba(34,197,94,0.3); letter-spacing: 0.06em;">★ MOST POPULAR</div>
+                    <div style="margin-bottom: 2rem; padding-top: 0.75rem;">
+                        <div class="section-label" style="margin-bottom: 0.75rem;">Best Value</div>
+                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Cultivator</h3>
+                        <p style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 1.5rem;">For the serious home fermenter.</p>
+                        <div>
+                            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">$59</span>
+                            <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
+                        </div>
                     </div>
+                    <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 2 Monthly Seasonal Kits</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Advanced Recipe Guides</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Heritage SCOBY Exchange</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1 Monthly Live Q&amp;A</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem; color: var(--text-alt); opacity: 0.5;"><i data-lucide="circle" style="width: 18px; flex-shrink: 0;"></i> 1-on-1 Coaching</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%; padding: 1rem;">Start Plan</button>
                 </div>
-                <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> Unlimited Seasonal Kits</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> 1-on-1 Coaching (Monthly)</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> VIP Workshop Seating</li>
-                    <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px;"></i> Early Product Drops</li>
-                </ul>
-                <button class="btn btn-secondary" style="width: 100%; margin-top: auto;">Start Plan</button>
+
+                <!-- Master -->
+                <div class="card reveal" style="display: flex; flex-direction: column; height: 100%; animation-delay: 0.2s;">
+                    <div style="margin-bottom: 2rem;">
+                        <div class="section-label" style="background: rgba(139,92,246,0.1); color: #8b5cf6; margin-bottom: 0.75rem;">Premium</div>
+                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Master</h3>
+                        <p style="color: var(--text-alt); font-size: 0.9rem; margin-bottom: 1.5rem;">The total fermentation experience.</p>
+                        <div>
+                            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">$99</span>
+                            <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
+                        </div>
+                    </div>
+                    <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Unlimited Seasonal Kits</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1-on-1 Coaching (Monthly)</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> VIP Workshop Seating</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Early Product &amp; Culture Drops</li>
+                        <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Private Community Access</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width: 100%; padding: 1rem;">Start Plan</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- What's Included -->
+    <!-- What's in the box -->
     <section class="section" style="background: var(--bg-alt);">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 5rem;" class="reveal">
-                <h2 style="font-size: 3rem;">Inside the Box</h2>
-                <p style="color: var(--text-alt);">Everything you need for a successful ferment</p>
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="gift" style="width: 13px; height: 13px;"></i>
+                    Inside the Box
+                </div>
+                <h2 style="font-size: 2.75rem;">Everything You Need to Ferment</h2>
+                <p style="color: var(--text-alt);">Curated by our master fermenters, delivered to your kitchen</p>
             </div>
-            <div class="grid grid-3" style="gap: 3rem;">
+            <div class="grid grid-3" style="gap: 2.5rem;">
                 <div class="reveal" style="text-align: center;">
-                    <div style="width: 100%; height: 250px; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.5rem; box-shadow: var(--shadow);">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.01 AM.jpeg" alt="Organic Produce" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; height: 260px; margin-bottom: 1.75rem; box-shadow: var(--shadow); position: relative;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.01 AM.jpeg" alt="Organic Produce" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);"></div>
+                        <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; color: white; font-weight: 700; font-size: 1.1rem;">Organic Produce</div>
                     </div>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Organic Produce</h4>
-                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.6;">Pre-washed and measured ingredients from our certified organic partner farms.</p>
+                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">Pre-washed and measured ingredients from our certified organic partner farms, delivered at peak freshness.</p>
                 </div>
-                <div class="reveal" style="animation-delay: 0.1s; text-align: center;">
-                    <div style="width: 100%; height: 250px; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.5rem; box-shadow: var(--shadow);">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM.jpeg" alt="Heritage Cultures" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="reveal" style="text-align: center; animation-delay: 0.1s;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; height: 260px; margin-bottom: 1.75rem; box-shadow: var(--shadow); position: relative;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.02 AM.jpeg" alt="Heritage Cultures" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);"></div>
+                        <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; color: white; font-weight: 700; font-size: 1.1rem;">Heritage Cultures</div>
                     </div>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Heritage Cultures</h4>
-                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.6;">Tested, high-vitality SCOBYs, starters, and mother cultures from our own lab.</p>
+                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">High-vitality SCOBYs, sourdough starters, and mother cultures tested in our own lab for consistent results.</p>
                 </div>
-                <div class="reveal" style="animation-delay: 0.2s; text-align: center;">
-                    <div style="width: 100%; height: 250px; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.5rem; box-shadow: var(--shadow);">
-                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM (2).jpeg" alt="Artisan Spices" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="reveal" style="text-align: center; animation-delay: 0.2s;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; height: 260px; margin-bottom: 1.75rem; box-shadow: var(--shadow); position: relative;">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM (2).jpeg" alt="Artisan Spices" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);"></div>
+                        <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; color: white; font-weight: 700; font-size: 1.1rem;">Artisan Spices</div>
                     </div>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Artisan Spices</h4>
-                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.6;">Small-batch spices and sea salts specifically chosen for optimal fermentation.</p>
+                    <p style="color: var(--text-alt); font-size: 0.95rem; line-height: 1.7;">Small-batch spices, sea salts, and specialty ingredients specifically chosen for optimal fermentation outcomes.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Benefits -->
-    <section class="reveal section">
-        <div class="container" style="max-width: 800px; text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 3rem;">Why Choose a Plan?</h2>
-            <div style="display: flex; flex-direction: column; gap: 2rem; text-align: left;">
-                <div class="flex-center" style="justify-content: flex-start; gap: 1.5rem;">
-                    <div style="background: var(--primary-light); color: var(--primary); padding: 1rem; border-radius: 50%;"><i data-lucide="zap"></i></div>
-                    <div>
-                        <h4>No More Guesswork</h4>
-                        <p style="color: var(--text-alt);">We provide the exact ratios and ingredients. You just follow the simple steps.</p>
-                    </div>
+    <section class="section" style="background: linear-gradient(135deg, #14532d 0%, #166534 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal">
+                <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1rem;">
+                    <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
+                    Why Subscribe?
                 </div>
-                <div class="flex-center" style="justify-content: flex-start; gap: 1.5rem;">
-                    <div style="background: var(--primary-light); color: var(--primary); padding: 1rem; border-radius: 50%;"><i data-lucide="clock"></i></div>
-                    <div>
-                        <h4>Save Time</h4>
-                        <p style="color: var(--text-alt);">No hunting for specialized jars or rare cultures—it all arrives at your door.</p>
+                <h2 style="font-size: 2.5rem; color: white;">Why Choose a Care Plan?</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="benefit-glass-card reveal">
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i data-lucide="zap" style="width: 28px; height: 28px; color: white;"></i>
                     </div>
+                    <h4 style="color: white; margin-bottom: 0.75rem; font-size: 1.15rem;">No More Guesswork</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">We provide exact ratios and ingredients with step-by-step guides. You just follow the simple steps.</p>
                 </div>
-                <div class="flex-center" style="justify-content: flex-start; gap: 1.5rem;">
-                    <div style="background: var(--primary-light); color: var(--primary); padding: 1rem; border-radius: 50%;"><i data-lucide="heart"></i></div>
-                    <div>
-                        <h4>Consistent Gut Health</h4>
-                        <p style="color: var(--text-alt);">Ensure you always have a fresh batch of probiotics ready to consume.</p>
+                <div class="benefit-glass-card reveal" style="animation-delay: 0.1s;">
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i data-lucide="clock" style="width: 28px; height: 28px; color: white;"></i>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 0.75rem; font-size: 1.15rem;">Save Time</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">No hunting for specialized jars or rare cultures — everything arrives curated at your door every month.</p>
+                </div>
+                <div class="benefit-glass-card reveal" style="animation-delay: 0.2s;">
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i data-lucide="heart" style="width: 28px; height: 28px; color: white;"></i>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 0.75rem; font-size: 1.15rem;">Consistent Gut Health</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">Always have a fresh batch of probiotics ready. Regular fermentation is the key to lasting gut wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section reveal">
+                <div class="cta-section-content">
+                    <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1.5rem;">
+                        <i data-lucide="package" style="width: 13px; height: 13px;"></i>
+                        Start Your Subscription
+                    </div>
+                    <h2 style="font-size: 2.75rem; color: white; margin-bottom: 1rem;">Your Monthly Ferment Kit Awaits</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">Join thousands of home fermenters who get their monthly culture fix. Cancel anytime, no commitment.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="#plans" class="btn" style="background: white; color: #14532d; font-weight: 700; padding: 1rem 2rem;">View All Plans</a>
+                        <a href="contact.html" class="btn btn-glass" style="padding: 1rem 2rem;">Ask a Question</a>
                     </div>
                 </div>
             </div>
@@ -186,14 +248,13 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
         <div class="container grid grid-4" style="gap: 4rem;">
             <div>
                 <a href="index.html" class="flex-center" style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
-                    <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
-                    FERMENT
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">FERMENT
                 </a>
-                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
+                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time.</p>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
@@ -206,38 +267,18 @@
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
-                <div class="footer-contact-item">
-                    <i data-lucide="map-pin"></i>
-                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i data-lucide="phone"></i>
-                    <span>+1 (234) 567 8901</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i data-lucide="clock"></i>
-                    <span>Mon - Sat: 10AM - 6PM</span>
-                </div>
+                <div class="footer-contact-item"><i data-lucide="map-pin"></i><span>123 Artisan Lane, Culture Square, NY 10001</span></div>
+                <div class="footer-contact-item"><i data-lucide="phone"></i><span>+1 (234) 567 8901</span></div>
+                <div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 10AM - 6PM</span></div>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="footer-contact-item" style="margin-bottom: 1.5rem;">
-                    <i data-lucide="mail"></i>
-                    <span>hello@fermentstudio.com</span>
-                </div>
+                <div class="footer-contact-item" style="margin-bottom: 1.5rem;"><i data-lucide="mail"></i><span>hello@fermentstudio.com</span></div>
                 <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
-                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
+                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                 </div>
             </div>
         </div>
@@ -246,12 +287,8 @@
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top" title="Back to Top">
-        <i data-lucide="chevron-up"></i>
-    </button>
+    <button id="back-to-top" class="back-to-top" title="Back to Top"><i data-lucide="chevron-up"></i></button>
 
-    <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="mobile-drawer">
         <div class="flex-between" style="margin-bottom: 2rem;">
             <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>

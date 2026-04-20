@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workshops & Services | FermentStudio</title>
+    <title>Workshops &amp; Services | FermentStudio</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="main.js" defer></script>
-    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="icon" type="image/png" href="img/brand-logo.png">
+    <style>
+        .faq-card details > summary { list-style: none; outline: none; }
+        .faq-card details > summary::-webkit-details-marker { display: none; }
+        .faq-card details[open] .faq-icon { transform: rotate(180deg); }
+        .faq-card details p { margin: 0; }
+        .faq-card details[open] .faq-content { animation: faqSlideDown 0.3s ease-out forwards; }
+        @keyframes faqSlideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .pkg-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        }
+    </style>
 </head>
-
 <body>
 
     <!-- Header -->
     <header>
-        <div class="container flex-between" style="padding: 0 1rem;">
+        <div class="container container-header flex-between" style="padding: 0 1rem;">
             <div class="logo">
-                <a href="index.html" class="flex-center"
-                    style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
-                    <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                <a href="index.html" class="flex-center" style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
                     FERMENT
                 </a>
             </div>
-
             <nav class="nav-links">
                 <a href="index.html" class="nav-link">Home 1</a>
                 <a href="index-2.html" class="nav-link">Home 2</a>
@@ -33,159 +43,221 @@
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
             </nav>
-
             <div class="flex-center" style="gap: 0.5rem;">
                 <a href="login.html" class="btn btn-secondary" style="padding: 0.6rem 1rem;">Login</a>
-                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0">
-                    <i data-lucide="moon"></i>
+                <div id="theme-toggle" class="btn-icon" role="button" tabindex="0"><i data-lucide="moon"></i></div>
+                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
                 </div>
-                <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0">
-                    <i data-lucide="languages"></i>
-                </div>
-                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;">
-                    <i data-lucide="menu"></i>
-                </div>
+                <div id="menu-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" style="display: none;"><i data-lucide="menu"></i></div>
             </div>
         </div>
     </header>
 
-    <!-- Services Hero -->
-    <section class="section"
-        style="padding: 12rem 0 8rem; position: relative; background-image: url('img/services-bg.png'); background-size: cover; background-position: center;">
-        <div
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4)); z-index: 1;">
-        </div>
-        <div class="container" style="text-align: center; position: relative; z-index: 2;">
-            <h1 style="font-size: 4rem; margin-bottom: 1rem; color: #ffffff;" class="reveal">Our Workshops</h1>
-            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto;"
-                class="reveal">From absolute beginners to advanced fermenters, we have a session for everyone.</p>
+    <!-- Hero -->
+    <section class="page-hero" style="background-image: url('img/services-bg.png');">
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <div class="reveal">
+                <div class="page-hero-tag">
+                    <i data-lucide="book-open" style="width: 13px; height: 13px;"></i>
+                    Hands-On Learning
+                </div>
+                <h1 style="font-size: 3.75rem; color: #fff; margin-bottom: 1rem; line-height: 1.1;">Our Workshops</h1>
+                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.85); max-width: 620px; margin: 0 auto; line-height: 1.8;">From absolute beginners to advanced fermenters, we have a session crafted for every skill level.</p>
+            </div>
         </div>
     </section>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+        <div class="stat-item reveal"><div class="stat-number">6+</div><div class="stat-label">Workshop Types</div></div>
+        <div class="stat-item reveal" style="animation-delay:.1s"><div class="stat-number">Max 10</div><div class="stat-label">Students Per Class</div></div>
+        <div class="stat-item reveal" style="animation-delay:.2s"><div class="stat-number">100%</div><div class="stat-label">Organic Ingredients</div></div>
+        <div class="stat-item reveal" style="animation-delay:.3s"><div class="stat-number">Take-Home</div><div class="stat-label">Jars Included</div></div>
+    </div>
 
     <!-- Workshop Grid -->
     <section class="section">
-        <div class="container grid grid-3">
-            <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (3).jpeg" alt="Kimchi"
-                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
-                <h3>Kimchi Foundations</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">The perfect starting point for any fermenter.
-                    Learn the traditional.</p>
-                <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
-                    <span style="font-weight: 700;">$89</span>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="flask-conical" style="width: 13px; height: 13px;"></i>
+                    All Sessions
                 </div>
+                <h2 style="font-size: 2.75rem;">Browse All Workshops</h2>
+                <p style="color: var(--text-alt); max-width: 500px; margin: 0.75rem auto 0;">Pick your session and start fermenting with expert guidance</p>
             </div>
-            <div class="card reveal"
-                style="animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Kombucha"
-                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
-                <h3>Kombucha Masterclass</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Master the art of primary fermentation and
-                    second ferment flavoring.</p>
-                <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
-                    <span style="font-weight: 700;">$95</span>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
+            <div class="grid grid-3">
+                <div class="ws-card reveal">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.03 AM (3).jpeg" alt="Kimchi">
+                        <div class="ws-card-tag">Most Popular</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Half Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 10</span>
+                            <span><i data-lucide="award" style="width:13px;height:13px;"></i> Beginner</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Kimchi Foundations</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">The perfect starting point. Learn the traditional balance of spice, salt, and fermentation science hands-on.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$89</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card reveal"
-                style="animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Sourdough"
-                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
-                <h3>Wild Sourdough</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Tame the wild yeast and bake the perfect crusty
-                    loaf of sourdough bread.</p>
-                <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
-                    <span style="font-weight: 700;">$110</span>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                <div class="ws-card reveal" style="animation-delay:.1s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.04 AM (1).jpeg" alt="Kombucha">
+                        <div class="ws-card-tag" style="background: #f59e0b;">Trending</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 8</span>
+                            <span><i data-lucide="star" style="width:13px;height:13px;"></i> Intermediate</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Kombucha Masterclass</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Master primary fermentation and second-ferment flavoring. Take home your own live SCOBY culture.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$95</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card reveal" style="display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Miso"
-                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
-                <h3>Miso and Koji</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Enter the world of Koji mold and learn how to
-                    make your own Miso paste.</p>
-                <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
-                    <span style="font-weight: 700;">$145</span>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                <div class="ws-card reveal" style="animation-delay:.2s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.05 AM.jpeg" alt="Sourdough">
+                        <div class="ws-card-tag" style="background: #8b5cf6;">New</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 8</span>
+                            <span><i data-lucide="zap" style="width:13px;height:13px;"></i> All Levels</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Wild Sourdough</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Tame the wild yeast and bake the perfect crusty sourdough loaf from a starter culture you'll care for at home.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$110</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card reveal"
-                style="animation-delay: 0.1s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg" alt="Cider"
-                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
-                <h3>Hard Cider Brewing</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Learn to brew crisp, refreshing hard cider from
-                    local apples.</p>
-                <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
-                    <span style="font-weight: 700;">$120</span>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                <div class="ws-card reveal">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.06 AM.jpeg" alt="Miso">
+                        <div class="ws-card-tag" style="background: #dc2626;">Advanced</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 6</span>
+                            <span><i data-lucide="flask-conical" style="width:13px;height:13px;"></i> Advanced</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Miso and Koji</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Enter the world of Koji mold and learn how to craft your own authentic aged Miso paste using ancient techniques.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$145</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card reveal"
-                style="animation-delay: 0.2s; display: flex; flex-direction: column; height: 100%;">
-                <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM.jpeg" alt="Vegan"
-                    style="border-radius: var(--radius-md); margin-bottom: 1.5rem; width: 100%; height: 200px; object-fit: cover;">
-                <h3>Fermented Vegan Cheese</h3>
-                <p style="color: var(--text-alt); margin-bottom: 1rem;">Create aged nut cheeses with traditional
-                    fermentation techniques.</p>
-                <div class="flex-between" style="margin-top: auto; padding-top: 1.5rem;">
-                    <span style="font-weight: 700;">$130</span>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
+                <div class="ws-card reveal" style="animation-delay:.1s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.07 AM.jpeg" alt="Cider">
+                        <div class="ws-card-tag" style="background: #ea580c;">Seasonal</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Full Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 8</span>
+                            <span><i data-lucide="star" style="width:13px;height:13px;"></i> Intermediate</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Hard Cider Brewing</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Learn to brew crisp, refreshing hard cider from locally sourced seasonal apples using traditional wild fermentation.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$120</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ws-card reveal" style="animation-delay:.2s">
+                    <div class="ws-card-img">
+                        <img src="img/WhatsApp Image 2026-04-02 at 11.52.08 AM.jpeg" alt="Vegan Cheese">
+                        <div class="ws-card-tag" style="background: #0891b2;">Vegan</div>
+                    </div>
+                    <div class="ws-card-body">
+                        <div class="ws-card-meta">
+                            <span><i data-lucide="clock" style="width:13px;height:13px;"></i> Half Day</span>
+                            <span><i data-lucide="users" style="width:13px;height:13px;"></i> Max 10</span>
+                            <span><i data-lucide="leaf" style="width:13px;height:13px;"></i> Plant-Based</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.75rem;">Fermented Vegan Cheese</h3>
+                        <p style="color: var(--text-alt); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.7; flex-grow: 1;">Create luxurious aged nut cheeses with traditional fermentation. Entirely plant-based and surprisingly complex.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+                            <span class="ws-card-price">$130</span>
+                            <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Join Workshop</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Table -->
+    <!-- Pricing Packages -->
     <section class="section" style="background: var(--bg-alt);">
         <div class="container">
             <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
-                <h2 style="font-size: 3rem;">Workshop Packages</h2>
-                <p style="color: var(--text-alt);">Save by booking multiple sessions</p>
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="tag" style="width: 13px; height: 13px;"></i>
+                    Packages
+                </div>
+                <h2 style="font-size: 2.75rem;">Workshop Packages</h2>
+                <p style="color: var(--text-alt);">Save more by booking multiple sessions</p>
             </div>
             <div class="reveal" style="overflow-x: auto;">
-                <table
-                    style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;">
+                <table class="pkg-table" style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);">
                     <thead>
                         <tr style="background: var(--primary); color: white; text-align: left;">
                             <th style="padding: 1.5rem;">Feature</th>
                             <th style="padding: 1.5rem;">Single Workshop</th>
-                            <th style="padding: 1.5rem;">Classic Duo</th>
+                            <th style="padding: 1.5rem; background: rgba(0,0,0,0.15);">Classic Duo ⭐</th>
                             <th style="padding: 1.5rem;">Master Series</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 1.5rem;">Number of Classes</td>
-                            <td style="padding: 1.5rem;">1 Session</td>
-                            <td style="padding: 1.5rem;">2 Sessions</td>
-                            <td style="padding: 1.5rem;">5 Sessions</td>
+                            <td style="padding: 1.5rem; font-weight: 500;">Number of Classes</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);">1 Session</td>
+                            <td style="padding: 1.5rem; background: var(--primary-light); font-weight: 600;">2 Sessions</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);">5 Sessions</td>
                         </tr>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 1.5rem;">Starter Kit Included</td>
+                            <td style="padding: 1.5rem; font-weight: 500;">Starter Kit Included</td>
                             <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
-                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
-                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 1.5rem;">Digital Recipes</td>
-                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
-                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem; background: var(--primary-light);"><i data-lucide="check" style="color: var(--primary);"></i></td>
                             <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
                         </tr>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 1.5rem;">Private Coaching</td>
-                            <td style="padding: 1.5rem;">-</td>
-                            <td style="padding: 1.5rem;">-</td>
-                            <td style="padding: 1.5rem;">1 Session</td>
+                            <td style="padding: 1.5rem; font-weight: 500;">Digital Recipes</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem; background: var(--primary-light);"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 1.5rem; font-weight: 500;">Private Coaching</td>
+                            <td style="padding: 1.5rem; color: var(--text-alt);">—</td>
+                            <td style="padding: 1.5rem; background: var(--primary-light); color: var(--text-alt);">—</td>
+                            <td style="padding: 1.5rem;"><i data-lucide="check" style="color: var(--primary);"></i> 1 Session</td>
                         </tr>
                         <tr>
-                            <td style="padding: 1.5rem; font-weight: 700;">Price</td>
-                            <td style="padding: 1.5rem; font-weight: 700;">$89</td>
-                            <td style="padding: 1.5rem; font-weight: 700;">$159</td>
-                            <td style="padding: 1.5rem; font-weight: 700;">$349</td>
+                            <td style="padding: 1.5rem; font-weight: 700; font-size: 1.1rem;">Price</td>
+                            <td style="padding: 1.5rem; font-weight: 700; font-size: 1.25rem;">$89</td>
+                            <td style="padding: 1.5rem; background: var(--primary-light); font-weight: 800; font-size: 1.5rem; color: var(--primary);">$159 <span style="font-size: 0.8rem; color: var(--text-alt); font-weight: 500;">Save 10%</span></td>
+                            <td style="padding: 1.5rem; font-weight: 700; font-size: 1.25rem;">$349</td>
                         </tr>
                     </tbody>
                 </table>
@@ -193,95 +265,85 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <style>
-        .faq-card details>summary {
-            list-style: none;
-            outline: none;
-        }
-
-        .faq-card details>summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-card details[open] .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-card details p {
-            margin: 0;
-        }
-
-        .faq-card details[open] .faq-content {
-            animation: faqSlideDown 0.3s ease-out forwards;
-        }
-
-        @keyframes faqSlideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <!-- FAQ -->
     <section class="section faq-card">
         <div class="container" style="max-width: 800px;">
             <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
-                <h2 style="font-size: 2.5rem;">Frequently Asked Questions</h2>
+                <div class="section-label" style="margin: 0 auto 1rem;">
+                    <i data-lucide="help-circle" style="width: 13px; height: 13px;"></i>
+                    FAQ
+                </div>
+                <h2 style="font-size: 2.75rem;">Frequently Asked Questions</h2>
             </div>
             <div class="reveal">
                 <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
-                    <summary class="flex-between" style="font-size: 1.25rem; font-weight: 700; cursor: pointer;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
                         <span>Do I need to bring anything?</span>
-                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s;"></i>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
                     </summary>
-                    <div class="faq-content"
-                        style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                        <p style="color: var(--text-alt);">No! We provide all jars, ingredients, aprons, and tools. Just
-                            bring your curiosity.</p>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">No! We provide all jars, ingredients, aprons, and tools. Just bring your curiosity and appetite for learning.</p>
                     </div>
                 </details>
                 <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
-                    <summary class="flex-between" style="font-size: 1.25rem; font-weight: 700; cursor: pointer;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
                         <span>Can children join?</span>
-                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s;"></i>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
                     </summary>
-                    <div class="faq-content"
-                        style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                        <p style="color: var(--text-alt);">Yes, children 12+ are welcome with an adult. It's a great
-                            science lesson!</p>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">Yes! Children aged 12+ are welcome with an adult accompanying them. It's a fantastic, hands-on science experience.</p>
                     </div>
                 </details>
                 <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
-                    <summary class="flex-between" style="font-size: 1.25rem; font-weight: 700; cursor: pointer;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
                         <span>Is everything organic?</span>
-                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s;"></i>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
                     </summary>
-                    <div class="faq-content"
-                        style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-                        <p style="color: var(--text-alt);">We prioritize locally sourced organic produce whenever
-                            possible.</p>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">We prioritize locally sourced organic produce from our certified partner farms whenever possible — and for most workshops, everything is certified organic.</p>
+                    </div>
+                </details>
+                <details class="card" style="margin-bottom: 1rem; padding: 1.5rem 2rem;">
+                    <summary class="flex-between" style="font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                        <span>What if I need to cancel?</span>
+                        <i data-lucide="chevron-down" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0;"></i>
+                    </summary>
+                    <div class="faq-content" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--text-alt); line-height: 1.7;">Cancellations made more than 48 hours before a session receive a full refund or session credit. Contact us and we'll find the best solution for you.</p>
                     </div>
                 </details>
             </div>
         </div>
     </section>
 
+    <!-- CTA -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container">
+            <div class="cta-section reveal">
+                <div class="cta-section-content">
+                    <div class="section-label" style="background: rgba(255,255,255,0.12); color: #86efac; margin: 0 auto 1.5rem;">
+                        <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
+                        Seats Filling Fast
+                    </div>
+                    <h2 style="font-size: 2.75rem; color: white; margin-bottom: 1rem;">Ready to Start Fermenting?</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">Pick your workshop and join hundreds of students who've transformed their kitchen and gut health.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn" style="background: white; color: #14532d; font-weight: 700; padding: 1rem 2rem;">Book a Workshop</a>
+                        <a href="care-plans.html" class="btn btn-glass" style="padding: 1rem 2rem;">Explore Care Plans</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer style="background: var(--bg-alt); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
+    <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
         <div class="container grid grid-4" style="gap: 4rem;">
             <div>
-                <a href="index.html" class="flex-center"
-                    style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
-                    <img src="img/logo.svg" alt="Ferment Logo" style="height: 48px; width: 48px;">
-                    FERMENT
+                <a href="index.html" class="flex-center" style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">FERMENT
                 </a>
-                <p style="color: var(--text-alt); margin-top: 1.5rem;">Crating culture, one jar at a time. Join us in
-                    our mission to bring fermentation back to every kitchen.</p>
+                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time.</p>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
@@ -294,53 +356,28 @@
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Contact Us</h4>
-                <div class="footer-contact-item">
-                    <i data-lucide="map-pin"></i>
-                    <span>123 Artisan Lane, Culture Square, NY 10001</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i data-lucide="phone"></i>
-                    <span>+1 (234) 567 8901</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i data-lucide="clock"></i>
-                    <span>Mon - Sat: 10AM - 6PM</span>
-                </div>
+                <div class="footer-contact-item"><i data-lucide="map-pin"></i><span>123 Artisan Lane, Culture Square, NY 10001</span></div>
+                <div class="footer-contact-item"><i data-lucide="phone"></i><span>+1 (234) 567 8901</span></div>
+                <div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 10AM - 6PM</span></div>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="footer-contact-item" style="margin-bottom: 1.5rem;">
-                    <i data-lucide="mail"></i>
-                    <span>hello@fermentstudio.com</span>
-                </div>
+                <div class="footer-contact-item" style="margin-bottom: 1.5rem;"><i data-lucide="mail"></i><span>hello@fermentstudio.com</span></div>
                 <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
-                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-                    </a>
-                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
+                    <a href="#" class="btn-icon" data-brand="instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="twitter" title="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                    <a href="#" class="btn-icon" data-brand="youtube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                 </div>
             </div>
         </div>
-        <div class="container"
-            style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
+        <div class="container" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-alt);">
             <p>&copy; 2026 Fermentation Workshop Studio. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top" title="Back to Top">
-        <i data-lucide="chevron-up"></i>
-    </button>
+    <button id="back-to-top" class="back-to-top" title="Back to Top"><i data-lucide="chevron-up"></i></button>
 
-    <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="mobile-drawer">
         <div class="flex-between" style="margin-bottom: 2rem;">
             <span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">FERMENTSTUDIO</span>
@@ -360,5 +397,4 @@
     <div id="overlay" class="overlay"></div>
 
 </body>
-
 </html>
