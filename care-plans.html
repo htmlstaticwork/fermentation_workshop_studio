@@ -15,8 +15,9 @@
     <header>
         <div class="container container-header flex-between" style="padding: 0 1rem;">
             <div class="logo">
-                <a href="index.html" class="flex-center" style="gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
-                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">FERMENT
+                <a href="index.html" class="brand-logo-link">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
                 </a>
             </div>
             <nav class="nav-links">
@@ -29,7 +30,7 @@
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
             </nav>
             <div class="flex-center" style="gap: 0.5rem;">
-                <a href="login.html" class="btn btn-secondary" style="padding: 0.6rem 1rem;">Login</a>
+                <a href="login.html" class="btn btn-secondary">Login</a>
                 <div id="theme-toggle" class="btn-icon" role="button" tabindex="0"><i data-lucide="moon"></i></div>
                 <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
                     <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
@@ -95,7 +96,7 @@
                             <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
                         </div>
                     </div>
-                    <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+                    <ul class="plan-feature-list" style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1 Monthly Seasonal Kit</li>
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Basic Recipe Guides</li>
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Community Forum Access</li>
@@ -117,7 +118,7 @@
                             <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
                         </div>
                     </div>
-                    <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+                    <ul class="plan-feature-list" style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 2 Monthly Seasonal Kits</li>
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Advanced Recipe Guides</li>
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Heritage SCOBY Exchange</li>
@@ -138,7 +139,7 @@
                             <span style="color: var(--text-alt); font-size: 0.9rem;">/ month</span>
                         </div>
                     </div>
-                    <ul style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+                    <ul class="plan-feature-list" style="flex: 1; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> Unlimited Seasonal Kits</li>
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> 1-on-1 Coaching (Monthly)</li>
                         <li class="flex-center" style="justify-content: flex-start; gap: 0.75rem;"><i data-lucide="check-circle" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i> VIP Workshop Seating</li>
@@ -239,7 +240,7 @@
                     <h2 style="font-size: 2.75rem; color: white; margin-bottom: 1rem;">Your Monthly Ferment Kit Awaits</h2>
                     <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">Join thousands of home fermenters who get their monthly culture fix. Cancel anytime, no commitment.</p>
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="#plans" class="btn" style="background: white; color: #14532d; font-weight: 700; padding: 1rem 2rem;">View All Plans</a>
+                        <a href="#plans" class="btn btn-white" style="padding: 1rem 2rem; font-weight: 700;">View All Plans</a>
                         <a href="contact.html" class="btn btn-glass" style="padding: 1rem 2rem;">Ask a Question</a>
                     </div>
                 </div>
@@ -251,10 +252,11 @@
     <footer style="background: var(--bg-card); padding: 5rem 0 2rem; border-top: 1px solid var(--border);">
         <div class="container grid grid-4" style="gap: 4rem;">
             <div>
-                <a href="index.html" class="flex-center" style="justify-content: flex-start; gap: 0.75rem; font-weight: 800; font-size: 1.5rem; color: var(--primary);">
-                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">FERMENT
+                <a href="index.html" class="brand-logo-link" style="justify-content: flex-start;">
+                    <img src="img/brand-logo.png" alt="Ferment Logo" style="height: 48px; width: 48px;">
+                    FERMENT
                 </a>
-                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time.</p>
+                <p style="color: var(--text-alt); margin-top: 1.5rem; line-height: 1.7;">Crafting culture, one jar at a time. Join us in our mission to bring fermentation back to every kitchen.</p>
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Quick Links</h4>
@@ -273,7 +275,7 @@
             </div>
             <div>
                 <h4 style="margin-bottom: 1.5rem;">Stay Connected</h4>
-                <div class="footer-contact-item" style="margin-bottom: 1.5rem;"><i data-lucide="mail"></i><span>hello@fermentstudio.com</span></div>
+                <div class="footer-contact-item"><i data-lucide="mail"></i><span>hello@fermentstudio.com</span></div>
                 <div class="flex-center" style="justify-content: flex-start; gap: 1rem;">
                     <a href="#" class="btn-icon" data-brand="instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07a6.767 6.767 0 0 1 2.265.419a4.054 4.054 0 0 1 1.452.945a4.054 4.054 0 0 1 .945 1.452a6.767 6.767 0 0 1 .419 2.265c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85a6.767 6.767 0 0 1-.419 2.265a4.054 4.054 0 0 1-.945 1.452a4.054 4.054 0 0 1-1.452.945a6.767 6.767 0 0 1-2.265.419c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07a6.767 6.767 0 0 1-2.265-.419a4.054 4.054 0 0 1-1.452-.945a4.054 4.054 0 0 1-.945-1.452a6.767 6.767 0 0 1-.419-2.265C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85a6.767 6.767 0 0 1 .419-2.265a4.054 4.054 0 0 1 .945-1.452a4.054 4.054 0 0 1 1.452-.945a6.767 6.767 0 0 1 2.265-.419c1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072a9.514 9.514 0 0 0-3.148.603a6.821 6.821 0 0 0-2.446 1.594A6.821 6.821 0 0 0 .603 3.915a9.514 9.514 0 0 0-.675 3.148C-.014 8.741 0 9.147 0 12c0 2.859.014 3.266.072 4.547c.058 1.281.213 2.157.603 3.148a6.821 6.821 0 0 0 1.594 2.446a6.821 6.821 0 0 0 2.446 1.594a9.514 9.514 0 0 0 3.148.675c1.281.058 1.688.072 4.547.072s3.266-.014 4.547-.072a9.514 9.514 0 0 0 3.148-.603a6.821 6.821 0 0 0 2.446-1.594a6.821 6.821 0 0 0 1.594-2.446a9.514 9.514 0 0 0 .675-3.148c.058-1.281.072-1.688.072-4.547s-.014-3.266-.072-4.547a9.514 9.514 0 0 0-.603-3.148a6.821 6.821 0 0 0-1.594-2.446a6.821 6.821 0 0 0-2.446-1.594a9.514 9.514 0 0 0-3.148-.675C15.259.014 14.853 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324a6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88z"/></svg></a>
                     <a href="#" class="btn-icon" data-brand="facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
@@ -297,9 +299,9 @@
         <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
             <a href="index.html" class="nav-link">Home 1</a>
             <a href="index-2.html" class="nav-link">Home 2</a>
+            <a href="about.html" class="nav-link">About</a>
             <a href="services.html" class="nav-link">Services</a>
             <a href="care-plans.html" class="nav-link active">Care Plans</a>
-            <a href="about.html" class="nav-link">About</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <a href="dashboard.html" class="nav-link">Dashboard</a>
             <a href="login.html" class="btn btn-secondary" style="margin-top: 1rem;">Login</a>
