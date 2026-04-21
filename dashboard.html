@@ -20,7 +20,7 @@
         .main-content {
             flex: 1;
             margin-left: 280px;
-            padding: 0;
+            padding: 80px 0 0 0; /* Top padding matches header height */
             min-height: 100vh;
             min-width: 0;
             /* Critical: allows flex child to shrink below content size */
@@ -68,7 +68,7 @@
             border-bottom: none;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
             .sidebar {
                 transform: translateX(-100%);
                 z-index: 2000;
@@ -84,10 +84,11 @@
             }
 
             .main-content {
-                margin-left: 0;
-                padding: 0 !important;
-                width: 100vw;
-                max-width: 100vw;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding: 80px 0 0 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
             }
 
             .dashboard-pane {
@@ -124,9 +125,21 @@
             .welcome-text {
                 order: 2 !important;
                 text-align: left !important;
-                flex: 1 !important;
+                flex: 0 1 auto !important;
                 min-width: 0 !important;
                 padding-left: 1rem !important;
+            }
+
+            .header-controls-group {
+                order: 3 !important;
+                margin-left: auto !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+            }
+
+            body.rtl .header-controls-group {
+                margin-left: 0 !important;
                 margin-right: auto !important;
             }
 
@@ -171,7 +184,7 @@
 
         @media (max-width: 768px) {
             .main-content {
-                padding: 0 !important;
+                padding: 80px 0 0 0 !important;
                 width: 100vw;
                 max-width: 100vw;
                 overflow-x: hidden;
@@ -329,7 +342,7 @@
         /* Ultra-narrow screens ≤360px */
         @media (max-width: 360px) {
             .main-content {
-                padding: 0.75rem !important;
+                padding: 80px 0.75rem 0.75rem !important; /* Top padding preserved */
             }
 
             .workshop-row {
@@ -392,7 +405,16 @@
     <!-- Main Content -->
     <main class="main-content">
         <header class="dashboard-header"
-            style="display: flex; justify-content: space-between; align-items: center; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; margin: 0; min-height: 80px; width: 100%;">
+            style="display: flex; justify-content: space-between; align-items: center; background: var(--glass); backdrop-filter: blur(10px); position: fixed; top: 0; right: 0; left: 280px; z-index: 100; border-bottom: 1px solid var(--border); padding: 1.5rem 3rem; margin: 0; min-height: 80px; transition: left 0.3s ease, right 0.3s ease; width: auto;">
+            <style>
+                @media (max-width: 1023px) {
+                    .dashboard-header { left: 0 !important; right: 0 !important; padding: 1rem !important; }
+                }
+                body.rtl .dashboard-header { left: 0; right: 280px; }
+                @media (max-width: 1023px) {
+                    body.rtl .dashboard-header { right: 0 !important; }
+                }
+            </style>
             <div id="sidebar-toggle" class="btn-icon mobile-menu-btn" role="button" tabindex="0" title="Toggle Sidebar"
                 style="display: none; z-index: 10;"><i data-lucide="menu"></i></div>
 
