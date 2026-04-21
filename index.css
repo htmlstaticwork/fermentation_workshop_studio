@@ -740,8 +740,10 @@ select.form-input {
 
     .main-content {
         margin-left: 0 !important;
-        padding: 2rem 1.5rem !important;
-        padding-top: calc(80px + 2rem) !important;
+        padding-top: 100px !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-bottom: 2rem !important;
     }
 
     .dashboard-header {
@@ -1130,8 +1132,10 @@ select.form-input {
 
     /* Dashboard-specific */
     .main-content {
-        padding: 1rem !important;
-        padding-top: calc(80px + 1rem) !important;
+        padding-top: 100px !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-bottom: 1rem !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
         box-sizing: border-box !important;
