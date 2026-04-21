@@ -14,7 +14,9 @@
     <!-- Theme & RTL Toggles -->
     <div class="auth-toggles" style="position: fixed; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 1100;">
         <div id="theme-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle Theme"><i data-lucide="moon"></i></div>
-        <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL"><i data-lucide="languages"></i></div>
+        <div id="rtl-toggle" class="btn-icon" role="button" tabindex="0" title="Toggle RTL">
+            <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;">RTL</span>
+        </div>
     </div>
 
     <div class="card reveal auth-card" style="max-width: 500px; width: 100%; padding: 3rem; text-align: center; position: relative;">
@@ -93,6 +95,10 @@
             text-decoration: none;
             position: relative;
             transition: color 0.25s ease, filter 0.25s ease;
+        }
+        .auth-link:hover {
+            filter: brightness(1.1);
+            text-decoration: underline !important;
         }
         /* Mobile Adjustments for Auth Layout */
         @media (max-width: 480px) {
